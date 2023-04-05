@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "我是zk，Running pre-commit hook...请您确保代码已经格式化并且通过了lint检查在提交代码奥~！"
+echo "自动提醒：我是提交hooks助手！请您确保代码已经格式化并且通过了lint检查在提交代码奥~！"
