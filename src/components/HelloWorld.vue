@@ -9,7 +9,7 @@
 
 <style scoped lang="scss">
 h1 {
-               position: fixed;
+  position: fixed;
   top: 20px;
   left: 50px;
   display: flex;
