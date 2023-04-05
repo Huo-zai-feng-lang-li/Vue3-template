@@ -1,10 +1,10 @@
-## 项目说明书
+## 🌈 项目说明书
 
 **zk：** Vue3 + Ts + Vite + pnpm 项目中集成 —— eslint 、prettier、stylelint、husky、router、vuex、axios 
 
-​       ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF67B8C0.png)这是一个使用 Vue3 和 TypeScript 作为主要技术栈，使用 Vite 作为构建工具，使用 pnpm 作为包管理工具的项目。该项目集成了 eslint、prettier、stylelint、husky、router、vuex 和 axios。
+​       `这是一个使用 Vue3 和 TypeScript 作为主要技术栈，使用 Vite 作为构建工具，使用 pnpm 作为包管理工具的项目。该项目集成了 eslint、prettier、stylelint、husky、router、vuex 和 axios。`
 
-![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF689390.png)项目结构
+#### ⛱️ 项目结构
 
 ```
 ├── public
@@ -33,38 +33,38 @@
 ├── vite.config.ts
 ```
 
-- ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF69116B.png)`public`：此目录包含静态文件，这些文件将原样提供给客户端。index.html 文件是应用程序的入口点。
-- ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF693389.png)`.vscode`：这个目录包含 Visual Studio Code (eslint 、prettier、stylelint) 的设置文件，例如 settings.json。
-- ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF695B26.png)`src`：这个目录是项目的主要源代码目录，包含了 API、组件、路由、存储、工具和视图等文件夹，以及 App.vue 和 main.ts 等文件。
-  - ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF6A3B45.png)`api`：这个目录包含与后端通信的 API 文件（axios）。
-  - ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF697610.png)`assets`：这个目录包含项目中使用的图像、样式表和其他资源。
-  - ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF6A7669.png)`components`：这个目录包含可重用的 Vue.js 组件，例如按钮、输入框等。
-  - ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF6A9490.png)`router`：这个目录包含 Vue.js 路由器的配置文件。
-  - ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF6AA970.png)`store`：这个目录包含 Vuex 状态管理器的配置文件。
-  - ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF6AC13E.png)`utils`：这个目录包含与项目中的其他文件共享的通用 JavaScript 工具函数。
-  - `views`：这个目录包含项目中的视图文件，例如登录页面、主页等。
-  - `App.vue`：这个文件是 Vue.js 应用程序的根组件。
-  - `main.ts`：这个文件是应用程序的入口点，它创建了 Vue.js 实例并将其挂载到 DOM 中。
-  - `projectReset.scss`：这个文件包含项目的全局样式，例如重置默认样式、颜色等。
-- ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF6B6907.png)`.eslintrc.cjs`：这个文件是 ESLint 配置文件，用于保持代码风格的一致性和代码质量。
-- ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF6B726D.png)`.husky`：这个目录包含 Husky 钩子的配置文件，用于在 Git 操作前后时运行脚本。
-- ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF6B7CCD.png)`.prettierrc.cjs`：这个文件是 Prettier 配置文件，用于自动格式化代码。
-- ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF6B8AA8.png)`.stylelintrc.cjs`：这个文件是 Stylelint 配置文件，用于保持 CSS 代码风格的一致性和代码质量。
-- ![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF6B993E.png)`package.json`：这个文件包含项目的依赖项和脚本命令等信息，是项目的 package.json 文件中定义的脚本
-  - “pnpm”: 这个脚本运行 pnpm install 命令，使用 pnpm 安装项目的依赖项。
-  - “dev”: 这个脚本运行 vite 命令并带有 --open 标志，它会启动一个本地开发服务器并在浏览器中打开项目。
-  - “build”: 这个脚本用于构建项目。它首先运行 vue-tsc 命令，对 TypeScript 代码进行类型检查。然后运行 lint、format 和 lint:style 脚本，分别对代码进行 ESLint、Prettier 和 Stylelint 的检查和格式化。最后运行 vite build 命令构建项目。
-  - “check”: 这个脚本用于检查项目的代码，它运行与 build 脚本相同的命令，但不包括构建项目的命令。
-  - “lint”: 这个脚本用于运行 ESLint 对项目的代码进行检查和格式化。
-  - “format”: 这个脚本用于运行 Prettier 对项目的代码进行格式化。
-  - “lint:style”: 这个脚本用于运行 Stylelint 对项目的样式表进行检查和格式化。
-  - “prepare”: 这个脚本用于在安装 git hooks 时安装 husky。
-- `tsconfig.node.json`：这个文件是 TypeScript 配置文件，用于配置 Node.js 的编译选项。
-- `pnpm-lock.yaml`：这个文件包含 pnpm 安装的精确版本信息 锁定版本。
-- `README.md`：这个文件是项目的说明文档。
-- `vite.config.ts`：这个文件是 Vite 的配置文件，用于配置构建选项和插件。
+- **1** `public`：此目录包含静态文件，这些文件将原样提供给客户端。index.html 文件是应用程序的入口点。
+- **2** `.vscode`：这个目录包含 Visual Studio Code (eslint 、prettier、stylelint) 的设置文件，例如 settings.json。
+- **3** `src`：这个目录是项目的主要源代码目录，包含了 API、组件、路由、存储、工具和视图等文件夹，以及 App.vue 和 main.ts 等文件。
+  - **3-1** `api`：这个目录包含与后端通信的 API 文件（axios）。
+  - **3-2** `assets`：这个目录包含项目中使用的图像、样式表和其他资源。
+  - **3-3** `components`：这个目录包含可重用的 Vue.js 组件，例如按钮、输入框等。
+  - **3-4** `router`：这个目录包含 Vue.js 路由器的配置文件。
+  - **3-5** `store`：这个目录包含 Vuex 状态管理器的配置文件。
+  - **3-6** `utils`：这个目录包含与项目中的其他文件共享的通用 JavaScript 工具函数。
+  - **3-7** `views`：这个目录包含项目中的视图文件，例如登录页面、主页等。
+  - **3-8** `App.vue`：这个文件是 Vue.js 应用程序的根组件。
+  - **3-9** `main.ts`：这个文件是应用程序的入口点，它创建了 Vue.js 实例并将其挂载到 DOM 中。
+  - **3-10** `projectReset.scss`：这个文件包含项目的全局样式，例如重置默认样式、颜色等。
+- **4** `.eslintrc.cjs`：这个文件是 ESLint 配置文件，用于保持代码风格的一致性和代码质量。
+- **5** `.husky`：这个目录包含 Husky 钩子的配置文件，用于在 Git 操作前后时运行脚本。
+- **6** `.prettierrc.cjs`：这个文件是 Prettier 配置文件，用于自动格式化代码。
+- **7** `.stylelintrc.cjs`：这个文件是 Stylelint 配置文件，用于保持 CSS 代码风格的一致性和代码质量。
+- **8** `package.json`：这个文件包含项目的依赖项和脚本命令等信息，是项目的 package.json 文件中定义的脚本
+  - **8-1** pnpm: 这个脚本运行 pnpm install 命令，使用 pnpm 安装项目的依赖项。
+  - **8-2** dev: 这个脚本运行 vite 命令并带有 --open 标志，它会启动一个本地开发服务器并在浏览器中打开项目。
+  - **8-3** build: 这个脚本用于构建项目。它首先运行 vue-tsc 命令，对 TypeScript 代码进行类型检查。然后运行 lint、format 和 lint:style 脚本，分别对代码进行 ESLint、Prettier 和 Stylelint 的检查和格式化。最后运行 vite build 命令构建项目。
+  - **8-4** check: 这个脚本用于检查项目的代码，它运行与 build 脚本相同的命令，但不包括构建项目的命令。
+  - **8-5** lint: 这个脚本用于运行 ESLint 对项目的代码进行检查和格式化。
+  - **3-4** format: 这个脚本用于运行 Prettier 对项目的代码进行格式化。
+  - **8-7** lint:style: 这个脚本用于运行 Stylelint 对项目的样式表进行检查和格式化。
+  - **8-8** prepare: 这个脚本用于在安装 git hooks 时安装 husky。
+- **9** `tsconfig.node.json`：这个文件是 TypeScript 配置文件，用于配置 Node.js 的编译选项。
+- **10** `pnpm-lock.yaml`：这个文件包含 pnpm 安装的精确版本信息 锁定版本。
+- **11** `README.md`：这个文件是项目的说明文档。
+- **12** `vite.config.ts`：这个文件是 Vite 的配置文件，用于配置构建选项和插件。
 
-![img](file:///C:\Users\zk\AppData\Local\Temp\SGPicFaceTpBq\24508\DF6D836B.png)技术栈说明
+#### 🏭 技术栈说明
 
 - Vue3：一款流行的前端框架，使用 Composition API 和 Tree-Shaking 技术提高开发效率和性能。
 - TypeScript：一种 JavaScript 的超集，增加了静态类型检查和面向对象编程等特性，提高代码的可读性和可维护性。
@@ -78,8 +78,38 @@
 - vuex：Vue3 官方提供的状态管理工具，用于管理全局状态和数据流。
 - axios：一款基于 Promise 的 HTTP 库，用于发送 AJAX 请求和处理响应数据。
 
+#### 💒 代码仓库 
+
+#### [](https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template)
+
+#### ⚡ 使用说明
+
+```base
+# 克隆项目
+git clone https://gitee.com/lyt-top/vue-next-admin.git
+
+# 进入项目
+cd vue-next-admin
+
+# 安装依赖
+cnpm install
+
+# 运行项目
+cnpm run dev
+
+# 打包发布
+cnpm run build
+```
+
+#### 📚 开发文档
+
+###### . 查看开发文档          [](https://blog.csdn.net/m0_57904695/article/details/129950163?spm=1001.2014.3001.5501)  
 
 
-​                                                                      ————皆是缘、0.活在风浪里！--zk
+emoji特殊符号大全 [](http://fuhao.xiao84.com/)
+
+
+​                                                          ————皆是缘、0.活在风浪里！--zk
 
 ​                                                                          2023、4、5
+
