@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "自动提醒：我是提交hooks助手！请您确保代码已经格式化并且通过了lint检查（pnpm run check）在提交代码奥~！"
+echo "自动提醒：我是提交hooks助手！请您确保代码已经格式化并且通过了lint检查（npm run CheckAll）在提交代码奥~！"
 
 npm run CheckAll && git add -A .
