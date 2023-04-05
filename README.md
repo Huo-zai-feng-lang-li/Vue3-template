@@ -1,8 +1,8 @@
 ## 🌈 项目说明书
 
-**zk：** Vue3 + Ts + Vite + pnpm 项目中集成 —— eslint 、prettier、stylelint、husky、router、vuex、axios 
+**zk：** Vue3 + Ts + Vite + pnpm 项目中集成 —— eslint 、prettier、stylelint、husky、router、vuex、axios
 
-​       `这是一个使用 Vue3 和 TypeScript 作为主要技术栈，使用 Vite 作为构建工具，使用 pnpm 作为包管理工具的项目。该项目集成了 eslint、prettier、stylelint、husky、router、vuex 和 axios。`
+`这是一个使用 Vue3 和 TypeScript 作为主要技术栈，使用 Vite 作为构建工具，使用 pnpm 作为包管理工具的项目。该项目集成了 eslint、prettier、stylelint、husky、router、vuex 和 axios。`
 
 #### ⛱️ 项目结构
 
@@ -78,7 +78,7 @@
 - vuex：Vue3 官方提供的状态管理工具，用于管理全局状态和数据流。
 - axios：一款基于 Promise 的 HTTP 库，用于发送 AJAX 请求和处理响应数据。
 
-#### 💒 代码仓库 
+#### 💒 代码仓库
 
 #### [](https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template)
 
@@ -86,30 +86,27 @@
 
 ```base
 # 克隆项目
-git clone https://gitee.com/lyt-top/vue-next-admin.git
+git clone https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template.git
 
 # 进入项目
-cd vue-next-admin
+cd Vite--Ts--Vue3---template
 
 # 安装依赖
-cnpm install
+pnpm install
 
 # 运行项目
-cnpm run dev
+pnpm run dev
 
 # 打包发布
-cnpm run build
+pnpm run build
 ```
 
 #### 📚 开发文档
 
-###### . 查看开发文档          [](https://blog.csdn.net/m0_57904695/article/details/129950163?spm=1001.2014.3001.5501)  
+###### . 查看开发文档 <a href="https://blog.csdn.net/m0_57904695/article/details/129950163?spm=1001.2014.3001.5501" target="_blank">开发文档</a>
 
+emoji 特殊符号大全 <a href="http://fuhao.xiao84.com/" target="_blank">emoji 特殊符号大全 </a>
 
-emoji特殊符号大全 [](http://fuhao.xiao84.com/)
+————皆是缘、0.活在风浪里！--zk
 
-
-​                                                          ————皆是缘、0.活在风浪里！--zk
-
-​                                                                          2023、4、5
-
+2023、4、5

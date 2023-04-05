@@ -8,10 +8,10 @@
     "dev": "vite --open",
     "build": "vue-tsc && pnpm run lint && pnpm run format && pnpm run lint:style && vite build",
     "check": "vue-tsc && pnpm run lint && pnpm run format && pnpm run lint:style",
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
-    "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md,scss}\"",
+    "lint": "eslint . --ext .vue,.js,cjs,mjs,.ts,.cts,.mts,.jsx,.tsx --fix",
+    "format": "prettier --write \"./**/*.{html,vue,ts,cts,mts,js,mjs,cjs,json,md,scss}\"",
     "lint:style": "stylelint \"./**/*.{css,scss,vue,html}\" --fix",
-    "prepare": "husky install"
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "vue": "^3.2.47"
@@ -24,10 +24,10 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.10.0",
-    "husky": "^8.0.3",
     "postcss": "^8.4.21",
     "postcss-html": "^1.5.0",
     "postcss-scss": "^4.0.6",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.8.7",
     "sass": "^1.60.0",
     "sass-loader": "^13.2.2",
