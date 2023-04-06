@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "pnpm:": "pnpm install && npm run CheckAll",
+    "pnpm:": "pnpm install && npm run CheckAll && npx husky install",
     "dev": "vite --open",
     "build": "vue-tsc && npm run ESlint:check && npm run Prettier:check && npm run StyleLint:check && vite build",
     "CheckAll": "vue-tsc && npm run ESlint:check && npm run Prettier:check && npm run StyleLint:check",
