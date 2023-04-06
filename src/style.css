@@ -1,14 +1,14 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
   color: rgb(255 255 255 / 87%);
   background-color: #242424;
-  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-synthesis: none;
-  font-weight: 400;
-  line-height: 1.5;
-  text-rendering: optimizelegibility;
   text-size-adjust: 100%;
 }
 
@@ -43,8 +43,8 @@ button {
   border: 1px solid transparent;
   border-radius: 8px;
   transition: border-color 0.25s;
-  cursor: pointer;
   font-weight: 500;
+  cursor: pointer;
 }
 
 button:hover {

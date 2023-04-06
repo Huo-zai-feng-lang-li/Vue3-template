@@ -2,7 +2,7 @@
   "name": "my-vue-app",
   "private": true,
   "version": "0.0.0",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "pnpm:": "pnpm install",
     "dev": "vite --open",
@@ -10,8 +10,7 @@
     "CheckAll": "vue-tsc && npm run ESlint:check && npm run Prettier:check && npm run StyleLint:check",
     "ESlint:check": "eslint . --ext .vue,.js,cjs,mjs,.ts,.cts,.mts,.jsx,.tsx --fix",
     "Prettier:check": "prettier --write \"./**/*.{html,vue,ts,cts,mts,js,mjs,cjs,json,md,scss}\"",
-    "StyleLint:check": "stylelint \"./**/*.{css,scss,less,vue,html}\" --fix",
-    "prepare": "husky install"
+    "StyleLint:check": "stylelint \"./**/*.{css,scss,less,vue,html}\" --fix"
   },
   "dependencies": {
     "vue": "^3.2.47"
@@ -28,7 +27,6 @@
     "postcss": "^8.4.21",
     "postcss-html": "^1.5.0",
     "postcss-scss": "^4.0.6",
-    "pre-commit": "^1.2.2",
     "prettier": "^2.8.7",
     "sass": "^1.60.0",
     "sass-loader": "^13.2.2",

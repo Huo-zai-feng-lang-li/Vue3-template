@@ -11,20 +11,13 @@ import HelloWorld from "./components/HelloWorld.vue";
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld />
-  <!-- 盛放路由 -->
-  <router-view></router-view>
+  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .logo {
   padding: 1.5em;
   height: 6em;
-
-  /* 
-    transition: filter 300ms; 表示当 filter 属性发生变化时，过渡效果的持续时间为 300ms。
-    will-change: filter; 表示该元素的 filter 属性将发生变化，并提示浏览器进行优化以获得更好的性能。
-  */
   transition: filter 300ms;
   will-change: filter;
 }

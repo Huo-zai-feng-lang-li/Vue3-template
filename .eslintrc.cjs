@@ -20,7 +20,9 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["vue", "@typescript-eslint"],
-  // 新增
   root: true,
-  rules: {},
+  rules: {
+    // 表示在逗号后面必须有空格，而在逗号前面不能有空格
+    "comma-spacing": ["error", { before: false, after: true }],
+  },
 };
