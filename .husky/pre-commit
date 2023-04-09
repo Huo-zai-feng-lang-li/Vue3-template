@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "自动提醒：我是提交hooks助手！请您确保代码已经格式化并且通过了lint检查（npm run CheckAll）在提交代码奥~！"
+echo "温馨提醒：请您确保代码已经通过了lint检查（npm run CheckAll）在提交代码奥~！"
 
 # 注意要使用npm, CheckAll 是你的格式化脚本，在上面我已经将ESlint:check、Prettier:check、StyleLint:check整合为一个命令 CheckAll 了！！！
-npm run CheckAll
+# npm run CheckAll
