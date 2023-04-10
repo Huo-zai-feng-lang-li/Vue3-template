@@ -7,6 +7,9 @@
 #### ⛱️ 项目结构
 
 ```
+├── .husky
+│   ├── commit-msg // 获取提交信息，保证规范格式提交
+│   ├── pre-commit // 提交之前
 ├── public
 │   ├── index.html
 ├── .vscode
@@ -54,11 +57,11 @@
   - **8-1** pnpm: 这个脚本运行 pnpm install 命令，使用 pnpm 安装项目的依赖项。
   - **8-2** dev: 这个脚本运行 vite 命令并带有 --open 标志，它会启动一个本地开发服务器并在浏览器中打开项目。
   - **8-3** build: 这个脚本用于构建项目。它首先运行 vue-tsc 命令，对 TypeScript 代码进行类型检查。然后运行 lint、format 和 lint:style 脚本，分别对代码进行 ESLint、Prettier 和 Stylelint 的检查和格式化。最后运行 vite build 命令构建项目。
-  - **8-4** check: 这个脚本用于检查项目的代码，它运行与 build 脚本相同的命令，但不包括构建项目的命令。
-  - **8-5** lint: 这个脚本用于运行 ESLint 对项目的代码进行检查和格式化。
-  - **3-4** format: 这个脚本用于运行 Prettier 对项目的代码进行格式化。
-  - **8-7** lint:style: 这个脚本用于运行 Stylelint 对项目的样式表进行检查和格式化。
-  - **8-8** prepare: 这个脚本用于在安装 git hooks 时安装 husky。
+  - **8-4** *CheckAll*: 这个脚本用于检查项目的代码，它运行与 build 脚本相同的命令，但不包括构建项目的命令。
+  - **8-5** *ESlint:check*: 这个脚本用于运行 ESLint 对项目的代码进行检查和格式化。
+  - **3-4** *Prettier:check*: 这个脚本用于运行 Prettier 对项目的代码进行格式化。
+  - **8-7** *StyleLint:check*: 这个脚本用于运行 Stylelint 对项目的样式表进行检查和格式化。
+  - **8-8** *commit*: 这个脚本用于在自动化提交脚本。
 - **9** `tsconfig.node.json`：这个文件是 TypeScript 配置文件，用于配置 Node.js 的编译选项。
 - **10** `pnpm-lock.yaml`：这个文件包含 pnpm 安装的精确版本信息 锁定版本。
 - **11** `README.md`：这个文件是项目的说明文档。
