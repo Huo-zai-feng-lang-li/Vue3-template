@@ -6,7 +6,7 @@ commit_msg_file=$1
 if ! grep -qE "^(revert|feat|fix|docs|style|refactor|perf|test|chore|build|ci)(\(.+\))?:.{1,50}$" "$commit_msg_file"; then
   echo "提交信息格式不符合规范，请参考以下格式：（或者您可以使用git cz）"
   
-  echo "类型(范围非必填)：描述（不超过50个字符）"
+  echo "类型(范围非必填): 描述（不超过50个字符）"
   exit 1
 fi
 

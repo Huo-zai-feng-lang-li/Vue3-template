@@ -16,4 +16,8 @@
 
 <style scoped lang="scss">
 // scss 如果空着eslint会报错
+h1 {
+  position: relative;
+  color: red;
+}
 </style>
