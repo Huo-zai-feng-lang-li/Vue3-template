@@ -15,12 +15,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: () => import("@/views/home/index-home.vue"),
+    component: () => import("@/views/HomePage/home-page.vue"),
   },
   {
     path: "/about",
     name: "about",
-    component: () => import("@/views/about/index-about.vue"),
+    component: () => import("@/views/AboutPage/about-page.vue"),
   },
   ...test,
   noFondPage,
