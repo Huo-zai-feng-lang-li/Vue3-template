@@ -9,15 +9,19 @@
     "pnpm:": "pnpm install",
     "dev": "concurrently \"vite --open\" \"npx husky install\"",
     "build": "\"npm run CheckAll\" && vite build",
-    "CheckAll": "concurrently \"npm run ESlint:check\" \"npm run Prettier:check\"",
+    "CheckAll": "concurrently \"npm run ESlint:check\" \"npm run Prettier:check\" \"npm run StyleLint:check\"",
     "ESlint:check": "eslint . --ext .vue,.js,cjs,mjs,.ts,.cts,.mts,.jsx,.tsx --fix",
     "Prettier:check": "prettier --write \"./**/*.{html,vue,ts,cts,mts,js,mjs,cjs,json,md,scss}\"",
+    "StyleLint:check": "stylelint \"./**/*.{css,scss,less,vue,html}\" --fix",
     "commit": "git pull && git add -A && git-cz && git push"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "peerDependencies": {
+    "stylelint": ">=11.x < 15"
   },
   "dependencies": {
     "element-plus": "^2.3.3",
@@ -42,6 +46,13 @@
     "prettier": "^2.8.7",
     "sass": "^1.60.0",
     "sass-loader": "^13.2.2",
+    "stylelint": "^15.5.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-recommended-scss": "^10.0.0",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-config-standard-vue": "^1.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-scss": "^4.6.0",
     "typescript": "^4.9.3",
     "unplugin-auto-import": "^0.15.2",
     "unplugin-vue-components": "^0.24.1",
