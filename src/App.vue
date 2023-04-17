@@ -5,6 +5,8 @@
   <router-link to="/test2">测试2 </router-link>
   <router-link to="/test3">测试3 </router-link>
   <el-button type="primary">按钮</el-button>
+  <!-- 不需要引入组件直接使用 -->
+  <HelloWorld />
   <router-view></router-view>
 </template>
 

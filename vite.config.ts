@@ -4,7 +4,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 // 导入自动导入插件
 import AutoImport from "unplugin-auto-import/vite";
-// 导入按需引入插件
+// 导入自动注册组件的插件
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 

@@ -18,21 +18,7 @@
     "baseUrl": ".", // 解析非相对模块的基地址，默认是当前目录
     "paths": { "@/*": ["src/*"] }, // 路径映射，相对于baseUrl
     // 指定要包含的类型声明文件
-    "types": [
-      "element-plus/global",
-      "element-plus/theme-chalk",
-      "vite/client",
-      "vite/env",
-      "vite-plugin-vue2",
-      "vite-plugin-vue2/client",
-      "vite-plugin-vue2/options",
-      "vite-plugin-vue2/server",
-      "vue",
-      "vue-router",
-      "vuex",
-      "vuex-router-sync",
-      "pinia"
-    ]
+    "types": ["element-plus/global", "vite/client", "vue", "vue-router"]
   },
   //  include: 指定要包含在编译中的文件
   "include": [
@@ -43,7 +29,6 @@
     "src/**/*.json",
     "src/**/*.js",
     "src/**/*.mjs",
-    "src/components.d.ts",
     "src/components.d.ts",
     "src/router/index.ts"
   ],
