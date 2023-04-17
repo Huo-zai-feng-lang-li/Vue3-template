@@ -2,29 +2,37 @@
 
 ## 文件命名
 
-- 文件名应该使用连字符分隔，例如 `home-page.vue` 或 `user-profile.js`
-- 对于组件，文件名应该与组件名一致，例如组件 `HomePage` 对应的文件名应该是 `home-page.vue`
+- 所有文件名应该使用小写字母，不得使用大写字母
+- 一个单词的文件名可以直接使用该单词，例如：**_main.js_**，
+- 多个单词，则应该使用中划线 “-” 将单词连接，例如：**_my-component.vue_** 或 **_user-profile.js_**
+- 对于组件，文件名应该与组件名一致，例如组件 **_HomePage_** 对应的文件名应该是 **_home-page.vue_**
+- 在一些特定的情况下，可以在文件名中加入版本号、区域代码等信息，例如：**_my-component-v1.0.0-en-us.vue_**
 
 ## 路由命名
 
-- 路由名应该使用连字符分隔，例如 `home-page` 或 `user-profile`
+- 路由名应该使用连字符分隔，例如 **_home-page_** 或 **_user-profile_**
 - 路由名应该描述页面的功能和意图，而不是技术实现方式
-- 在 VueRouter 配置中，路由名应该与组件名一致，例如组件 `HomePage` 对应的路由名应该是 `home-page`
+- 在 VueRouter 配置中，路由名应该与组件名一致，例如组件 **_HomePage_** 对应的路由名应该是 **_home-page_**
+- 路由名的结构和层级应该和页面的结构和层级保持一致，方便维护和
 
 ## 组件命名
 
-- 组件名应该使用大驼峰命名法，例如 `HomePage` 或 `UserProfile`
+- 组件名应该使用大驼峰命名法，例如 **_HomePage_** 或 **_UserProfile_**
 - 组件名应该描述组件的功能和意图，而不是技术实现方式
 
 ## 常量命名
 
-- 常量名应该使用大写字母和下划线分隔，例如 `MAX_LENGTH` 或 `API_BASE_URL`
-- 对于常量名和枚举值，如果需要多个单词，请使用下划线分隔，例如 `USER_ROLE_ADMIN`
+- 常量名应该使用大写字母和下划线分隔，例如 **_MAX_LENGTH_** 或 **_API_BASE_URL_**
+- 对于常量名和枚举值，如果需要多个单词，请使用下划线分隔，例如 **_USER_ROLE_ADMIN_**
+- 不应该在组件内直接使用常量，而是定义在单独的文件中，方便维护和修改
 
 ## Vuex 状态命名
 
-- Vuex 模块中的属性名应该使用大写字母和下划线分隔，例如 `USER_ROLE_ADMIN`
-- Vuex 模块中的 mutation 常量名应该使用大写字母和下划线分隔，例如 `SET_USER_ROLE`
-- Vuex 模块中的 action 常量名应该使用大写字母和下划线分隔，例如 `FETCH_USER_PROFILE`
+- Vuex 模块中的属性名应该使用大写字母和下划线分隔，例如 **_USER_ROLE_ADMIN_**
+- Vuex 模块中的 mutation 常量名应该使用大写字母和下划线分隔，例如 **_SET_USER_ROLE_**
+- Vuex 模块中的 action 常量名应该使用大写字母和下划线分隔，例如 **_FETCH_USER_PROFILE_**
+- 建议将每个模块的 Vuex 属性定义单独封装在模块文件中，方便维护和管理
+
+<a href="https://docs.qq.com/doc/DZUhlTGhTclhyTE9O" title="【腾讯文档】代码风格及规范">更多请点击：</a>
 
 希望这个简单的规范文件能够对你有所帮助。你可以根据你的需求和项目的规模，对这些规范进行定制和扩展。
