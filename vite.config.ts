@@ -62,6 +62,7 @@ export default defineConfig({
   server: {
     //使用IP能访问
     host: "0.0.0.0",
+    port: 8888,
     // 热更新
     hmr: true,
     //自定义代理规则
