@@ -2,7 +2,7 @@
   <el-button :plain="true" @click="open2">success</el-button>
   <el-button :plain="true" @click="open3">warning</el-button>
   <el-button :plain="true" @click="open1">message</el-button>
-  <el-button :plain="true" @click="open4">error</el-button>
+  <el-button :plain="true" @click="open6">error</el-button>
 </template>
 
 <script lang="ts" setup>
@@ -23,7 +23,7 @@ const open3 = () => {
     type: "warning",
   });
 };
-const open4 = () => {
+const open6 = () => {
   ElMessage.error("Oops, this is a error message.");
 };
 </script>

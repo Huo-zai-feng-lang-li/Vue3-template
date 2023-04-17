@@ -5,13 +5,13 @@
   <router-link to="/test2">测试2 </router-link>
   <router-link to="/test3">测试3 </router-link>
   <el-button type="primary">按钮</el-button>
-  <!-- 不需要引入组件直接使用 -->
   <HelloWorld />
   <router-view></router-view>
 </template>
 
 <script setup lang="ts">
-// 占位
+//虽然用了插件，但是有时候还是需要引入组件的
+import HelloWorld from "@/components/HelloWorld.vue";
 </script>
 
 <style scoped lang="scss">
