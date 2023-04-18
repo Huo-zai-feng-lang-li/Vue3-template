@@ -1,0 +1,66 @@
+{
+  "name": "my-vue-app",
+  "private": true,
+  "version": "0.0.0",
+  "author": "张坤",
+  "description": "一个标准化初始项目",
+  "type": "module",
+  "scripts": {
+    "pnpm:": "pnpm install",
+    "dev": "concurrently \"vite --open\" \"npx husky install\"",
+    "build": "\"npm run CheckAll\" &&  vite build",
+    "build:dev": "vite build --mode development",
+    "build:test": "vite build --mode test",
+    "build:jg": "vite build --mode jg",
+    "CheckAll": "concurrently \"npm run ESlint:check\" \"npm run Prettier:check\" \"npm run StyleLint:check\"",
+    "ESlint:check": "eslint . --ext .vue,.js,cjs,mjs,.ts,.cts,.mts,.jsx,.tsx --fix",
+    "Prettier:check": "prettier --write \"./**/*.{html,vue,ts,cts,mts,js,mjs,cjs,json,md,scss}\"",
+    "StyleLint:check": "stylelint \"./**/*.{css,scss,less}\" --fix",
+    "commit": "git pull && git add -A && git-cz && git push"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "peerDependencies": {
+    "stylelint": ">=11.x < 15"
+  },
+  "dependencies": {
+    "element-plus": "^2.3.3",
+    "pinia": "^2.0.34",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.10.0",
+    "husky": "^8.0.3",
+    "postcss": "^8.4.21",
+    "postcss-html": "^1.5.0",
+    "postcss-scss": "^4.0.6",
+    "prettier": "^2.8.7",
+    "sass": "^1.60.0",
+    "sass-loader": "^13.2.2",
+    "stylelint": "^15.5.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-recommended-scss": "^10.0.0",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-config-standard-vue": "^1.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-scss": "^4.6.0",
+    "typescript": "^4.9.3",
+    "unplugin-auto-import": "^0.15.2",
+    "unplugin-vue-components": "^0.24.1",
+    "vite": "^4.2.0",
+    "vue-tsc": "^1.2.0"
+  }
+}

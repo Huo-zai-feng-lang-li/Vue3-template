@@ -1,0 +1,110 @@
+/* 重置全局样式 */
+
+/* 【重要】！！！私人请勿私自改动，请上报组长或与团队其他小伙伴讨论后在操刀，包括下载依赖 */
+
+/* 注意：项目中样式不要 % 和 vw、vh 混用， */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+}
+
+html,
+body {
+  /* 这样在需要使用页面的最外层元素，就可以使用 % 继承了，如果这里不写 100%, 在使用的页面直接写 % ，不会生效 
+  ------------------------------------------------------------------------------------------------  */
+  width: 100%;
+  height: 100%;
+
+  /* 是一个CSS属性，表示元素的盒模型应该包括边框和内边距，并且宽度不会被边框和内边距增加。
+  ------------------------------------------------------------------------------------------------ */
+  box-sizing: border-box;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
