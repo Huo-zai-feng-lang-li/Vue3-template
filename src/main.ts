@@ -6,6 +6,8 @@ import ElementPlus from "element-plus";
 import zhCn from "element-plus/lib/locale/lang/zh-cn";
 // 按需引入element-plus只引入了需要的组件，但是样式文件是全局的，
 import "element-plus/dist/index.css";
+// 引入全局组件
+import componentRegister from "~/GlobalComponents/componentRegister";
 
 // 引入路由配置文件
 import router from "./router/index";
@@ -25,6 +27,7 @@ app
   .use(ElementPlus, {
     locale: zhCn,
   })
+  .use(componentRegister)
   .use(pinia)
   .use(router)
   .mount("#app");
