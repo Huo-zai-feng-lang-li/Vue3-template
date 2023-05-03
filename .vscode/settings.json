@@ -13,5 +13,5 @@
   "editor.tabSize": 2,
   // stylelint校验的文件格式
   "stylelint.validate": ["css", "less", "scss"],
-  "cSpell.words": ["pinia"]
+  "cSpell.words": ["axiosrequestconfig", "pinia"]
 }

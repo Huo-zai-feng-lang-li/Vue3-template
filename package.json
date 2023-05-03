@@ -24,11 +24,12 @@
     }
   },
   "dependencies": {
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6",
+    "axios": "^1.4.0",
+    "echarts": "^5.4.2",
     "element-plus": "^2.3.4",
     "pinia": "^2.0.34",
-    "echarts": "^5.4.2"
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",

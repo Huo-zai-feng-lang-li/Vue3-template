@@ -71,16 +71,22 @@ export default defineConfig({
   server: {
     //使用IP能访问
     host: "0.0.0.0",
+    //端口号
     port: 8888,
     // 热更新
     hmr: true,
+    //设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口
+    strictPort: true,
     //自定义代理规则
     proxy: {
       // 选项写法
       "/api": {
-        // target: "https://admin.ccc.com",
-        // changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, ""),
+        // 1 目标路径 这里相当于公共的地址
+        target: "https://api.oioweb.cn/api/ai/chat",
+        //2 允许跨域
+        changeOrigin: true,
+        // 3 重写路径
+        rewrite: (path: string) => path.replace(/^\/api/, ""),
       },
     },
   },
