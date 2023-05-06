@@ -58,13 +58,12 @@ const saveName = () => {
 
 <style scoped lang="scss">
 .wrap {
-  width: 100%;
-  height: 100%;
-
-  background-image: linear-gradient(to right, #f7f0ac, #acf7f0, #f0acf7);
   // 居中
   display: flex;
-  flex-direction: column;
   align-items: center;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, #f7f0ac, #acf7f0, #f0acf7);
+  flex-direction: column;
 }
 </style>

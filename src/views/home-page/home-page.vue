@@ -17,7 +17,7 @@
     v-else
     :rows="5"
     :animated="true"
-    style="width: 90%; height: 500px; margin: 10px auto"
+    style="margin: 10px auto; width: 90%; height: 500px"
   />
 </template>
 
