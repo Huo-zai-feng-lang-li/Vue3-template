@@ -12,6 +12,6 @@
   // 配置该项，新建文件时默认就是space：2
   "editor.tabSize": 2,
   // stylelint校验的文件格式
-  "stylelint.validate": ["css", "less", "scss"],
+  "stylelint.validate": ["less", "scss"],
   "cSpell.words": ["axiosrequestconfig", "pinia"]
 }
