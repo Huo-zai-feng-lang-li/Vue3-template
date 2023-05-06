@@ -15,7 +15,7 @@
     "CheckAll": "concurrently \"npm run ESlint:check\" \"npm run Prettier:check\" \"npm run StyleLint:check\"",
     "ESlint:check": "eslint . --ext .vue,.js,cjs,mjs,.ts,.cts,.mts,.jsx,.tsx --fix",
     "Prettier:check": "prettier --write \"./**/*.{html,vue,ts,cts,mts,js,mjs,cjs,json,md,scss}\"",
-    "StyleLint:check": "stylelint \"./**/*.{css,scss,less}\" --fix",
+    "StyleLint:check": "stylelint \"./**/*.{scss,less}\" --fix",
     "commit": "git pull && git add -A && git-cz && git push"
   },
   "config": {
