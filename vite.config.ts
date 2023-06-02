@@ -7,7 +7,8 @@ import AutoImport from "unplugin-auto-import/vite";
 // 导入自动注册组件的插件
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-
+//gzip
+import viteCompression from "vite-plugin-compression";
 import * as path from "path";
 
 export default defineConfig({
@@ -21,21 +22,11 @@ export default defineConfig({
       "~": path.resolve("./src/components"), // @代替src/components
     },
   },
-  // 配置全局样式
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // 这里可以添加全局的 Sass 变量、Mixin等。首先你的有这个文件
-        // additionalData: `
-        //   @import "@/styles/variables.scss";
-        //   @import "@/styles/mixins.scss";
-        // `,
-      },
-    },
-  },
+
   //  plugins插件
   plugins: [
     vue(), //vue
+    viteCompression(), //gzip
     AutoImport({
       //plus按需引入
       resolvers: [ElementPlusResolver()],
@@ -58,12 +49,23 @@ export default defineConfig({
   ],
   // 打包配置
   build: {
-    minify: "terser",
+    outDir: "dist",
+    assetsDir: "assets", //指定静态资源存放路径
+    sourcemap: false, //是否构建source map 文件
+    minify: "terser", // 混淆器，terser构建后文件体积更小
     terserOptions: {
       compress: {
         //生产环境时移除console
         drop_console: true,
         drop_debugger: true,
+      },
+    },
+    rollupOptions: {
+      output: {
+        compact: true,
+        entryFileNames: "static/js/[name]-[hash].js",
+        chunkFileNames: "static/js/[name]-[hash].js",
+        assetFileNames: "static/[ext]/[name].[ext]",
       },
     },
   },
