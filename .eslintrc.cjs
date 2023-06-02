@@ -8,10 +8,6 @@ module.exports = {
   globals: {
     // 以下是全局变量 eslint 不会报'NodeJS' is not defined.eslint （no-undef）
     NodeJS: "readonly",
-    defineEmits: "readonly",
-    defineProps: "readonly",
-    defineExpose: "readonly",
-    ref: "readonly",
   },
   extends: [
     "eslint:recommended",

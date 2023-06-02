@@ -60,65 +60,65 @@
     </div>
   </section>
 </template>
-<script setup></script>
+
 <style lang="scss" scoped>
 .about {
   $cubic: cubic-bezier(0.64, 0.01, 0.07, 1.65);
   $transition: 0.6s $cubic;
   $size: 40px;
-
   position: fixed;
-  right: 10px;
-  bottom: 10px;
   z-index: 10;
+  bottom: 10px;
+  right: 10px;
+  width: $size;
+  height: $size;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  width: $size;
-  height: $size;
   transition: all 0.2s ease;
 
   .bg_links {
-    position: absolute;
+    width: $size;
+    height: $size;
+    border-radius: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: $size;
-    height: $size;
-    background-color: rgba(#000, 0.2);
+    background-color: rgba(#000000, 0.2);
     border-radius: 100%;
     backdrop-filter: blur(5px);
+    position: absolute;
   }
 
   .logo {
-    right: 0;
-    bottom: 0;
-    z-index: 9;
     width: $size;
     height: $size;
-    background-position: 10px 7px;
-    background-repeat: no-repeat;
+    z-index: 9;
     background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: 10px 7px;
     opacity: 0.9;
     transition: all 1s 0.2s ease;
+    bottom: 0;
+    right: 0;
   }
 
   .social {
+    opacity: 0;
     right: 0;
     bottom: 0;
-    opacity: 0;
 
     .icon {
-      display: flex;
       width: 100%;
       height: 100%;
-      background-position: center;
-      background-repeat: no-repeat;
       background-size: 20px;
+      background-repeat: no-repeat;
+      background-position: center;
       background-color: transparent;
-      border-radius: 100%;
-      opacity: 0;
+      display: flex;
       transition: all 0.2s ease, background-color 0.4s ease;
+      opacity: 0;
+      border-radius: 100%;
     }
 
     &.portfolio {
@@ -153,7 +153,6 @@
 
       &:hover {
         background-size: 28px;
-
         .icon {
           background-size: 65%;
           opacity: 1;
@@ -164,7 +163,6 @@
         right: 0;
         bottom: calc(100% - 40px);
         transition: all 0.3s 0s $cubic;
-
         .icon {
           &:hover {
             background-color: #698fb7;
@@ -173,10 +171,9 @@
       }
 
       &.dribbble {
-        right: 45%;
         bottom: 45%;
+        right: 45%;
         transition: all 0.3s 0.15s $cubic;
-
         .icon {
           &:hover {
             background-color: #ea4c89;
@@ -185,10 +182,9 @@
       }
 
       &.linkedin {
-        right: calc(100% - 40px);
         bottom: 0;
+        right: calc(100% - 40px);
         transition: all 0.3s 0.25s $cubic;
-
         .icon {
           &:hover {
             background-color: #0077b5;
@@ -218,17 +214,17 @@ $cubic: cubic-bezier(0.4, 0.35, 0, 1.53);
 $cubic2: cubic-bezier(0.18, 0.89, 0.32, 1.15);
 
 $circleShadow: inset 5px 20px 40px rgba($bg-02, 0.25),
-  inset 5px 0 5px rgba($bg-03, 0.3), inset 5px 5px 20px rgba($bg-03, 0.25),
-  2px 2px 5px rgb(white 0.2);
+  inset 5px 0px 5px rgba($bg-03, 0.3), inset 5px 5px 20px rgba($bg-03, 0.25),
+  2px 2px 5px rgba(white, 0.2);
 
 @mixin sm {
-  @media screen and (width <= 799px) {
+  @media screen and (max-width: 799px) {
     @content;
   }
 }
 
 @mixin height {
-  @media screen and (height <= 660px) {
+  @media screen and (max-height: 660px) {
     @content;
   }
 }
@@ -247,13 +243,13 @@ a,
 i,
 input,
 body {
-  padding: 0;
   margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 0;
+  -webkit-tap-highlight-color: transparent;
   text-decoration: none;
   color: inherit;
-  border: 0;
-  list-style: none;
-  -webkit-tap-highlight-color: transparent;
 
   &:focus {
     outline: 0;
@@ -261,8 +257,8 @@ body {
 }
 
 body {
-  padding: 0;
   margin: 0;
+  padding: 0;
   height: auto;
   font-family: $font-01;
   background: $bg-01;
@@ -270,15 +266,16 @@ body {
 
 .logo {
   position: fixed;
-  right: 10px;
-  bottom: 10px;
   z-index: 5;
+  bottom: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
-  background: rgb(0 0 0 / 10%);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 100%;
   backdrop-filter: blur(5px);
 
@@ -292,27 +289,27 @@ body {
 
 nav {
   .menu {
-    position: absolute;
-    z-index: 3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    //background-color: red;
-    padding: 0 5%;
     width: 100%;
     height: 80px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    //background-color: red;
+    padding: 0 5%;
     box-sizing: border-box;
+    z-index: 3;
 
     .website_name {
-      padding: 4px 8px;
-      font-size: 20px;
       color: $bg-01;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: 1px;
       background: white;
+      padding: 4px 8px;
       border-radius: 2px;
       opacity: 0.5;
       transition: all 0.4s ease;
-      font-weight: 600;
-      letter-spacing: 1px;
       cursor: pointer;
 
       &:hover {
@@ -321,8 +318,8 @@ nav {
     }
 
     .menu_links {
-      opacity: 0.5;
       transition: all 0.4s ease;
+      opacity: 0.5;
 
       &:hover {
         opacity: 1;
@@ -333,49 +330,49 @@ nav {
       }
 
       .link {
-        position: relative;
-        margin-right: 50px;
         color: white;
-        transition: all 0.3s 0.2s ease;
         text-transform: uppercase;
         font-weight: 500;
+        margin-right: 50px;
         letter-spacing: 2px;
+        position: relative;
+        transition: all 0.3s 0.2s ease;
 
         &:last-child {
           margin-right: 0;
         }
 
-        &::before {
+        &:before {
+          content: "";
           position: absolute;
-          bottom: -10px;
-          left: 100%;
-          width: 0;
+          width: 0px;
           height: 4px;
           background: $g-01;
+          bottom: -10px;
           border-radius: 4px;
           transition: all 0.4s cubic-bezier(0.82, 0.02, 0.13, 1.26);
-          content: "";
+          left: 100%;
         }
 
         &:hover {
-          color: $m-01;
           opacity: 1;
+          color: $m-01;
 
-          &::before {
-            left: 0;
+          &:before {
             width: 40px;
+            left: 0;
           }
         }
       }
     }
 
     .menu_icon {
+      width: 40px;
+      height: 40px;
       position: relative;
       display: none;
       justify-content: center;
       align-items: center;
-      width: 40px;
-      height: 40px;
       cursor: pointer;
 
       @include sm {
@@ -383,26 +380,26 @@ nav {
       }
 
       .icon {
-        position: absolute;
         width: 24px;
         height: 2px;
         background: white;
+        position: absolute;
 
-        &::before,
-        &::after {
-          position: absolute;
+        &:before,
+        &:after {
+          content: "";
           width: 100%;
           height: 100%;
           background: inherit;
+          position: absolute;
           transition: all 0.3s cubic-bezier(0.49, 0.04, 0, 1.55);
-          content: "";
         }
 
-        &::before {
+        &:before {
           transform: translateY(-8px);
         }
 
-        &::after {
+        &:after {
           transform: translateY(8px);
         }
       }
@@ -411,11 +408,11 @@ nav {
         .icon {
           background: $m-02;
 
-          &::before {
+          &:before {
             transform: translateY(-10px);
           }
 
-          &::after {
+          &:after {
             transform: translateY(10px);
           }
         }
@@ -426,20 +423,20 @@ nav {
 
 .wrapper {
   display: grid;
+  grid-template-columns: 1fr;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   height: 100vh;
+  overflow: hidden;
   background-color: $bg-01;
-  grid-template-columns: 1fr;
 
   .container {
-    position: relative;
+    margin: 0 auto;
+    transition: all 0.4s ease;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    transition: all 0.4s ease;
+    position: relative;
 
     // Scene for the Parallax Effect
     .scene {
@@ -455,22 +452,22 @@ nav {
     .three,
     .circle,
     .p404 {
+      width: 60%;
+      height: 60%;
       top: 20% !important;
       left: 20% !important;
-      width: 60%;
       min-width: 400px;
-      height: 60%;
       min-height: 400px;
 
       .content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
+        width: 600px;
+        height: 600px;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 600px;
-        height: 600px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
         animation: content 0.8s cubic-bezier(1, 0.06, 0.25, 1) backwards;
 
@@ -482,12 +479,13 @@ nav {
 
         // Pieces
         .piece {
-          position: absolute;
-          z-index: 1;
-          display: flex;
           width: 200px;
           height: 80px;
+          display: flex;
+          position: absolute;
           border-radius: 80px;
+          z-index: 1;
+
           animation: pieceLeft 8s cubic-bezier(1, 0.06, 0.25, 1) infinite both;
 
           @keyframes pieceLeft {
@@ -519,32 +517,32 @@ nav {
       }
 
       @include sm {
+        width: 90%;
+        height: 90%;
         top: 5% !important;
         left: 5% !important;
-        width: 90%;
         min-width: 280px;
-        height: 90%;
         min-height: 280px;
       }
 
       @include height {
+        min-width: 280px;
+        min-height: 280px;
+        width: 60%;
+        height: 60%;
         top: 20% !important;
         left: 20% !important;
-        width: 60%;
-        min-width: 280px;
-        height: 60%;
-        min-height: 280px;
       }
     }
 
     // Text and Button container
     .text {
+      width: 60%;
+      height: 40%;
+      min-width: 400px;
+      min-height: 500px;
       position: absolute;
       margin: 40px 0;
-      width: 60%;
-      min-width: 400px;
-      height: 40%;
-      min-height: 500px;
       animation: text 0.6s 1.8s ease backwards;
 
       @keyframes text {
@@ -555,21 +553,22 @@ nav {
       }
 
       @include sm {
-        height: 80%;
         min-height: 400px;
+        height: 80%;
       }
 
       article {
+        width: 400px;
         position: absolute;
         bottom: 0;
-        left: 50%;
         z-index: 4;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 400px;
         text-align: center;
-        flex-direction: column;
+        bottom: 0;
+        left: 50%;
         transform: translateX(-50%);
 
         @include sm {
@@ -577,32 +576,32 @@ nav {
         }
 
         p {
-          margin-bottom: 40px;
-          font-size: 18px;
           color: white;
-          text-shadow: 6px 6px 10px $bg-03;
+          font-size: 18px;
           letter-spacing: 0.6px;
+          margin-bottom: 40px;
+          text-shadow: 6px 6px 10px $bg-03;
         }
 
         button {
-          z-index: 3;
-          padding: 0 30px;
           height: 40px;
-          font-size: 12px;
+          padding: 0 30px;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0px 15px 20px rgba($bg-02, 0.5);
+          z-index: 3;
           color: $bg-01;
           background-color: white;
-          border-radius: 50px;
-          box-shadow: 0 15px 20px rgba($bg-02, 0.5);
-          transition: all 0.3s ease;
-          cursor: pointer;
           text-transform: uppercase;
           font-weight: 600;
+          font-size: 12px;
+          transition: all 0.3s ease;
 
           &:hover {
-            color: white;
-            background: $m-01;
-            box-shadow: 0 10px 10px -10px rgba($bg-02, 0.5);
+            box-shadow: 0px 10px 10px -10px rgba($bg-02, 0.5);
             transform: translateY(5px);
+            background: $m-01;
+            color: white;
           }
         }
       }
@@ -610,15 +609,15 @@ nav {
 
     // The 404 Number
     .p404 {
-      position: absolute;
-      z-index: 2;
+      font-size: 200px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: white;
       display: flex !important;
       justify-content: center;
       align-items: center;
-      font-size: 200px;
-      color: white;
-      font-weight: 700;
-      letter-spacing: 4px;
+      position: absolute;
+      z-index: 2;
       animation: anime404 0.6s cubic-bezier(0.3, 0.8, 1, 1.05) both;
       animation-delay: 1.2s;
 
@@ -634,11 +633,11 @@ nav {
       }
 
       &:nth-of-type(2) {
-        z-index: 1;
         color: $bg-02;
-        opacity: 0.8;
-        filter: blur(10px);
+        z-index: 1;
         animation-delay: 1s;
+        filter: blur(10px);
+        opacity: 0.8;
       }
     }
 
@@ -646,17 +645,17 @@ nav {
     .circle {
       position: absolute;
 
-      &::before {
+      &:before {
+        content: "";
         position: absolute;
-        top: 50%;
-        left: 50%;
         width: 41%;
         height: 82%;
         background-color: rgba($bg-02, 0.2);
         border-radius: 100%;
-        box-shadow: $circleShadow;
-        content: "";
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
+        box-shadow: $circleShadow;
         animation: circle 0.8s cubic-bezier(1, 0.06, 0.25, 1) backwards;
 
         @keyframes circle {
@@ -677,7 +676,7 @@ nav {
     .one {
       .content {
         // Smaller Circle
-        &::before {
+        &:before {
           content: "";
           position: absolute;
           width: 600px;
@@ -697,17 +696,17 @@ nav {
           background: $g-02;
 
           &:nth-child(1) {
-            top: 18%;
             right: 15%;
-            width: 120px;
+            top: 18%;
             height: 30px;
+            width: 120px;
             animation-delay: 0.5s;
             animation-name: pieceRight;
           }
 
           &:nth-child(2) {
-            top: 45%;
             left: 15%;
+            top: 45%;
             width: 150px;
             height: 50px;
             animation-delay: 1s;
@@ -715,10 +714,10 @@ nav {
           }
 
           &:nth-child(3) {
-            top: 75%;
             left: 10%;
-            width: 70px;
+            top: 75%;
             height: 20px;
+            width: 70px;
             animation-delay: 1.5s;
             animation-name: pieceLeft;
           }
@@ -733,17 +732,17 @@ nav {
           background: $g-01;
 
           &:nth-child(1) {
-            top: 25%;
             left: 0%;
-            width: 120px;
+            top: 25%;
             height: 40px;
+            width: 120px;
             animation-delay: 2s;
             animation-name: pieceLeft;
           }
 
           &:nth-child(2) {
-            top: 35%;
             right: 15%;
+            top: 35%;
             width: 180px;
             height: 50px;
             animation-delay: 2.5s;
@@ -751,10 +750,10 @@ nav {
           }
 
           &:nth-child(3) {
-            top: 80%;
             right: 10%;
-            width: 160px;
+            top: 80%;
             height: 20px;
+            width: 160px;
             animation-delay: 3s;
             animation-name: pieceRight;
           }
@@ -769,17 +768,17 @@ nav {
           background: $m-01;
 
           &:nth-child(1) {
-            top: 35%;
             left: 25%;
-            width: 80px;
+            top: 35%;
             height: 20px;
+            width: 80px;
             animation-name: pieceLeft;
             animation-delay: 3.5s;
           }
 
           &:nth-child(2) {
-            top: 55%;
             right: 10%;
+            top: 55%;
             width: 140px;
             height: 40px;
             animation-name: pieceRight;
@@ -787,10 +786,10 @@ nav {
           }
 
           &:nth-child(3) {
-            top: 68%;
             left: 40%;
-            width: 80px;
+            top: 68%;
             height: 20px;
+            width: 80px;
             animation-name: pieceLeft;
             animation-delay: 4.5s;
           }

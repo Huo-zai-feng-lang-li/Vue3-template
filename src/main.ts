@@ -8,6 +8,8 @@ import zhCn from "element-plus/lib/locale/lang/zh-cn";
 import "element-plus/dist/index.css";
 // 引入全局组件
 import componentRegister from "~/GlobalComponents/componentRegister";
+// 自定义loading组件
+import Loading from "@/components/MyLoading/index";
 
 // 引入路由配置文件
 import router from "./router/index";
@@ -20,7 +22,7 @@ import { createPinia } from "pinia";
 const pinia = createPinia();
 
 // 打印环境变量，可以看到VITE_API_URL的值，需要在vite.config.ts，注释掉 drop_console: true
-console.log("😂👨🏾‍❤️‍👨🏼==>： ", import.meta.env.VITE_API_URL);
+// console.log("😂👨🏾‍❤️‍👨🏼==>： ", import.meta.env.VITE_API_URL);
 
 const app = createApp(App);
 app
@@ -29,5 +31,7 @@ app
   })
   .use(componentRegister)
   .use(pinia)
+  .use(Loading)
   .use(router)
   .mount("#app");
+export default app; // 这里导出app的目的，是为了在后面 ts文件中使用插件

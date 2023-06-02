@@ -7,7 +7,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
   children：子路由配置数组，用于描述嵌套路由。
   meta：对象，用于存储额外的路由元数据，例如需要验证用户权限的信息。
 */
-
+//引入main.ts
+import app from "../main";
 // 引入路由模块
 import noFondPage from "./not-found";
 // 测试路由
@@ -18,12 +19,22 @@ import pinia from "./modules/pinia-store";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
+    redirect: "/home",
+  },
+  {
+    path: "/home",
     name: "home",
+    meta: {
+      loading: true,
+    },
     component: () => import("@/views/home-page/home-page.vue"),
   },
   {
     path: "/about",
     name: "about",
+    meta: {
+      loading: true,
+    },
     component: () => import("@/views/about-page/about-page.vue"),
   },
   ...test,
@@ -37,4 +48,19 @@ const router = createRouter({
   routes,
 });
 
+// Vue3 router守卫
+// 在路由跳转之前，开启loading，路由跳转之后，关闭loading
+router.beforeEach((to, from, next) => {
+  if (to.meta.loading) {
+    app.config.globalProperties.$loading.showLoading();
+    next();
+  } else {
+    next();
+  }
+});
+router.afterEach((to) => {
+  if (to.meta.loading) {
+    app.config.globalProperties.$loading.hideLoading();
+  }
+});
 export default router;
