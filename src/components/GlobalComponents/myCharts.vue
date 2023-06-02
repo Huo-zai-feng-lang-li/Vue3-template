@@ -4,13 +4,11 @@
 
 <script setup lang="ts">
 import * as echarts from "echarts";
-import { onBeforeMount, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 
 // 因为是封装的组件，会多次调用，id不能重复，要在初始化之前写，不然会报错dom为定义
 let uid = ref<string>("");
-onBeforeMount(() => {
-  uid.value = `echarts-uid-${parseInt((Math.random() * 1000000).toString())}`;
-});
+uid.value = `echarts-uid-${parseInt((Math.random() * 1000000).toString())}`;
 
 onMounted(() => {
   let myChart = echarts.init(document.getElementById(uid.value) as HTMLElement);

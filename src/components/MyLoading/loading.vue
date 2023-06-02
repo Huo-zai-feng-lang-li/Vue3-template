@@ -49,9 +49,9 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 #loading {
-  height: 100%;
-  width: 100%;
-
+  height: 100vh;
+  width: 100vw;
+  background-color: red;
   .loader_overlay {
     width: 150px;
     height: 150px;

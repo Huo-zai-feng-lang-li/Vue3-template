@@ -48,13 +48,8 @@
 
       <div class="text">
         <article>
-          <p>
-            Uh oh! Looks like you got lost. <br />Go back to the homepage if you
-            dare!
-          </p>
-          <router-link to="/">
-            <button>i dare!</button>
-          </router-link>
+          <p>哦！看起来您迷路了<br />如果您 大胆！试着点一下</p>
+          <button @click="$router.replace('/home')">我 敢!</button>
         </article>
       </div>
     </div>
