@@ -48,7 +48,7 @@
 
       <div class="text">
         <article>
-          <p>哦！看起来您迷路了<br />如果您 大胆！试着点一下</p>
+          <p>哦！看起来您迷路了<br />试着点一下</p>
           <button @click="$router.replace('/home')">我 敢!</button>
         </article>
       </div>
