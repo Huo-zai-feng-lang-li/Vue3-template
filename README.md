@@ -110,6 +110,6 @@ pnpm run build
 
 emoji 特殊符号大全 <a href="http://fuhao.xiao84.com/" target="_blank">emoji 特殊符号大全 </a>
 
-————皆是缘、0.活在风浪里！--zk
+———— @张坤 彩色之外-————
 
 2023、4、5
