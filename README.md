@@ -1,8 +1,47 @@
 ## 🌈 项目说明书
+ > Vue3 + Ts + Vite + pnpm 项目中集成 —— eslint 、prettier、stylelint、husky、router、vuex、axios
 
-**zk：** Vue3 + Ts + Vite + pnpm 项目中集成 —— eslint 、prettier、stylelint、husky、router、vuex、axios
+ > 这是一个使用 Vue3 和 TypeScript 作为主要技术栈，使用 Vite 作为构建工具，使用 pnpm 作为包管理工具的项目。该项目集成了 eslint、prettier、stylelint、husky、router、vuex 和 axios。
 
-`这是一个使用 Vue3 和 TypeScript 作为主要技术栈，使用 Vite 作为构建工具，使用 pnpm 作为包管理工具的项目。该项目集成了 eslint、prettier、stylelint、husky、router、vuex 和 axios。`
+#### 💒 代码仓库
+```base
+https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template.git
+```
+
+#### [](https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template)
+
+#### ⚡ 使用说明
+
+```base
+# 克隆项目
+git clone https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template.git
+
+# 进入项目
+cd Vite--Ts--Vue3---template
+
+# 安装依赖
+pnpm install
+
+# 运行项目
+pnpm run dev
+
+# 打包发布
+pnpm run build
+```
+
+#### 🏭 环境支持
+
+| Edge                                                                     | last 2 versions                                                                   | last 2 versions                                                                | last 2 versions                                                                |
+| ------------------------------------------------------------------------ | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| ![Edge](https://cdn.jsdelivr.net/npm/@browser-logos/edge/edge_32x32.png) | ![Firefox](https://cdn.jsdelivr.net/npm/@browser-logos/firefox/firefox_32x32.png) | ![Chrome](https://cdn.jsdelivr.net/npm/@browser-logos/chrome/chrome_32x32.png) | ![Safari](https://cdn.jsdelivr.net/npm/@browser-logos/safari/safari_32x32.png) |
+
+> 由于 Vue3 不再支持 IE11，故而 ElementPlus 也不支持 IE11 及之前版本。
+
+#### 📚 文档链接
+
+> <a href="https://blog.csdn.net/m0_57904695/article/details/129950163?spm=1001.2014.3001.5501" target="_blank">开发文档</a>
+
+> emoji 特殊符号大全 <a href="http://fuhao.xiao84.com/" target="_blank">emoji 特殊符号大全 </a>
 
 #### ⛱️ 项目结构
 
@@ -81,34 +120,10 @@
 - vuex：Vue3 官方提供的状态管理工具，用于管理全局状态和数据流。
 - axios：一款基于 Promise 的 HTTP 库，用于发送 AJAX 请求和处理响应数据。
 
-#### 💒 代码仓库
+#### 💕 特别感谢
 
-#### [](https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template)
+特别感谢老哥们的建议、指导与帮忙。谢谢！
 
-#### ⚡ 使用说明
-
-```base
-# 克隆项目
-git clone https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template.git
-
-# 进入项目
-cd Vite--Ts--Vue3---template
-
-# 安装依赖
-pnpm install
-
-# 运行项目
-pnpm run dev
-
-# 打包发布
-pnpm run build
-```
-
-#### 📚 开发文档
-
-###### . 查看开发文档 <a href="https://blog.csdn.net/m0_57904695/article/details/129950163?spm=1001.2014.3001.5501" target="_blank">开发文档</a>
-
-emoji 特殊符号大全 <a href="http://fuhao.xiao84.com/" target="_blank">emoji 特殊符号大全 </a>
 
 ———— @张坤 彩色之外-————
 
