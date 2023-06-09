@@ -21,6 +21,7 @@ cd Vite--Ts--Vue3---template
 
 # 安装依赖
 pnpm install
+pnpm install -g concurrently // 同时运行多个依赖
 
 # 运行项目
 pnpm run dev
