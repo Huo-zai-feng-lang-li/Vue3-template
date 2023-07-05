@@ -25,7 +25,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref } from "vue";
 export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
@@ -47,11 +47,16 @@ export default defineComponent({
   },
 });
 </script>
+
 <style lang="scss" scoped>
 #loading {
-  height: 100vh;
-  width: 100vw;
-  background-color: red;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 9999;
   .loader_overlay {
     width: 150px;
     height: 150px;

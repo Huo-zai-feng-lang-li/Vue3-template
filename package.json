@@ -6,7 +6,7 @@
   "description": "一个标准化初始项目",
   "type": "module",
   "scripts": {
-    "pnpm:": "pnpm install",
+    "pnpm:": "pnpm install && npm run dev",
     "dev": "concurrently \"vite --open\" \"npx husky install\"",
     "build": "\"npm run CheckAll\" &&  vite build",
     "build:dev": "vite build --mode development",

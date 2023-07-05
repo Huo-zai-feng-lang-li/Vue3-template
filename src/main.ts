@@ -1,6 +1,5 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-
 // 引入element-plus并使用中文语言包
 import ElementPlus from "element-plus";
 import zhCn from "element-plus/lib/locale/lang/zh-cn";

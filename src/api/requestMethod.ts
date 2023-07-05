@@ -1,22 +1,22 @@
-import instance from "./service";
-// post请求: 传参数没有明确规定使用params接受参数就是要使用data请求体接受,get请求要使用params接受
+import { axios } from "./service";
+// POST请求，并且参数是通过URL传递的，你需要使用params来接收参数。而如果参数是通过请求体传递的，则需要使用data来接收参数。
 // put 也相当与post请求,如果报参数错误,就是接受参数的请求体错了post/put用data,get请求用params
-type method = "get" | "post" | "put" | "delete";
+type method = "GET" | "POST" | "PUT" | "DELETE";
 
 interface requestConfig {
   method?: method;
   url: string;
   data?: object;
-  params?: unknown;
+  params?: object;
 }
 
 function request({
-  method = "get",
+  method = "GET",
   url,
   data = {},
   params = {},
 }: requestConfig) {
-  return instance({
+  return axios({
     method,
     url,
     data,

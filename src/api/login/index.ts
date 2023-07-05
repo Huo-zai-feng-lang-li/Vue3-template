@@ -1,4 +1,8 @@
-import request from "./request";
+// 导入axios实例中的AxiosResponse泛型接口
+import { AxiosResponse } from "axios";
+//导入封装的axios请求方法
+import request from "../requestMethod";
+
 //  如果是get请求不需要写method，post请求使用data请求体 默认封装的get
 // post示例
 //  export const login = (data) => request({ method: "post", url: '/login', data: data });
@@ -13,8 +17,26 @@ import request from "./request";
 //      url: "users/" + data.uid + "/state/" + data.type,
 //    })
 
-// 获取文本
-export const getText = (params?: unknown) => request({ url: "/text", params });
+/**
+ * GET/POST测试接口
+ * @method getDataText
+ * @param { object } params - 查询参数
+ * @description 模拟调用，如果是post请求，但是参数是在url上的，那么就要使用params接受参数，否则使用data接受参数
+ * @request GET/POST:/delivery
+ * @returns { Promise } 返回一个Promise对象
+ * @example
+ * > 1：引入 import { getDataText } from '@/api/login';
+ * > 2：调用 await getDataText({text:'参数'});
+ * @createDate 2023/07/04 15:18:14
+ * @lastFixDate 2023/07/04 15:18:14
+ */
+
+export const getDataText = (params: object): Promise<AxiosResponse<any, any>> =>
+  request({
+    method: "POST",
+    url: "/ai/chat",
+    params,
+  });
 
 // 如何在组件使用
 /* 

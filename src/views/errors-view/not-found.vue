@@ -290,7 +290,6 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    //background-color: red;
     padding: 0 5%;
     box-sizing: border-box;
     z-index: 3;

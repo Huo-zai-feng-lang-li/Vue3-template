@@ -1,16 +1,12 @@
-import { ComponentPublicInstance, createApp } from "vue";
+import { App, createApp } from "vue";
 import Loading from "./loading.vue";
 
-type MyGlobalProperties = {
-  $loading: ComponentPublicInstance<unknown> | null;
-};
-
 export default {
-  loading: null as ComponentPublicInstance<unknown> | null,
+  loading: null as any,
 
-  install(app: { config: { globalProperties: MyGlobalProperties } }) {
+  install(app: App) {
     if (this.loading) {
-      app.config.globalProperties.$loading = this.loading;
+      app.config.globalProperties.$Loading = this.loading;
       return;
     }
 
@@ -19,6 +15,9 @@ export default {
     const body = document.body;
     body.appendChild(div);
     this.loading = instance.mount(div);
-    app.config.globalProperties.$loading = this.loading;
+    app.config.globalProperties.$Loading = {
+      showLoading: this.loading.showLoading,
+      hideLoading: this.loading.hideLoading,
+    };
   },
 };

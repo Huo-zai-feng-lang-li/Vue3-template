@@ -28,7 +28,7 @@ createWebHashHistory 使用浏览器的 window.location.hash 属性来管理路�
   children：子路由配置数组，用于描述嵌套路由。
   meta：对象，用于存储额外的路由元数据，例如需要验证用户权限的信息。
 */
-//引入main.ts
+//引入main.ts中的app
 import app from "../main";
 // 引入路由模块
 import noFondPage from "./not-found";
@@ -36,7 +36,6 @@ import noFondPage from "./not-found";
 import test from "./modules/test";
 // pinia路由
 import pinia from "./modules/pinia-store";
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -69,19 +68,16 @@ const router = createRouter({
   routes,
 });
 
-// Vue3 router守卫
 // 在路由跳转之前，开启loading，路由跳转之后，关闭loading
 router.beforeEach((to, from, next) => {
   if (to.meta.loading) {
-    app.config.globalProperties.$loading.showLoading();
+    app.config.globalProperties.$Loading.showLoading();
     next();
   } else {
     next();
   }
 });
 router.afterEach((to) => {
-  if (to.meta.loading) {
-    app.config.globalProperties.$loading.hideLoading();
-  }
+  if (to.meta.loading) app.config.globalProperties.$Loading.hideLoading();
 });
 export default router;

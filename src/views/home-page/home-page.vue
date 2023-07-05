@@ -1,16 +1,16 @@
 <template>
   <!-- 静态 例子 -->
-  <my-charts
+  <zw-chart
     :myOption="chartLineData2"
     :myStyle="{ width: '100%', height: '280px' }"
-  ></my-charts>
+  ></zw-chart>
 
   <!-- 接口例子 -->
-  <my-charts
+  <zw-chart
     :myOption="chartLineData"
     :myStyle="{ width: '100%', height: '280px' }"
     v-if="Flag"
-  ></my-charts>
+  ></zw-chart>
 
   <!-- 骨架屏 element-plus -->
   <el-skeleton
@@ -31,7 +31,7 @@ import { onMounted, ref } from "vue";
 
 // 引入图表数据
 import { chartLineData, chartLineData2 } from "./components/chart-line";
-console.log("😂👨🏾‍❤️‍👨🏼==>：", chartLineData, chartLineData2);
+// console.log("😂👨🏾‍❤️‍👨🏼==>：", chartLineData, chartLineData2);
 
 //接口是否请求完（ 等待接口请求完毕在传值到子组件）防止白屏
 const Flag = ref<boolean>(false);
