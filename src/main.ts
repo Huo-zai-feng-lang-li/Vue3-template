@@ -11,9 +11,9 @@ import componentRegister from "~/GlobalComponents/componentRegister";
 import Loading from "@/components/MyLoading/index";
 
 // 引入路由配置文件
-import router from "./router/index";
+import router from "./router/route-guard";
 // 引入全局重置样式文件
-import "./assets/css/reset.css";
+import "./assets/css/reset.scss";
 
 // 引入pinia
 import { createPinia } from "pinia";
@@ -21,7 +21,7 @@ import { createPinia } from "pinia";
 const pinia = createPinia();
 
 // 打印环境变量，可以看到VITE_API_URL的值，需要在vite.config.ts，注释掉 drop_console: true
-// console.log("😂👨🏾‍❤️‍👨🏼==>： ", import.meta.env.VITE_API_URL);
+console.log("😂👨🏾‍❤️‍👨🏼==>： ", import.meta.env);
 
 const app = createApp(App);
 app

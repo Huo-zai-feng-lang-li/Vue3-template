@@ -1,9 +1,11 @@
 ## 🌈 项目说明书
- > Vue3 + Ts + Vite + pnpm 项目中集成 —— eslint 、prettier、stylelint、husky、router、vuex、axios
 
- > 这是一个使用 Vue3 和 TypeScript 作为主要技术栈，使用 Vite 作为构建工具，使用 pnpm 作为包管理工具的项目。该项目集成了 eslint、prettier、stylelint、husky、router、vuex 和 axios。
+> Vue3 + Ts + Vite + pnpm 项目中集成 —— eslint 、prettier、stylelint、husky、router、vuex、axios
+
+> 这是一个使用 Vue3 和 TypeScript 作为主要技术栈，使用 Vite 作为构建工具，使用 pnpm 作为包管理工具的项目。该项目集成了 eslint、prettier、stylelint、husky、router、vuex 和 axios。
 
 #### 💒 代码仓库
+
 ```base
 https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template.git
 ```
@@ -124,7 +126,6 @@ pnpm run build
 #### 💕 特别感谢
 
 特别感谢老哥们的建议、指导与帮忙。谢谢！
-
 
 ———— @张坤 彩色之外-————
 

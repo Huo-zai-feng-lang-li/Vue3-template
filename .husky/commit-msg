@@ -3,10 +3,10 @@
 commit_msg_file=$1
  
 # 检查提交信息是否以指定的单词开头，并且描述不超过50个字符
-if ! grep -qE "^(revert|feat|fix|docs|style|refactor|perf|test|chore|build|ci)\(.+\):[[:space:]].{1,50}$" "$commit_msg_file"; then
+if ! grep -qE "^(revert|feat|fix|docs|style|refactor|perf|test|chore|build|ci|merge)\(.+\):[[:space:]].{1,60}$" "$commit_msg_file"; then
   echo "❌:提交信息格式不符合规范，❗💢💢请参考以下格式：（或者您可以使用git cz命令，也可预览项目中的GIT-README.md文档 奥~）📖🎉🎉"
   
-  echo "类型范围(必填): 描述（不超过50个字符）"
+  echo "类型范围(必填): 描述（不超过60个字符）"
   exit 1
 fi
  

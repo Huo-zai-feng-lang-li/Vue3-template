@@ -126,7 +126,7 @@ module.exports = {
     // 关闭在 switch 语句中缺少 default 分支的规则
     "no-case-declarations": "off",
     // 禁用 console 输出
-    "no-console": "error",
+    // "no-console": "error",
     // 关闭禁止重复声明变量的规则
     "no-redeclare": "off",
   },

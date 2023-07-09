@@ -14,31 +14,31 @@
  * @createDate 2023/06/26 17:20:44
  * @lastFixDate 2023/06/26 17:51:44
  */
-import type { Directive, DirectiveBinding } from 'vue';
+import type { Directive, DirectiveBinding } from "vue";
 interface ElType extends HTMLElement {
-	__handleClick__: () => any;
+  __handleClick__: () => any;
 }
 const debounce: Directive = {
-	mounted(el: ElType, binding: DirectiveBinding) {
-		if (typeof binding.value !== 'function') {
-			throw 'callback must be a function';
-		}
-		let timer: number | null = null;
-		el.__handleClick__ = function () {
-			if (timer) {
-				clearInterval(timer);
-			}
-			timer = setTimeout(() => {
-				binding.value();
-			}, 500);
-		};
-		el.addEventListener('click', el.__handleClick__);
-		el.addEventListener('input', el.__handleClick__);
-	},
-	beforeUnmount(el: ElType) {
-		el.removeEventListener('click', el.__handleClick__);
-		el.removeEventListener('input', el.__handleClick__);
-	},
+  mounted(el: ElType, binding: DirectiveBinding) {
+    if (typeof binding.value !== "function") {
+      throw "callback must be a function";
+    }
+    let timer: number | null = null;
+    el.__handleClick__ = function () {
+      if (timer) {
+        clearInterval(timer);
+      }
+      timer = setTimeout(() => {
+        binding.value();
+      }, 500);
+    };
+    el.addEventListener("click", el.__handleClick__);
+    el.addEventListener("input", el.__handleClick__);
+  },
+  beforeUnmount(el: ElType) {
+    el.removeEventListener("click", el.__handleClick__);
+    el.removeEventListener("input", el.__handleClick__);
+  },
 };
 
 export default debounce;

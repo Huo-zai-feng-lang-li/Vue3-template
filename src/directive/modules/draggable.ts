@@ -31,48 +31,48 @@
  * @createDate 2023/06/26 17:26:11
  * @lastFixDate 2023/06/26 17:49:11
  */
-import type { Directive } from 'vue';
+import type { Directive } from "vue";
 interface ElType extends HTMLElement {
-	parentNode: any;
+  parentNode: any;
 }
 const draggable: Directive = {
-	mounted: function (el: ElType) {
-		// 拖拽
-		let oDiv = el; //当前元素
-		oDiv.onmousedown = function (e: any) {
-			//鼠标按下，计算当前元素距离可视区的距离
-			let disX = e.clientX - oDiv.offsetLeft;
-			let disY = e.clientY - oDiv.offsetTop;
-			let oParent = oDiv.parentNode; //获取到父元素
-			//移动时计算元素距离可视区的距离
-			document.onmousemove = function (e: any) {
-				//通过事件委托，计算移动的距离
-				let l = e.clientX - disX;
-				let t = e.clientY - disY;
-				// 不允许超出父元素
-				let w = oParent.clientWidth - oDiv.offsetWidth;
-				let h = oParent.clientHeight - oDiv.offsetHeight;
-				if (l < 0) {
-					l = 0;
-				} else if (l > w) {
-					l = w;
-				}
-				if (t < 0) {
-					t = 0;
-				} else if (t > h) {
-					t = h;
-				}
-				//移动当前元素
-				oDiv.style.left = l + 'px';
-				oDiv.style.top = t + 'px';
-			};
-			//鼠标抬起时候，移除事件
-			document.onmouseup = function () {
-				document.onmousemove = null;
-				document.onmouseup = null;
-			};
-		};
-	},
+  mounted: function (el: ElType) {
+    // 拖拽
+    const oDiv = el; //当前元素
+    oDiv.onmousedown = function (e: any) {
+      //鼠标按下，计算当前元素距离可视区的距离
+      const disX = e.clientX - oDiv.offsetLeft;
+      const disY = e.clientY - oDiv.offsetTop;
+      const oParent = oDiv.parentNode; //获取到父元素
+      //移动时计算元素距离可视区的距离
+      document.onmousemove = function (e: any) {
+        //通过事件委托，计算移动的距离
+        let l = e.clientX - disX;
+        let t = e.clientY - disY;
+        // 不允许超出父元素
+        const w = oParent.clientWidth - oDiv.offsetWidth;
+        const h = oParent.clientHeight - oDiv.offsetHeight;
+        if (l < 0) {
+          l = 0;
+        } else if (l > w) {
+          l = w;
+        }
+        if (t < 0) {
+          t = 0;
+        } else if (t > h) {
+          t = h;
+        }
+        //移动当前元素
+        oDiv.style.left = l + "px";
+        oDiv.style.top = t + "px";
+      };
+      //鼠标抬起时候，移除事件
+      document.onmouseup = function () {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      };
+    };
+  },
 };
 
 export default draggable;

@@ -1,5 +1,5 @@
 <template>
-	<!-- 
+  <!-- 
 	ref="treeRef" 用于获取树型组件的实例
 	:check-strictly="checkStrictly" 在显示复选框的情况下，是否严格的遵循父子不互相关联的做法
 	:indent="0" 树节点的缩进距离，设为0即取消缩进。
@@ -44,127 +44,127 @@
 		</script>
 
  -->
-	<el-tree
-		ref="treeRef"
-		class="tree-line"
-		:check-strictly="checkStrictly"
-		:indent="0"
-		:show-checkbox="props.isShowCheckbox"
-		:default-expand-all="props.expandAll"
-		:default-checked-keys="props.checkedKeys"
-		:data="props.treeData"
-		:props="defaultProps"
-		:accordion="props.accordion"
-		node-key="id"
-		@node-click="onCurAllNodes"
-		@node-expand="onHandleExpand"
-		@check="getCheckedAllNodes"
-		check-on-click-node
-	>
-		<template #default="{ node }">
-			<i :class="checkIconByNodeLevel(node)" /> {{ node.label }}
-		</template>
-	</el-tree>
+  <el-tree
+    ref="treeRef"
+    class="tree-line"
+    :check-strictly="checkStrictly"
+    :indent="0"
+    :show-checkbox="props.isShowCheckbox"
+    :default-expand-all="props.expandAll"
+    :default-checked-keys="props.checkedKeys"
+    :data="props.treeData"
+    :props="defaultProps"
+    :accordion="props.accordion"
+    node-key="id"
+    @node-click="onCurAllNodes"
+    @node-expand="onHandleExpand"
+    @check="getCheckedAllNodes"
+    check-on-click-node
+  >
+    <template #default="{ node }">
+      <i :class="checkIconByNodeLevel(node)" /> {{ node.label }}
+    </template>
+  </el-tree>
 </template>
 
 <script lang="ts" setup>
-import { defineExpose, ref } from 'vue';
+import { defineExpose, ref } from "vue";
 // 默认配置
 const defaultProps = {
-	children: 'children',
-	label: 'label',
+  children: "children",
+  label: "label",
 };
 
 interface Tree {
-	label: string;
-	children?: Tree[];
+  label: string;
+  children?: Tree[];
 }
 
 const treeRef = ref();
 
 const props = defineProps({
-	// 树型数据
-	treeData: {
-		type: Array,
-		default: () => {
-			return [];
-		},
-	},
-	// 是否全部展开
-	expandAll: {
-		type: Boolean,
-		default: () => {
-			return true;
-		},
-	},
-	// 在显示复选框的情况下，是否严格的遵循父子不互相关联的做法
-	checkStrictly: {
-		type: Boolean,
-		default: () => {
-			return false;
-		},
-	},
-	checkedKeys: {
-		type: Array,
-		default: () => {
-			return [];
-		},
-	},
-	isShowCheckbox: {
-		type: Boolean,
-		default: () => {
-			return true;
-		},
-	},
-	accordion: {
-		type: Boolean,
-		default: () => {
-			false;
-		},
-	},
+  // 树型数据
+  treeData: {
+    type: Array,
+    default: () => {
+      return [];
+    },
+  },
+  // 是否全部展开
+  expandAll: {
+    type: Boolean,
+    default: () => {
+      return true;
+    },
+  },
+  // 在显示复选框的情况下，是否严格的遵循父子不互相关联的做法
+  checkStrictly: {
+    type: Boolean,
+    default: () => {
+      return false;
+    },
+  },
+  checkedKeys: {
+    type: Array,
+    default: () => {
+      return [];
+    },
+  },
+  isShowCheckbox: {
+    type: Boolean,
+    default: () => {
+      return true;
+    },
+  },
+  accordion: {
+    type: Boolean,
+    default: () => {
+      false;
+    },
+  },
 });
 
 // 根据节点层级显示不同的图标
 const checkIconByNodeLevel = (node: {
-	childNodes: [];
-	expanded: boolean;
-	data: { id: number };
+  childNodes: [];
+  expanded: boolean;
+  data: { id: number };
 }) => {
-	if (node.childNodes.length == 0) {
-		return 'iconfont icon-24gl-fileEmpty';
-	} else {
-		if (node.expanded) {
-			return 'iconfont icon-wenjianzhankai';
-		}
-		return 'iconfont icon-jian';
-	}
+  if (node.childNodes.length == 0) {
+    return "iconfont icon-24gl-fileEmpty";
+  } else {
+    if (node.expanded) {
+      return "iconfont icon-wenjianzhankai";
+    }
+    return "iconfont icon-jian";
+  }
 };
 
 // 定义事件
 const emits = defineEmits([
-	'onCurAllNodes',
-	'getCheckedAllNodes',
-	'onHandleExpand',
+  "onCurAllNodes",
+  "getCheckedAllNodes",
+  "onHandleExpand",
 ]);
 
 // 点击事件
 const onCurAllNodes = (data: Tree) => {
-	emits('onCurAllNodes', data);
+  emits("onCurAllNodes", data);
 };
 // 复选框改变事件
 const getCheckedAllNodes = (data: Tree, isCurrentSelected: Tree) => {
-	emits('getCheckedAllNodes', data, isCurrentSelected);
+  emits("getCheckedAllNodes", data, isCurrentSelected);
 };
 // 展开事件
 const onHandleExpand = (data: Tree) => {
-	emits('onHandleExpand', data);
+  emits("onHandleExpand", data);
 };
 
 defineExpose({
-	treeRef,
+  treeRef,
 });
 </script>
 
 <style lang="scss" scoped>
-@import url('/@/myIcon/iconfont.css');
+@import url("/@/myIcon/iconfont.css");
 </style>
