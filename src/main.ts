@@ -9,11 +9,13 @@ import "element-plus/dist/index.css";
 import componentRegister from "~/GlobalComponents/componentRegister";
 // 自定义loading组件
 import Loading from "@/components/MyLoading/index";
+// 自定义返回顶部组件
+import MyBackTop from "@/components/MyBackTop/index";
 
 // 引入路由配置文件
 import router from "./router/route-guard";
 // 引入全局重置样式文件
-import "./assets/css/reset.scss";
+import "./assets/css/index.scss";
 
 // 引入pinia
 import { createPinia } from "pinia";
@@ -31,6 +33,7 @@ app
   .use(componentRegister)
   .use(pinia)
   .use(Loading)
+  .use(MyBackTop)
   .use(router)
   .mount("#app");
 export default app; // 这里导出app的目的，是为了在后面 ts文件中使用插件

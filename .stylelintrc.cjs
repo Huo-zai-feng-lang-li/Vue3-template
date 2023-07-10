@@ -30,12 +30,13 @@ module.exports = {
     ".vscode/**/*",
     "dist/**/*",
     // 忽略reset.scss的__检查
-    "**/*reset.scss",
+    "**/*global.scss",
 
     "src/views/errors-view/not-found.vue",
   ],
   rules: {
     "no-descending-specificity": null, // 禁止在具有较高优先级的选择器后出现被其覆盖的较低优先级的选择器
+    "scss/at-import-partial-extension": "always", // 禁止省略导入文件的扩展名
     "selector-pseudo-element-no-unknown": [
       true,
       {
