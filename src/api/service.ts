@@ -19,7 +19,7 @@ service.interceptors.request.use(
     // if (Session.get('token')) {
     // 	config.headers!['Authorization'] = `${Session.get('token')}`;
     // }
-    app.config.globalProperties.$Loading.showLoading();
+    app.config.globalProperties.$smallLoading.showLoading();
 
     // 如果存在上一次的请求，则取消它
     if (cancelToken) {
@@ -54,8 +54,7 @@ service.interceptors.response.use(
       }
       return Promise.reject(response);
     } else {
-      app.config.globalProperties.$Loading.hideLoading();
-
+      app.config.globalProperties.$smallLoading.hideLoading();
       return response.data;
     }
   },

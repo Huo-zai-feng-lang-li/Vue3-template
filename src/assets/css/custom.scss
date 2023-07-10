@@ -1,0 +1,21 @@
+// 自定义 样式
+// 使用css 修改:在你希望修改变量的地方，在其前面加上 :root 选择器，然后在括号中重新定义变量的值。例如：
+// scss:root {
+//   --color-primary: #ff0000; // 将 --color-primary 修改为红色
+// }
+//使用js修改：你可以使用 document.documentElement.style.setProperty() 方法来修改变量值。示例如下：
+// document.documentElement.style.setProperty('--color-primary', '#ff0000');
+:root {
+  --color-primary: #409eff;
+  --color-success: #67c23a;
+  --color-warning: #e6a23c;
+  --color-danger: #f56c6c;
+  --color-info: #909399;
+  --color-text-primary: #303133;
+  --color-text-regular: #606266;
+  --color-text-secondary: #909399;
+  --color-text-placeholder: #c0c4cc;
+  --color-border-base: #dcdfe6;
+  --color-border-light: #e4e7ed;
+  --color-border-lighter: #ebeef5;
+}

@@ -9,7 +9,7 @@ module.exports = {
   // 不同格式的文件指定自定义语法
   overrides: [
     {
-      files: ["**/*.(scss|css|vue|html)"],
+      files: ["**/*.(scss|css)"],
       customSyntax: "postcss-scss",
     },
     {
@@ -29,9 +29,9 @@ module.exports = {
     "node_modules/**/*",
     ".vscode/**/*",
     "dist/**/*",
-    // 忽略reset.scss的__检查
-    "**/*global.scss",
-
+    // 忽略src/assets/css下的scss文件
+    "src/assets/css/**/*.scss",
+    // 404页面
     "src/views/errors-view/not-found.vue",
   ],
   rules: {

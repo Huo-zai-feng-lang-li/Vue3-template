@@ -8,7 +8,8 @@ import "element-plus/dist/index.css";
 // 引入全局组件
 import componentRegister from "~/GlobalComponents/componentRegister";
 // 自定义loading组件
-import Loading from "@/components/MyLoading/index";
+import Loading from "@/components/MyLoading/loading";
+import smallLoading from "@/components/MyLoading/smallLoading";
 // 自定义返回顶部组件
 import MyBackTop from "@/components/MyBackTop/index";
 
@@ -33,6 +34,7 @@ app
   .use(componentRegister)
   .use(pinia)
   .use(Loading)
+  .use(smallLoading)
   .use(MyBackTop)
   .use(router)
   .mount("#app");

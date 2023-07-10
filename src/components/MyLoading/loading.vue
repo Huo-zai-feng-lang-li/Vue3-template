@@ -1,5 +1,6 @@
 <template>
   <div id="loading" v-show="visible">
+    <!-- 齿轮 loading page -->
     <div class="loader-overlay"></div>
     <div class="loader-cogs">
       <div class="loader-cogs-top">
