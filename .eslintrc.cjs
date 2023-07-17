@@ -30,7 +30,8 @@ module.exports = {
     // http://eslint.cn/docs/rules/
     // https://eslint.vuejs.org/rules/
     // https://typescript-eslint.io/rules/no-unused-vars/
-
+    // 圈复杂度
+    complexity: ["error", 5],
     // 表示在逗号后面必须有空格，而在逗号前面不能有空格
     "comma-spacing": ["error", { before: false, after: true }],
     // 关闭禁止使用 @ts-ignore 的规则

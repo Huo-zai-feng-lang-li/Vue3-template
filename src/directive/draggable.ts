@@ -9,7 +9,7 @@
  *       <template>
  *           <div class="content-box">
  *               <span class="text">拖拽指令 🍇🍇🍇🍓🍓🍓</span>
- *               <div v-draggable class="drag-box">我可以拖拽哦~</div>
+ *               <div v-draggable class="drag-box cursor-move">我可以拖拽哦~</div>
  *           </div>
  *       </template>
  *

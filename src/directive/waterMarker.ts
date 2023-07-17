@@ -23,7 +23,7 @@ const addWaterMarker: Directive = (
   can.style.display = "none";
   const cans = can.getContext("2d") as CanvasRenderingContext2D;
   cans.rotate((-20 * Math.PI) / 180);
-  cans.font = font || "16px Microsoft JhengHei";
+  cans.font = font || "16px 思源黑体";
   cans.fillStyle = textColor || "rgba(180, 180, 180, 0.3)";
   cans.textAlign = "left";
   cans.textBaseline = "Middle" as CanvasTextBaseline;

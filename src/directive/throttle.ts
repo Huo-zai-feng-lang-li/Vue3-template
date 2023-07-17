@@ -33,7 +33,7 @@ const throttle: Directive = {
     if (typeof binding.value !== "function") {
       throw "callback must be a function";
     }
-    let timer: number | null = null;
+    let timer: NodeJS.Timeout | null = null;
     el.__handleClick__ = function () {
       if (timer) {
         clearTimeout(timer);

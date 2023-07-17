@@ -1,24 +1,32 @@
 <template>
-  <!-- 静态 例子 -->
-  <zw-chart
-    :myOption="chartLineData2"
-    :myStyle="{ width: '100%', height: '280px' }"
-  ></zw-chart>
+  <div
+    class="container"
+    v-waterMarker="{
+      text: '版权所有',
+      textColor: 'rgba(180, 180, 180, 0.4)',
+    }"
+  >
+    <!-- 静态 例子 -->
+    <zw-chart
+      :myOption="chartLineData2"
+      :myStyle="{ width: '100%', height: '280px' }"
+    ></zw-chart>
 
-  <!-- 接口例子 -->
-  <zw-chart
-    :myOption="chartLineData"
-    :myStyle="{ width: '100%', height: '280px' }"
-    v-if="Flag"
-  ></zw-chart>
+    <!-- 接口例子 -->
+    <zw-chart
+      :myOption="chartLineData"
+      :myStyle="{ width: '100%', height: '280px' }"
+      v-if="Flag"
+    ></zw-chart>
 
-  <!-- 骨架屏 element-plus -->
-  <el-skeleton
-    v-else
-    :rows="5"
-    :animated="true"
-    style="margin: 10px auto; width: 90%; height: 500px"
-  />
+    <!-- 骨架屏 element-plus -->
+    <el-skeleton
+      v-else
+      :rows="5"
+      :animated="true"
+      style="margin: 10px auto; width: 90%; height: 500px"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -71,3 +79,13 @@ onMounted(() => {
   getCurveData();
 });
 </script>
+
+<style lang="scss" scoped>
+.container {
+  overflow: hidden;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+</style>

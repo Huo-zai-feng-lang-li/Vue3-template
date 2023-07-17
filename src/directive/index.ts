@@ -1,18 +1,27 @@
-import type { App } from "vue";
-import { authDirective } from "/@/directive/authDirective";
-import { wavesDirective, dragDirective } from "/@/directive/customDirective";
+import { App } from "vue";
+import copy from "./copy";
+import waterMarker from "./waterMarker";
+import draggable from "./draggable";
+import debounce from "./debounce";
+import throttle from "./throttle";
+import longpress from "./longpress";
 
-/**
- * 导出指令方法：v-xxx
- * @methods authDirective 用户权限指令，用法：v-auth
- * @methods wavesDirective 按钮波浪指令，用法：v-waves
- * @methods dragDirective 自定义拖动指令，用法：v-drag
- */
-export function directive(app: App) {
-  // 用户权限指令
-  authDirective(app);
-  // 按钮波浪指令
-  wavesDirective(app);
-  // 自定义拖动指令
-  dragDirective(app);
-}
+const directivesList: any = {
+  copy,
+  waterMarker,
+  draggable,
+  debounce,
+  throttle,
+  longpress,
+};
+
+const directives = {
+  install: function (app: App<Element>) {
+    Object.keys(directivesList).forEach((key) => {
+      // 注册所有自定义指令
+      app.directive(key, directivesList[key]);
+    });
+  },
+};
+
+export default directives;
