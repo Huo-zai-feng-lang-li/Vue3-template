@@ -6,18 +6,20 @@
       textColor: 'rgba(180, 180, 180, 0.4)',
     }"
   >
+    <zk-confetti-canvas />
+
     <!-- 静态 例子 -->
-    <zw-chart
+    <zk-chart
       :myOption="chartLineData2"
       :myStyle="{ width: '100%', height: '280px' }"
-    ></zw-chart>
+    ></zk-chart>
 
     <!-- 接口例子 -->
-    <zw-chart
+    <zk-chart
       :myOption="chartLineData"
       :myStyle="{ width: '100%', height: '280px' }"
       v-if="Flag"
-    ></zw-chart>
+    ></zk-chart>
 
     <!-- 骨架屏 element-plus -->
     <el-skeleton
@@ -30,6 +32,8 @@
 </template>
 
 <script setup lang="ts">
+import { showConfetti } from "@/utils/confetti/confetti";
+
 // 封装好的 axios
 // import service from "@/utils/request";
 
@@ -72,6 +76,9 @@ const getCurveData = () => {
 
     chartLineData.title.text = "折线图模拟接口数据";
     Flag.value = true;
+    setTimeout(() => {
+      showConfetti(1, { x: 0.9, y: 0.6 });
+    }, 1000);
   }, 1000);
 };
 

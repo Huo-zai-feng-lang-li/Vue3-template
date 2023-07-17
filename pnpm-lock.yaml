@@ -4,6 +4,9 @@ dependencies:
   axios:
     specifier: ^1.4.0
     version: 1.4.0
+  canvas-confetti:
+    specifier: ^1.6.0
+    version: registry.npmmirror.com/canvas-confetti@1.6.0
   echarts:
     specifier: ^5.4.2
     version: 5.4.2
@@ -4084,6 +4087,12 @@ packages:
     name: caniuse-lite
     version: 1.0.30001481
     dev: true
+
+  registry.npmmirror.com/canvas-confetti@1.6.0:
+    resolution: {integrity: sha512-ej+w/m8Jzpv9Z7W7uJZer14Ke8P2ogsjg4ZMGIuq4iqUOqY2Jq8BNW42iGmNfRwREaaEfFIczLuZZiEVSYNHAA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/canvas-confetti/-/canvas-confetti-1.6.0.tgz}
+    name: canvas-confetti
+    version: 1.6.0
+    dev: false
 
   registry.npmmirror.com/chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/chalk/-/chalk-2.4.2.tgz}
