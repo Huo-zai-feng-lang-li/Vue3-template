@@ -1,11 +1,12 @@
 <template>
   <div
-    class="container"
+    class="container w100 h100"
     v-waterMarker="{
       text: '版权所有',
       textColor: 'rgba(180, 180, 180, 0.4)',
     }"
   >
+    <!-- 庆祝彩蛋 -->
     <zk-confetti-canvas />
 
     <!-- 静态 例子 -->
@@ -20,7 +21,6 @@
       :myStyle="{ width: '100%', height: '280px' }"
       v-if="Flag"
     ></zk-chart>
-
     <!-- 骨架屏 element-plus -->
     <el-skeleton
       v-else
@@ -33,14 +33,6 @@
 
 <script setup lang="ts">
 import { showConfetti } from "@/utils/confetti/confetti";
-
-// 封装好的 axios
-// import service from "@/utils/request";
-
-// 引入封装的chart组件
-
-// import myChart from "~/myCharts.vue";
-
 // 引入图表数据
 import { chartLineData, chartLineData2 } from "./part-components/chart-line";
 // console.log("😂👨🏾‍❤️‍👨🏼==>：", chartLineData, chartLineData2);
@@ -89,11 +81,8 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .container {
-  overflow: hidden;
   padding: 10px;
-  width: 100%;
-  height: 100%;
+  background-color: pink;
   box-sizing: border-box;
 }
 </style>
-./part-components/chart-line

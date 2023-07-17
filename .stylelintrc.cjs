@@ -33,8 +33,11 @@ module.exports = {
     "src/assets/css/**/*.scss",
     // 404页面
     "src/views/errors-view/not-found.vue",
+    // myIcon
+    "src/myIcon/iconfont.css",
   ],
   rules: {
+    "selector-class-pattern": null, // 类名格式
     "no-descending-specificity": null, // 禁止在具有较高优先级的选择器后出现被其覆盖的较低优先级的选择器
     "scss/at-import-partial-extension": "always", // 禁止省略导入文件的扩展名
     "selector-pseudo-element-no-unknown": [

@@ -1,128 +1,210 @@
 <template>
-  <!-- 
-	ref="treeRef" 用于获取树型组件的实例
-	:check-strictly="checkStrictly" 在显示复选框的情况下，是否严格的遵循父子不互相关联的做法
-	:indent="0" 树节点的缩进距离，设为0即取消缩进。
-	:show-checkbox="props.isShowCheckbox" 是否显示复选框，通过 props.isShowCheckbox 来控制。
-	:default-expand-all="props.expandAll" 是否默认展开所有节点，通过 props.expandAll 来控制
-	:default-checked-keys="props.checkedKeys" 默认选中的节点的 key 的数组
-	:data="props.treeData" 展示数据 树的数据源，通过 props.treeData 来控制
-	:props="defaultProps" 配置选项，设置树节点的属性，通过 defaultProps 来控制。
-	:accordion="props.accordion" 是否每次只展开一个子树节点(手风琴)，通过 props.accordion 来控制。
-	node-key="id" 每个树节点用来作为唯一标识的属性，整棵树应该是唯一的
-	@node-click="onCurAllNodes" 点击树节点触发的事件 onCurAllNodes 是该函数的名称。
-	@node-expand="onHandleExpand" 节点被展开的事件 onHandleExpand 是该函数的名称。
-	@check-change="getCheckedAllNodes" 勾选状态发生变化时的事件回调函数，getCheckedNodes 是该函数的名称。
-	check-on-click-node 点击节点时选中节点，默认值为 false。
-
-	<i :class="checkIconByNodeLevel(node)" />：根据节点的层级来动态设置节点前面的图标样式。
-	{{ node.label }}：显示节点的标签文本。需要根据实际的数据结构来获取。props="defaultProps" 、数据源、node.label 三者需要保持一致。
-	示例：
-			<template>
-				<zw-tree
-					:treeData="treeData"
-					@onCurAllNodes="onCurAllNodes"
-					@getCheckedAllNodes="getCheckedAllNodes"
-					@onHandleExpand="onHandleExpand"
-				/>
-			</template>
-
-		<script setup lang="ts" name="Tree">
-		import { ref } from 'vue';
-		const treeData = ref([{}]);
-
-		const onCurAllNodes = (data: object) => {
-			console.log('当前节点下所有节点：', data);
-		};
-
-		const onHandleExpand = (data: object) => {
-			console.log('展开节点时触发：', data);
-		};
-		const getCheckedAllNodes = (data: object) => {
-			console.log('复选框改变：', data);
-		};
-		</script>
-
- -->
-  <el-tree
-    ref="treeRef"
-    class="tree-line"
-    :check-strictly="checkStrictly"
-    :indent="0"
-    :show-checkbox="props.isShowCheckbox"
-    :default-expand-all="props.expandAll"
-    :default-checked-keys="props.checkedKeys"
-    :data="props.treeData"
-    :props="defaultProps"
-    :accordion="props.accordion"
-    node-key="id"
-    @node-click="onCurAllNodes"
-    @node-expand="onHandleExpand"
-    @check="getCheckedAllNodes"
-    check-on-click-node
-  >
-    <template #default="{ node }">
-      <i :class="checkIconByNodeLevel(node)" /> {{ node.label }}
-    </template>
-  </el-tree>
+  <div>
+    <el-button @click="addNode" type="primary">添加节点</el-button>
+    <el-button @click="removeNode" type="danger">删除节点</el-button>
+    <div class="tree-container">
+      <el-tree
+        class="tree-line"
+        ref="treeRef"
+        :indent="0"
+        node-key="id"
+        :data="treeData"
+        :props="defaultProps"
+        :check-strictly="checkStrictly"
+        :show-checkbox="isShowCheckbox"
+        :check-on-click-node="checkOnClickNode"
+        :default-expand-all="defaultExpandAll"
+        :draggable="isDraggable"
+        :allow-drag="allowDrag"
+        :allow-drop="allowDrop"
+        @node-drag-end="handleDragEnd"
+        @node-click="handleNodeClick"
+        @node-contextmenu="editNode"
+        @check-change="getCheckedAllNodes"
+      >
+        <template #default="{ node }">
+          <i :class="checkIconByNodeLevel(node)" />
+          <input
+            v-if="showIpt && node.label === curNodLabel"
+            ref="inputRef"
+            type="text"
+            :value="node.label"
+            @blur="showIpt = false"
+            @keyup.enter="updateNodeLabel($event, node)"
+          />
+          <span v-else>{{ node.label }}</span>
+        </template>
+      </el-tree>
+    </div>
+  </div>
 </template>
 
-<script lang="ts" setup>
-import { defineExpose, ref } from "vue";
+<script setup lang="ts">
+import { nextTick, ref } from "vue";
+import type Node from "element-plus/es/components/tree/src/model/node";
+const showIpt = ref<boolean>(false); // 是否显示输入框
+const curNodLabel = ref<string>(); // 记录右键点击的节点
+const inputRef = ref(); // 输入框实例
+
+const treeRef = ref(); // 树实例
 // 默认配置
 const defaultProps = {
   children: "children",
   label: "label",
 };
+// 判断节点能否被放置 如果返回 false ，节点不能被放置
+const allowDrop = () => true;
+// 判断节点能否被拖拽 如果返回 false ，节点不能被拖动
+const allowDrag = () => true;
 
-interface Tree {
-  label: string;
-  children?: Tree[];
-}
+// 子组件事件发送
+const emits = defineEmits(["eCurNode", "eCheckedNodes", "eSaveNodes"]);
 
-const treeRef = ref();
-
+// 接受父组件传递过来的数据
 const props = defineProps({
   // 树型数据
   treeData: {
     type: Array,
-    default: () => {
-      return [];
-    },
-  },
-  // 是否全部展开
-  expandAll: {
-    type: Boolean,
-    default: () => {
-      return true;
-    },
+    default: () => [],
   },
   // 在显示复选框的情况下，是否严格的遵循父子不互相关联的做法
   checkStrictly: {
     type: Boolean,
-    default: () => {
-      return false;
-    },
+    default: () => false,
   },
-  checkedKeys: {
-    type: Array,
-    default: () => {
-      return [];
-    },
-  },
+  // 是否显示复选框
   isShowCheckbox: {
     type: Boolean,
-    default: () => {
-      return true;
-    },
+    default: () => true,
   },
-  accordion: {
+  // 选中节点时是否选中复选框
+  checkOnClickNode: {
     type: Boolean,
-    default: () => {
-      false;
-    },
+    default: () => true,
+  },
+  // 是否默认展开所有节点
+  defaultExpandAll: {
+    type: Boolean,
+    default: () => true,
+  },
+  // 是否开启拖拽节点功能
+  isDraggable: {
+    type: Boolean,
+    default: () => false,
   },
 });
+
+// 点击节点时触发
+const handleNodeClick = (data: any) => {
+  // console.log('点击节点时触发 🚀 ==>：', data);
+  emits("eCurNode", data);
+};
+
+// 删除节点
+const removeNode = () => {
+  const checkedNodes = treeRef.value.getCheckedNodes();
+  if (checkedNodes.length === 0) return alert("请至少勾选一项才能删除节点");
+  for (const node of checkedNodes) {
+    // 根据节点的id删除节点
+    nextTick(() => {
+      treeRef.value.remove(node.id, false);
+      // 根据接口重新获取树型数据
+    });
+  }
+};
+
+// 右击节点时触发
+const editNode = (event: MouseEvent, node: Node) => {
+  event.preventDefault();
+  curNodLabel.value = node.label;
+  showIpt.value = true;
+  nextTick(() => {
+    inputRef.value.focus();
+  });
+};
+
+// 更新节点的label
+const updateNodeLabel = (e: Event, node: { data: { label: string } }) => {
+  const target = e.target as HTMLInputElement;
+  // 递归树 如果target.value有重复的label，就不允许修改
+  if (isValueInTree(props.treeData, target.value)) return alert("该节点已存在");
+  // 浅拷贝只会影响引用类型的属性，而不会影响基本类型的属性。当浅拷贝一个对象时，基本类型的属性会被复制而不是引用
+  // 浅拷贝只有是引用类型才会 两个对象相互影响，如果是基本类型不会互相影响
+  node = Object.assign({}, node);
+  node.data.label = target.value;
+  showIpt.value = false;
+};
+function isValueInTree(data: string | any[], value: string) {
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].label === value) {
+      return true; // 如果找到匹配项，则返回 true
+    }
+    // 如果当前节点有子节点，则递归调用遍历子节点
+    if (Array.isArray(data[i].children)) {
+      if (isValueInTree(data[i].children, value)) {
+        return true; // 如果在子节点中找到匹配项，则返回 true
+      }
+    }
+  }
+  return false; // 如果遍历完所有节点都没有找到匹配项，则返回 false
+}
+
+// 新增节点
+const addNode = () => {
+  const checkedNodes = treeRef.value.getCheckedNodes();
+
+  if (checkedNodes.length === 0) {
+    return alert("请至少勾选一项才能添加节点");
+  }
+
+  const nodeName = prompt("请输入节点名称");
+  if (!nodeName) {
+    return;
+  }
+
+  if (isValueInTree(props.treeData, nodeName)) {
+    return alert("该节点已存在");
+  }
+
+  checkedNodes.forEach(
+    (parentNode: { children: { id: number; label: string }[] }) => {
+      const newNode = {
+        id: props.treeData.length + 1,
+        label: nodeName,
+      };
+      if (!parentNode.children) {
+        parentNode.children = [];
+      }
+      parentNode.children.push(newNode);
+    }
+  );
+};
+
+// 结束拖拽
+const handleDragEnd = (dropNode: Node) => {
+  if (!dropNode) return;
+  if (props.isDraggable === false) return;
+  // 保存节点
+  saveNode();
+};
+
+function saveNode() {
+  emits("eSaveNodes", props.treeData);
+}
+
+// 复选框改变
+const getCheckedAllNodes = (data: any, isSelected: boolean) => {
+  if (!props.isShowCheckbox) return;
+  // 获取所有选中的节点
+  const checkedNodes = treeRef.value.getCheckedNodes();
+  // 获取所有半选中的节点
+  const halfCheckedNodes = treeRef.value.getHalfCheckedNodes();
+  // data: 当前节点的数据
+  // isSelected: 当前节点是否被选中
+  // checkedNodes: 所有选中的节点
+  // halfCheckedNodes: 所有半选中的节点
+  emits("eCheckedNodes", data, isSelected, checkedNodes, halfCheckedNodes);
+};
 
 // 根据节点层级显示不同的图标
 const checkIconByNodeLevel = (node: {
@@ -130,41 +212,78 @@ const checkIconByNodeLevel = (node: {
   expanded: boolean;
   data: { id: number };
 }) => {
-  if (node.childNodes.length == 0) {
-    return "iconfont icon-24gl-fileEmpty";
-  } else {
-    if (node.expanded) {
-      return "iconfont icon-wenjianzhankai";
-    }
-    return "iconfont icon-jian";
-  }
-};
-
-// 定义事件
-const emits = defineEmits([
-  "onCurAllNodes",
-  "getCheckedAllNodes",
-  "onHandleExpand",
-]);
-
-// 点击事件
-const onCurAllNodes = (data: Tree) => {
-  emits("onCurAllNodes", data);
-};
-// 复选框改变事件
-const getCheckedAllNodes = (data: Tree, isCurrentSelected: Tree) => {
-  emits("getCheckedAllNodes", data, isCurrentSelected);
-};
-// 展开事件
-const onHandleExpand = (data: Tree) => {
-  emits("onHandleExpand", data);
+  if (node.childNodes.length === 0) return "iconfont icon-24gl-fileEmpty";
+  return node.expanded ? "iconfont icon-wenjianzhankai" : "iconfont icon-jian";
 };
 
 defineExpose({
   treeRef,
+  removeNode,
+  addNode,
 });
 </script>
 
 <style lang="scss" scoped>
-@import url("/@/myIcon/iconfont.css");
+@import url("@/myIcon/iconfont.css");
+
+.tree-container {
+  overflow-y: auto;
+  width: 20%;
+  height: calc(100vh - 130px);
+  background-color: #fff;
+}
+// 树样式
+.tree-line {
+  ::v-deep(.el-tree-node) {
+    position: relative;
+    // padding-left: 10px; // 缩进量
+  }
+
+  ::v-deep(.el-tree-node__children) {
+    padding-left: 16px; // 缩进量
+  }
+  // 竖线
+  ::v-deep(.el-tree-node::before) {
+    position: absolute;
+    top: -28px;
+    left: -3px;
+    width: 22px;
+    height: 100%;
+    border-width: 1px;
+    content: "";
+    border-left: 1px dashed #ccc;
+  }
+  // 当前层最后⼀个节点的竖线⾼度固定
+  ::v-deep(.el-tree-node:last-child::before) {
+    height: 38px; // 可以⾃⼰调节到合适数值
+  }
+  // 横线
+  ::v-deep(.el-tree-node::after) {
+    top: 11px;
+    left: -3px;
+    width: 22px;
+    height: 20px;
+    position: absolute;
+    border-width: 1px;
+    content: "";
+    border-top: 1px dashed #ccc;
+  }
+  // 去掉最顶层的虚线，放最下⾯样式才不会被上⾯的覆盖了
+  & > ::v-deep(.el-tree-node::after) {
+    border-top: none;
+  }
+
+  & > ::v-deep(.el-tree-node::before) {
+    border-left: none;
+  }
+  // 展开关闭的icon
+  ::v-deep(.el-tree-node__expand-icon) {
+    font-size: 16px;
+    // 叶⼦节点（⽆⼦节点）
+    ::v-deep(&.is-leaf) {
+      display: none;
+      color: transparent;
+    }
+  }
+}
 </style>

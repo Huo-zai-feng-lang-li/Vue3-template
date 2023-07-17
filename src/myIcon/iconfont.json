@@ -1,0 +1,30 @@
+{
+  "id": "4140267",
+  "name": "天阳数据安全平台端",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7594808",
+      "name": "24gl-fileEmpty",
+      "font_class": "24gl-fileEmpty",
+      "unicode": "eabf",
+      "unicode_decimal": 60095
+    },
+    {
+      "icon_id": "16399030",
+      "name": "文件（展开）",
+      "font_class": "wenjianzhankai",
+      "unicode": "e85f",
+      "unicode_decimal": 59487
+    },
+    {
+      "icon_id": "6056154",
+      "name": "减",
+      "font_class": "jian",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    }
+  ]
+}
