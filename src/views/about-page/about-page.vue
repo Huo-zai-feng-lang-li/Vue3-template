@@ -34,7 +34,7 @@ const handleClick = async () => {
 const handleCancel = () => {
   // 在适当的时机调用取消请求（例如点击取消按钮）
   if (cancelToken) {
-    cancelToken.cancel("取消请求");
+    cancelToken.cancel("取消请求 😎🤖");
   }
 };
 </script>

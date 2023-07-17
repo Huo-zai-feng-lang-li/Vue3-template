@@ -34,11 +34,11 @@
 // import service from "@/utils/request";
 
 // 引入封装的chart组件
-import { onMounted, ref } from "vue";
+
 // import myChart from "~/myCharts.vue";
 
 // 引入图表数据
-import { chartLineData, chartLineData2 } from "./components/chart-line";
+import { chartLineData, chartLineData2 } from "./part-components/chart-line";
 // console.log("😂👨🏾‍❤️‍👨🏼==>：", chartLineData, chartLineData2);
 
 //接口是否请求完（ 等待接口请求完毕在传值到子组件）防止白屏
@@ -89,3 +89,4 @@ onMounted(() => {
   box-sizing: border-box;
 }
 </style>
+./part-components/chart-line

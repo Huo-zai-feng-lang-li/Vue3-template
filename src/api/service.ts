@@ -16,15 +16,12 @@ const service: AxiosInstance = axios.create({
 service.interceptors.request.use(
   (config) => {
     // 在发送请求之前做些什么 token
-    // if (Session.get('token')) {
-    // 	config.headers!['Authorization'] = `${Session.get('token')}`;
-    // }
+    // if (Session.get('token')) config.headers!['Authorization'] = `${Session.get('token')}`;
+
     app.config.globalProperties.$smallLoading.showLoading();
 
     // 如果存在上一次的请求，则取消它
-    if (cancelToken) {
-      cancelToken.cancel("取消请求");
-    }
+    if (cancelToken) cancelToken.cancel("取消请求");
 
     // 创建一个新的 CancelTokenSource 实例
     cancelToken = axios.CancelToken.source();
@@ -59,16 +56,42 @@ service.interceptors.response.use(
     }
   },
   (error) => {
-    // 对响应错误做点什么
-    if (error.message.indexOf("timeout") != -1) {
-      ElMessage.error("网络超时");
-    } else if (error.message == "Network Error") {
-      ElMessage.error("网络连接错误");
+    // 对响应错误数据做点什么？
+    console.log("！这里输出 🚀 ==>：", error);
+    // 需要根据不同的错误码进行不同的处理，和后端约定好
+    let errorMessage;
+    /* 
+			axios.isCancel(error) 是 Axios 库中的一个方法，用于判断一个错误对象是否是由于请求取消导致的。
+			当使用 axios.CancelToken 取消请求时，会抛出一个带有一个 message 属性的错误对象。
+			axios.isCancel(error) 的作用就是判断这个错误对象的类型，如果是由请求取消导致的错误，则返回 true，否则返回 false。
+		    console.log('打印cancelToken.cancel('xxx')传入来的值', error.message);
+	    */
+    if (axios.isCancel(error)) {
+      ElMessage.error(error.message || "请求被取消"); // 显示错误消息
     } else {
-      if (error.response.data) ElMessage.error(error.response.statusText);
-      else ElMessage.error("接口路径找不到");
+      // 书写else是为了return Promise.reject(error);在抛一次错
+      const describeForNameMap = [
+        [
+          () => error.message.indexOf("timeout") !== -1,
+          () => (errorMessage = "网络超时 🤖"),
+        ],
+        [
+          () => error.message === "Network Error",
+          () => (errorMessage = "网络连接错误 🤪"),
+        ],
+        [
+          () => error.response?.data,
+          () => (errorMessage = error.response.statusText),
+        ],
+      ];
+      // 获取符合条件的子数组
+      const getDescribe = describeForNameMap.find((item) => item[0]());
+      // 执行子数组中的函数
+      getDescribe && getDescribe[1]();
+      ElMessage.error(errorMessage); // 显示错误消息
+      // 抛错请求异常上面的、这里的错误信息是英文的
+      return Promise.reject(error);
     }
-    return Promise.reject(error);
   }
 );
 
