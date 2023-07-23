@@ -6,6 +6,7 @@
       textColor: 'rgba(180, 180, 180, 0.4)',
     }"
   >
+    <el-button @click="handClick">首页</el-button>
     <!-- 庆祝彩蛋 -->
     <zk-confetti-canvas />
 
@@ -69,10 +70,14 @@ const getCurveData = () => {
     chartLineData.title.text = "折线图模拟接口数据";
     Flag.value = true;
     setTimeout(() => {
-      showConfetti(1, { x: 0.9, y: 0.6 });
+      showConfetti(4, { x: 0.9, y: 0.6 });
     }, 1000);
   }, 1000);
 };
+
+function handClick() {
+  console.log("点击了首页");
+}
 
 onMounted(() => {
   getCurveData();

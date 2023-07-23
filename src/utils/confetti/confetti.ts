@@ -1,14 +1,16 @@
+import { nextTick } from "vue";
 interface Origin {
   x?: number;
   y?: number;
 }
+// 注释需要放在函数上面，不然调用鼠标放上去没提示
 /**
  * 显示彩屑效果
  * @param { number } type - 彩屑效果类型
- *   1: 默认屏幕中间喷射
- *   2: 满屏随机炸裂
- *   3: 屏幕中间随机位置喷射
- *   4: 屏幕两端向内喷射
+ * @type 1: 默认屏幕中间喷射
+ * @type 2: 满屏随机炸裂
+ * @type 3: 屏幕中间随机位置喷射
+ * @type 4: 屏幕两端向内喷射
  * @param { Origin } origin - 彩屑的原点坐标
  *   x: x轴位置，默认值为0.5
  *   y: y轴位置，默认值为0.7
@@ -32,9 +34,9 @@ export async function showConfetti(
     import("./confettiIndex").then((confettiIndex) => {
       confettiIndex.getUserDescribe(type, myConfetti, origin);
     });
-    setTimeout(() => {
+    nextTick(() => {
       canvasEle.style.zIndex = "-1";
       myConfetti.reset();
-    }, 3000);
+    });
   });
 }
