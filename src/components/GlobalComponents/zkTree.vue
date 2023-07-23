@@ -259,11 +259,11 @@ defineExpose({
   }
   // 横线
   ::v-deep(.el-tree-node::after) {
+    position: absolute;
     top: 11px;
     left: -3px;
     width: 22px;
     height: 20px;
-    position: absolute;
     border-width: 1px;
     content: "";
     border-top: 1px dashed #ccc;

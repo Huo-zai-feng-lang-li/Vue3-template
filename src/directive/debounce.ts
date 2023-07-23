@@ -1,8 +1,9 @@
 /**
- * @description 防抖指令
+ * @description 防抖指令 自定义指令适用于简单的场景，复杂的场景建议使用utils中的防抖函数 src\directive\debounce.ts
  * @param { function } value - 回调函数
  * @description 按钮防抖指令，可自行扩展至input,
- * 什么是防抖：在一定时间间隔内，只执行最后一次触发的函数。当事件频繁触发时，防抖会取消之前的触发操作，只执行最后一次触发的操作。与节流不同的是，防抖只会执行最后一次触发的操作。节流则一定时间间隔内，只执行一次函数。
+ * 什么是防抖：在一定时间间隔内，只执行最后一次触发的函数。当事件频繁触发时，防抖会取消之前的触发操作，只执行最后一次触发的操作。
+ * 与节流不同的是，防抖只会执行最后一次触发的操作。节流则一定时间间隔内，只执行一次函数。
  * @example <el-button type="primary" v-debounce="debounceClick">防抖按钮 (0.5秒后执行)</el-button>
             <el-input
                 v-debounce="debounceInput"

@@ -82,7 +82,6 @@ onMounted(() => {
 <style lang="scss" scoped>
 .container {
   padding: 10px;
-  background-color: pink;
   box-sizing: border-box;
 }
 </style>

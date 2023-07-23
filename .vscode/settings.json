@@ -13,5 +13,11 @@
   "editor.tabSize": 2,
   // stylelint校验的文件格式
   "stylelint.validate": ["css", "less", "scss"],
-  "cSpell.words": ["axiosrequestconfig", "pinia"]
+  "cSpell.words": ["axiosrequestconfig", "pinia"],
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
