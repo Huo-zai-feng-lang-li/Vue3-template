@@ -1,6 +1,7 @@
 ## 🌈 项目说明书
 
 > Vue3 + Ts + Vite + pnpm 项目中集成 —— eslint 、prettier、stylelint、husky、router、vuex、axios
+[![npm](https://img.shields.io/badge/npm-v1.5.2-2081C1)](https://www.npmjs.com/package/vue-web-screen-shot) [![yarn](https://img.shields.io/badge/yarn-v1.5.2-F37E42)](https://yarnpkg.com/package/vue-web-screen-shot) [![github](https://img.shields.io/badge/GitHub-depositary-9A9A9A)](https://github.com/likaia/screen-shot) [![](https://img.shields.io/github/issues/likaia/screen-shot)](https://github.com/likaia/screen-shot/issues) [![](https://img.shields.io/github/forks/likaia/screen-shot)](https://github.com/likaia/screen-shot/network/members) [![](https://img.shields.io/github/stars/likaia/screen-shot)](https://github.com/likaia/screen-shot/stargazers)
 
 > 这是一个使用 Vue3 和 TypeScript 作为主要技术栈，使用 Vite 作为构建工具，使用 pnpm 作为包管理工具的项目。该项目集成了 eslint、prettier、stylelint、husky、router、vuex 和 axios。
 
