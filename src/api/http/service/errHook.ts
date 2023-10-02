@@ -42,6 +42,7 @@ const onResponse = (response: AxiosResponse<any, any>) => {
 
 // 请求失败
 const onError = (error: any) => {
+  hideLoading()();
   /* 
         axios.isCancel(error) 是 Axios 库中的一个方法，用于判断一个错误对象是否是由于请求取消导致的。
         当使用 axios.CancelToken 取消请求时，会抛出一个带有一个 message 属性的错误对象。

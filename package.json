@@ -9,6 +9,7 @@
     "pnpm:": "pnpm install && npm run dev",
     "dev": "concurrently \"vite --open\" \"npx husky install\"",
     "CheckAll": "concurrently \"npm run ESlint:check\" \"npm run Prettier:check\" \"npm run StyleLint:check\"",
+    "deploy": "bash deploy.sh",
     "test": "vite --mode test",
     "prod": "vite --mode production",
     "build": "\"npm run CheckAll\" &&  vite build",
