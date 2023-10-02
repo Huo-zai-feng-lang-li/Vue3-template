@@ -71,13 +71,15 @@ export function getUserDescribe(type: number, myConfetti: any, origin: Origin) {
     [
       () => type === 4,
       () => {
-        const duration = performance.now() + 1 * 1000;
-        const confettiColors = ["#6967fe", "#85e9f4", "#e16984"];
+        const duration = performance.now() + 3 * 1000;
+        const confettiColors = ["#6967fe", "#9341fd", "#e16984"];
         void (function frame() {
           myConfetti({
             particleCount: confettiColors.length,
-            angle: 60,
-            spread: 55,
+            // 发射角度
+            angle: 40,
+            // 发射范围
+            spread: 40,
             origin: { x: 0 },
             colors: confettiColors,
           });

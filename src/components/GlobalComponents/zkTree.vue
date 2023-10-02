@@ -224,8 +224,6 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
-@import url("@/myIcon/iconfont.css");
-
 .tree-container {
   overflow-y: auto;
   width: 20%;

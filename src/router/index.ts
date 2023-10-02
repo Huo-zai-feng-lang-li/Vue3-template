@@ -50,16 +50,18 @@ export const routes: Array<RouteRecordRaw> = [
     name: "home",
     meta: {
       loading: true,
+      keepAlive: true,
     },
     component: () => import("@/views/home-page/home-page.vue"),
   },
   {
-    path: "/about",
-    name: "about",
+    path: "/login",
+    name: "login",
     meta: {
       loading: true,
+      keepAlive: true,
     },
-    component: () => import("@/views/about-page/about-page.vue"),
+    component: () => import("@/views/login/login.vue"),
   },
   pinia,
   {

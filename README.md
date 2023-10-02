@@ -1,18 +1,53 @@
 ## 🌈 项目说明书
 
-> Vue3 + Ts + Vite + pnpm 项目中集成 —— eslint 、prettier、stylelint、husky、router、pinia、axios
+> 这是一个使用 Vue3 和 TypeScript 作为主要技术栈，使用 Vite 作为构建工具，使用 pnpm 作为包管理工具的项目。
+> 该项目集成了 eslint、prettier、stylelint、husky、router、pinia 和 超级 axios、动态路由、组件、及一系列常用工具函数。
 
 > [![npm](https://img.shields.io/badge/npm-v9.6.6-2081C1)](http://npm.p2hp.com/) [![pnpm](https://img.shields.io/badge/pnpm-v8.5.1-F37E42)](https://pnpm.io/zh) [![node](https://img.shields.io/badge/node-v20.2.0-416634)](https://nodejs.p2hp.com/)
 
-> 这是一个使用 Vue3 和 TypeScript 作为主要技术栈，使用 Vite 作为构建工具，使用 pnpm 作为包管理工具的项目。该项目集成了 eslint、prettier、stylelint、husky、router、pinia 和 axios。
+```bash
+#  axios 包含以下功能：
+#   1. 取消重复请求：完全相同的接口在上一个pending状态时，自动取消下一个请求
+# 	2. 请求失败自动重试： 接口请求后台异常时候， 自动重新发起多次请求， 直到达到所设次数
+# 	3. 请求接口数据缓存： 接口在设定时间内不会向后台获取数据， 而是直接拿会话存储本地缓存，（关闭当前进程也就是页签就会自动清除）
+# 	4. 父页面单独取消当前请求
+# 	5. 父页面取消所有请求
+#   6. 请求进度条
+
+#  功能函数指令 包含以下功能：
+#   1.防篡改水印
+#   2.防抖
+#   3.节流
+#   4.深拷贝
+#   5.复制
+#   6.拖拽
+#   7.时间格式化
+#   8.长按
+#   9.判断奇偶
+#   10.判断是否是空对象
+#   11.判断是否是空数组
+#   等等...
+
+#  脚手架 包含以下功能：
+#  1.支持自动导入 Api
+#  2.支持全局自动注册组件
+#  3.全局自动注册指令
+#  4.全局返回顶部
+#  5.全局loading 加载进度条 （路由跳转及发起请求是不同定制的loading）
+#  等等...
+```
 
 #### 💒 代码仓库
 
 ```base
+# 国内
 https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template.git
+
+# 国外
+https://github.com/huozaifenlangli/Vue3-template.git
 ```
 
-#### [](https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template)
+####
 
 #### ⚡ 使用说明
 
@@ -87,7 +122,7 @@ pnpm run build
   - **3-2** `assets`：这个目录包含项目中使用的图像、样式表和其他资源。
   - **3-3** `components`：这个目录包含可重用的 Vue.js 组件，例如按钮、输入框等。
   - **3-4** `router`：这个目录包含 Vue.js 路由器的配置文件。
-  - **3-5** `store`：这个目录包含 Vuex 状态管理器的配置文件。
+  - **3-5** `store`：这个目录包含 pinia 状态管理器的配置文件。
   - **3-6** `utils`：这个目录包含与项目中的其他文件共享的通用 JavaScript 工具函数。
   - **3-7** `views`：这个目录包含项目中的视图文件，例如登录页面、主页等。
   - **3-8** `App.vue`：这个文件是 Vue.js 应用程序的根组件。
@@ -122,7 +157,7 @@ pnpm run build
 - stylelint：CSS 代码检查工具，用于检查 CSS 代码风格和语法错误。
 - husky：一个 Git 钩子管理工具，用于在 Git 操作前或后执行一些自定义的任务。
 - router：Vue3 官方提供的路由管理工具，用于实现页面之间的跳转和参数传递。
-- vuex：Vue3 官方提供的状态管理工具，用于管理全局状态和数据流。
+- pinia：Vue3 官方提供的状态管理工具，用于管理全局状态和数据流。
 - axios：一款基于 Promise 的 HTTP 库，用于发送 AJAX 请求和处理响应数据。
 
 #### 💕 特别感谢

@@ -35,6 +35,8 @@ module.exports = {
     "src/views/errors-view/not-found.vue",
     // myIcon
     "src/myIcon/iconfont.css",
+    "src/assets/css/global.scss",
+    "src/assets/css/index.scss",
   ],
   rules: {
     "selector-class-pattern": null, // 类名格式

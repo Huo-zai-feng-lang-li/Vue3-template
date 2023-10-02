@@ -9,6 +9,17 @@ module.exports = {
   globals: {
     // 以下是全局变量 eslint 不会报'NodeJS' is not defined.eslint （no-undef）
     NodeJS: "readonly",
+    RouteItem: "readonly",
+    RouteToFrom: "readonly",
+    RefType: "readonly",
+    HtmlType: "readonly",
+    ChilType: "readonly",
+    EmptyArrayType: "readonly",
+    EmptyObjectType: "readonly",
+    SelectOptionType: "readonly",
+    TableType: "readonly",
+    EncryptionPlugin: "readonly",
+    $encryptionPlugin: "readonly",
   },
   extends: [
     "eslint:recommended",
@@ -30,8 +41,10 @@ module.exports = {
     // http://eslint.cn/docs/rules/
     // https://eslint.vuejs.org/rules/
     // https://typescript-eslint.io/rules/no-unused-vars/
+    //  关闭 prettier
+    "prettier/prettier": "off",
     // 圈复杂度
-    complexity: ["error", 5],
+    complexity: ["error", 10],
     // 表示在逗号后面必须有空格，而在逗号前面不能有空格
     "comma-spacing": ["error", { before: false, after: true }],
     // 关闭禁止使用 @ts-ignore 的规则
@@ -120,8 +133,6 @@ module.exports = {
     "no-unreachable": "off",
     // 关闭模板中只包含一个根元素的规则
     "no-multiple-template-root": "off",
-    // 检测未使用变量的规则，error 代表检测出未使用变量时会抛出错误
-    "no-unused-vars": "error",
     // 关闭 v-model 指令中的参数规则
     "no-v-model-argument": "off",
     // 关闭在 switch 语句中缺少 default 分支的规则
@@ -129,6 +140,8 @@ module.exports = {
     // 禁用 console 输出
     // "no-console": "error",
     // 关闭禁止重复声明变量的规则
-    "no-redeclare": "off",
+    "no-redeclare": "error",
+    //  关闭禁止使用未定义的变量的规则
+    "no-unused-vars": "off",
   },
 };

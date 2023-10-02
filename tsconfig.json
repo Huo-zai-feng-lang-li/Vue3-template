@@ -59,7 +59,8 @@
     "src/**/*.vue",
     "src/**/*.json",
     "src/**/*.js",
-    "src/**/*.mjs"
+    "src/**/*.mjs",
+    "global.d.ts"
   ],
   // exclude: 指定要从编译中排除的文件
   "exclude": ["node_modules", "dist"],

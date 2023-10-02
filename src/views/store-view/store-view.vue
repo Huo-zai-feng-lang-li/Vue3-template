@@ -1,8 +1,4 @@
 <template>
-  <!-- about-page 测试 
-    @state：修改、批量修改、重置
-    @getters：计算属性
-   -->
   <div class="wrap">
     <h1>state</h1>
     <p>姓名：{{ name }}</p>
@@ -11,7 +7,7 @@
     <button @click="changeName">修改姓名</button>
     <button @click="reset">重置store</button>
     <button @click="patchStore">批量修改数据</button>
-
+    <br />
     <h1>getters</h1>
     <!-- 当我们点击批量修改数据按钮时，页面上的新年龄字段也会跟着变化。计算属性 -->
     <p>新年龄：{{ store.getAddAge(100) }}</p>
@@ -19,26 +15,19 @@
 
     <h1>actions</h1>
     <button @click="saveName">调用actions</button>
+    <button @click="onGetter">调用getter</button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useUsersStore } from "@/store/user";
-import { storeToRefs } from "pinia";
-// import { storeToRefs } from "pinia";
-// import { useRouter } from "vue-router";
 const store = useUsersStore();
+import { storeToRefs } from "pinia";
 const { name, age, sex } = storeToRefs(store);
 
 // 修改名字
 const changeName = () => {
   store.name = "卡拉米";
-  console.log(store);
-};
-
-// 直接调用store的$reset()方法即可重置store
-const reset = () => {
-  store.$reset();
 };
 
 // 批量修改数据
@@ -53,6 +42,16 @@ const patchStore = () => {
 // 调用actions
 const saveName = () => {
   store.saveName("小帅");
+};
+
+// 调用getter getAddAge
+const onGetter = () => {
+  console.log(store.getAddAge(100));
+};
+
+// 直接调用store的$reset()方法即可重置store
+const reset = () => {
+  store.$reset();
 };
 </script>
 

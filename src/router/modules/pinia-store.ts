@@ -4,6 +4,7 @@ export default {
   name: "store",
   meta: {
     loading: true,
+    keepAlive: true,
   },
   component: () => import("@/views/store-view/store-view.vue"),
 };
