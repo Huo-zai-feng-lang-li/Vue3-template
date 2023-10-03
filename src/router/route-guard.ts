@@ -75,7 +75,7 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
           meta: {
             loading: true,
             keepAlive: true,
-            isRelease: true,
+            // isRelease: true,
           },
           component: () => import("@/views/menu/index.vue"),
         },

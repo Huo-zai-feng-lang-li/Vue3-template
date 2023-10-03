@@ -35,8 +35,8 @@ dependencies:
     specifier: ^1.0.7
     version: 1.0.7
   vue3-loading-plug:
-    specifier: ^1.2.6
-    version: 1.2.6
+    specifier: ^1.2.7
+    version: 1.2.7
 
 devDependencies:
   '@types/node':
@@ -3896,8 +3896,8 @@ packages:
       crypto-js: 4.1.1
     dev: false
 
-  /vue3-loading-plug@1.2.6:
-    resolution: {integrity: sha512-kZG9dh1UV0LECf9nqHWx+adXZbYEOLb00ccVrrAQJwhW7CGbFUs7LiacUGldPXu6qGz81nepW8DejrWBKQhxMA==}
+  /vue3-loading-plug@1.2.7:
+    resolution: {integrity: sha512-SW5/WeQAfZZMDHk3FWNdDFoSpqNDddLR8+n5BQjEFR5WdfF4YiFRjG88bHQapLf1iGAddJbptBCva6nknwtBqg==}
     dev: false
 
   /vue@3.3.4:
