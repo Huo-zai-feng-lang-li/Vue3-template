@@ -12,14 +12,12 @@ declare module "@vue/runtime-core" {
     Backtop: typeof import("./../components/MyBackTop/backtop.vue")["default"];
     ElBacktop: typeof import("element-plus/es")["ElBacktop"];
     ElButton: typeof import("element-plus/es")["ElButton"];
-    ElDialog: typeof import("element-plus/es")["ElDialog"];
-    ElIcon: typeof import("element-plus/es")["ElIcon"];
-    ElMenu: typeof import("element-plus/es")["ElMenu"];
-    ElMenuItem: typeof import("element-plus/es")["ElMenuItem"];
+    ElConfigProvider: typeof import("element-plus/es")["ElConfigProvider"];
+    ElPagination: typeof import("element-plus/es")["ElPagination"];
+    ElRadioButton: typeof import("element-plus/es")["ElRadioButton"];
+    ElRadioGroup: typeof import("element-plus/es")["ElRadioGroup"];
     ElSkeleton: typeof import("element-plus/es")["ElSkeleton"];
-    ElSubMenu: typeof import("element-plus/es")["ElSubMenu"];
-    ElTooltip: typeof import("element-plus/es")["ElTooltip"];
-    ElTree: typeof import("element-plus/es")["ElTree"];
+    ElSwitch: typeof import("element-plus/es")["ElSwitch"];
     RouterLink: typeof import("vue-router")["RouterLink"];
     RouterView: typeof import("vue-router")["RouterView"];
     ZkChart: typeof import("./../components/GlobalComponents/zkChart.vue")["default"];
@@ -27,8 +25,5 @@ declare module "@vue/runtime-core" {
     ZkDialog: typeof import("./../components/GlobalComponents/zkDialog.vue")["default"];
     ZkTooltip: typeof import("./../components/GlobalComponents/zkTooltip.vue")["default"];
     ZkTree: typeof import("./../components/GlobalComponents/zkTree.vue")["default"];
-  }
-  export interface ComponentCustomProperties {
-    vLoading: typeof import("element-plus/es")["ElLoadingDirective"];
   }
 }

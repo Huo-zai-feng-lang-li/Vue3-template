@@ -1,9 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 
-// 使用中文语言包并引入element-plus全局样式
-import ElementPlus from "element-plus";
-import zhCn from "element-plus/es/locale/lang/zh-cn";
+// 虽使用了按需导入，还需要将css 引入
 import "element-plus/dist/index.css";
 
 import "./assets/css/index.scss"; // 全局样式文件
@@ -34,9 +32,6 @@ import piniaPersist from "pinia-plugin-persistedstate";
 const app = createApp(App);
 
 app
-  .use(ElementPlus, {
-    locale: zhCn,
-  })
   .use(router)
   .use(componentRegister)
   .use(MyBackTop)
