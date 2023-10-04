@@ -24,4 +24,8 @@ for (let i = 0; i < 200; i++) items.value.push(`Item ${i + 1}`);
 import { scrollKey } from "vue3-progress-scroll";
 inject(scrollKey)?.$openScroll();
 inject(scrollKey)?.$closeScroll();
+
+onMounted(() => {
+  ElMessage.success("请您~尝试滚动页面看看");
+});
 </script>
