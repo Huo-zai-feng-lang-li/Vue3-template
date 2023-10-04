@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 // 工具插件
-import { debounceRest, isEvenOrOdd } from "vue3-directive-tools";
+import { debounceRest, isEvenOrOdd, isType } from "vue3-directive-tools";
 // 加密插件
 const encryptionPlugin = inject("encryptionPlugin") as EncryptionPlugin;
 // 彩蛋函数
@@ -91,6 +91,12 @@ const handClick = debounceRest((varStr: string) => {
 
 onMounted(() => {
   getCurveData();
+  console.log("🤺🤺 function 🚀 ==>:", typeof Symbol);
+  console.log("🤺🤺 function 🚀 ==>:", isType(Symbol));
+  console.log("🤺🤺 symbol 🚀 ==>:", isType(Symbol("Foo")));
+  console.log("🤺🤺 object 🚀 ==>:", isType({ name: "张坤", sex: "男" }));
+  console.log("🤺🤺 string 🚀 ==>:", isType("666"));
+  console.log("🤺🤺 string 🚀 ==>:", isType("777"));
   console.log("🤺🤺  🚀 ==>:", refChart.value?.chartsInstance());
 });
 </script>
