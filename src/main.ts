@@ -7,14 +7,15 @@ import "element-plus/dist/index.css";
 import "./assets/css/index.scss"; // 全局样式文件
 import componentRegister from "~/GlobalComponents/componentRegister"; // 引入全局组件
 
-// loading、加密插件、自定义指令、返回顶部组件
+// loading、加密插件、自定义指令、返回顶部组件、滚动进度条
 import Loading from "vue3-loading-plug";
 import EncryptionPlugin from "vue3-encryption-plugin";
 import { directives } from "vue3-directive-tools";
 import MyBackTop from "~/MyBackTop/index";
+import { useScroll } from "vue3-progress-scroll";
+
 // 引入动态路由配置文件
 import router from "./router/route-guard";
-
 import { createPinia } from "pinia"; // 引入 pinia
 import SecureLS from "secure-ls"; // 加密 pinia
 // 创建 SecureLS 实例
@@ -40,6 +41,7 @@ app
   .use(directives)
   .use(router)
   .use(pinia)
+  .use(useScroll)
   .mount("#app");
 pinia.use(piniaPersist);
 // 在 Pinia 中注册插件

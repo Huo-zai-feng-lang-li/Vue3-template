@@ -39,6 +39,9 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 // pinia路由
 import pinia from "./modules/pinia-store";
+// css 滚动进度条
+import scrollBar from "./modules/css-scroll";
+
 // 默认静态路由，不需要权限的路由
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -63,6 +66,7 @@ export const routes: Array<RouteRecordRaw> = [
     },
     component: () => import("@/views/login/login.vue"),
   },
+  scrollBar,
   pinia,
   {
     // vue-router4动态加载的模式下，当我们在当前页面刷新浏览器时，会出现一个警告

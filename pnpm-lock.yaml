@@ -37,6 +37,9 @@ dependencies:
   vue3-loading-plug:
     specifier: ^1.2.7
     version: 1.2.7
+  vue3-progress-scroll:
+    specifier: ^1.1.2
+    version: 1.1.2
 
 devDependencies:
   '@types/node':
@@ -3898,6 +3901,12 @@ packages:
 
   /vue3-loading-plug@1.2.7:
     resolution: {integrity: sha512-SW5/WeQAfZZMDHk3FWNdDFoSpqNDddLR8+n5BQjEFR5WdfF4YiFRjG88bHQapLf1iGAddJbptBCva6nknwtBqg==}
+    dev: false
+
+  /vue3-progress-scroll@1.1.2:
+    resolution: {integrity: sha512-85OYHiyklJOc/xtIy+mUg3w86481AcrS58bDNWT/aqvy3Mg0xsfkh36t/cRa/9UJ8JRbG2vHiu/ZNKatAZg0ag==}
+    dependencies:
+      vue: 3.3.4
     dev: false
 
   /vue@3.3.4:

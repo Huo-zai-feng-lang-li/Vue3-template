@@ -20,6 +20,7 @@ module.exports = {
     TableType: "readonly",
     EncryptionPlugin: "readonly",
     $encryptionPlugin: "readonly",
+    defineOptions: "readonly",
   },
   extends: [
     "eslint:recommended",

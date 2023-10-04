@@ -43,7 +43,7 @@
 
 /* 字体大小全局样式
 ------------------------------- */
-@for $i from 10 through 32 {
+@for $i from 10 through 35 {
   .font#{$i} {
     font-size: #{$i}px !important;
   }
