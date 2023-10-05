@@ -29,8 +29,8 @@ dependencies:
     specifier: ^4.1.6
     version: 4.1.6(vue@3.3.4)
   vue3-directive-tools:
-    specifier: ^1.0.7
-    version: 1.0.7
+    specifier: ^1.0.9
+    version: 1.0.9
   vue3-encryption-plugin:
     specifier: ^1.0.7
     version: 1.0.7
@@ -3888,8 +3888,8 @@ packages:
       typescript: 4.9.3
     dev: true
 
-  /vue3-directive-tools@1.0.7:
-    resolution: {integrity: sha512-FH9Y7NaqccLSjmdKbMx6ENC+qTAlAlG7iFNpGcahBVz2G+Yy2bIsOk5l9UuAvweSdg4ya2sltisY5G3Iutdu/Q==}
+  /vue3-directive-tools@1.0.9:
+    resolution: {integrity: sha512-R/ftDnja0wWtRAiVoZ8Sg5FqX65TKoHY4Ywvn9bu4y6jTJ3qJV7KZpfhBhmtmyYx6IhtpOSDKZFhPvFCMp90dg==}
     engines: {node: '>=16.0.0', npm: '>= 7.0.0'}
     dev: false
 

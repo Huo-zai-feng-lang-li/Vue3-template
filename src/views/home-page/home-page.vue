@@ -7,7 +7,9 @@
     }"
   >
     测试keepAline:<input type="text" />
-    <el-button @click="handClick('我是参数')">首页</el-button>
+    <el-button @click="handClick('我是参数')" type="success" class="ml10"
+      >点我测试tools工具函数</el-button
+    >
     <!-- 庆祝彩蛋 -->
     <zk-confetti-canvas />
 
@@ -18,14 +20,14 @@
       :myStyle="{ width: '100%', height: '280px' }"
     ></zk-chart>
 
-    <!-- 接口例子 -->
+    <!-- 模拟接口 例子 -->
     <zk-chart
       ref="refChart"
       :myOption="chartLineData"
       :myStyle="{ width: '100%', height: '280px' }"
       v-if="Flag"
     ></zk-chart>
-    <!-- 骨架屏 element-plus -->
+    <!-- 骨架屏   -->
     <el-skeleton
       v-else
       :rows="5"
@@ -42,13 +44,14 @@ import { debounceRest, isEvenOrOdd, isType } from "vue3-directive-tools";
 const encryptionPlugin = inject("encryptionPlugin") as EncryptionPlugin;
 // 彩蛋函数
 import { showConfetti } from "@/utils/confetti/confetti";
+
 // 模拟接口、静态ECharts数据
 import { chartLineData, chartLineData2 } from "./part-components/chart-line";
 //接口是否请求完（ 等待接口请求完毕在传值到子组件）防止白屏
 const Flag = ref<boolean>(false);
-let refChart = ref();
+
 const getCurveData = () => {
-  // 接口 例子
+  // 正式接口
   // service({
   //   url: "/api/curve",
   //   method: "get",
@@ -58,7 +61,7 @@ const getCurveData = () => {
   //   Flag.value = true;
   // });
 
-  // 静态例子模拟接口赋值操作
+  // 模拟接口 一秒钟后直接赋值给ECharts
   setTimeout(() => {
     chartLineData.xAxis.data = [
       "Mon",
@@ -69,9 +72,7 @@ const getCurveData = () => {
       "Sat",
       "Sun",
     ];
-
     chartLineData.series[0].data = [820, 932, 901, 934, 1290, 1330, 1320];
-
     chartLineData.title.text = "折线图模拟接口数据";
     Flag.value = true;
     setTimeout(() => {
@@ -81,24 +82,16 @@ const getCurveData = () => {
 };
 
 const handClick = debounceRest((varStr: string) => {
-  const encryptedData = encryptionPlugin.encryptData("Hello World@66666666");
-  const decryptedData = encryptionPlugin.decryptData(encryptedData);
+  const encryptedData = encryptionPlugin.encryptData("1334132303@qq.com"); // 加密
+  const decryptedData = encryptionPlugin.decryptData(encryptedData); // 解密
   console.log("加密 🚀 ==>:", encryptedData);
   console.log("解密 🚀 ==>:", decryptedData);
   console.log("防抖 🚀 ==>:", varStr);
   console.log("判断奇数偶数 🚀 ==>:", isEvenOrOdd(-0.3));
+  console.log("判断类型 🚀 ==>:", isType({}));
 }, 250);
 
-onMounted(() => {
-  getCurveData();
-  console.log("🤺🤺 function 🚀 ==>:", typeof Symbol);
-  console.log("🤺🤺 function 🚀 ==>:", isType(Symbol));
-  console.log("🤺🤺 symbol 🚀 ==>:", isType(Symbol("Foo")));
-  console.log("🤺🤺 object 🚀 ==>:", isType({ name: "张坤", sex: "男" }));
-  console.log("🤺🤺 string 🚀 ==>:", isType("666"));
-  console.log("🤺🤺 string 🚀 ==>:", isType("777"));
-  console.log("🤺🤺  🚀 ==>:", refChart.value?.chartsInstance());
-});
+onMounted(() => getCurveData());
 </script>
 
 <style scoped lang="scss">
