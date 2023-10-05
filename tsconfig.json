@@ -1,73 +1,73 @@
 {
-  "compilerOptions": {
-    "target": "ESNext", // 指定ECMAScript目标版本
-    "useDefineForClassFields": true, // 是否校验TypeScript数据类型
-    "module": "ESNext", // 生成代码的模板标准
-    "removeComments": true, // 是否删除注释
-    "outDir": "./dist", // 指定输出目录
-    "strict": true, // 启用所有严格类型检查选项
-    "jsx": "preserve", // 指定JSX代码生成
-    "moduleResolution": "node", // 指定模块解析策略
-    "esModuleInterop": true, // 允许从CommonJS模块导入默认导出
-    "sourceMap": true, // 生成相应的.map文件
-    "resolveJsonModule": true, // 允许导入.json文件
-    "isolatedModules": true, // 仅对每个文件进行一次转换
-    "lib": ["ESNext", "DOM"], // 指定要包含在编译中的库文件
-    "skipLibCheck": true, // 跳过对声明文件的检查
-    "noEmit": true, // 不生成输出文件
-    "baseUrl": ".", // 解析非相对模块的基地址，默认是当前目录
-    // 路径别名 @ #
-    "paths": {
-      "@/*": ["./src/*"],
-      "~/*": ["./src/components/*"],
-      "-/*": ["./src/api/*"]
-    },
-    "plugins": [
-      //配置 unplugin-auto-import 和 unplugin-vue-components
-      {
-        "name": "unplugin-auto-import",
-        "options": {
-          "imports": ["element-plus", "vue", "vue-router", "pinia", "echarts"],
-          "dts": "./src/types/auto-imports.d.ts"
-        }
-      },
-      {
-        "name": "unplugin-vue-components",
-        "options": {
-          "dts": "./src/types/components.d.ts",
-          "include": ["**/*.vue", "**/*.md"],
-          "resolvers": ["element-plus", "pinia", "vue", "vue-router", "echarts"]
-        }
-      }
-    ],
-    // 指定要包含的类型声明文件
-    "types": [
-      "element-plus/global",
-      "vite/client",
-      "vue",
-      "vue-router",
-      "@types/node",
-      "pinia",
-      "echarts"
-    ]
-  },
-  //  include: 指定要包含在编译中的文件
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "src/**/*.json",
-    "src/**/*.js",
-    "src/**/*.mjs",
-    "global.d.ts"
-  ],
-  // exclude: 指定要从编译中排除的文件
-  "exclude": ["node_modules", "dist"],
-  // extends: 指定要继承的配置文件
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+	"compilerOptions": {
+		"target": "ESNext", // 指定ECMAScript目标版本
+		"useDefineForClassFields": true, // 是否校验TypeScript数据类型
+		"module": "ESNext", // 生成代码的模板标准
+		"removeComments": true, // 是否删除注释
+		"outDir": "./dist", // 指定输出目录
+		"strict": true, // 启用所有严格类型检查选项
+		"jsx": "preserve", // 指定JSX代码生成
+		"moduleResolution": "node", // 指定模块解析策略
+		"esModuleInterop": true, // 允许从CommonJS模块导入默认导出
+		"sourceMap": true, // 生成相应的.map文件
+		"resolveJsonModule": true, // 允许导入.json文件
+		"isolatedModules": true, // 仅对每个文件进行一次转换
+		"lib": ["ESNext", "DOM"], // 指定要包含在编译中的库文件
+		"skipLibCheck": true, // 跳过对声明文件的检查
+		"noEmit": true, // 不生成输出文件
+		"baseUrl": ".", // 解析非相对模块的基地址，默认是当前目录
+		// 路径别名 @ #
+		"paths": {
+			"@/*": ["./src/*"],
+			"~/*": ["./src/components/*"],
+			"-/*": ["./src/api/*"]
+		},
+		"plugins": [
+			//配置 unplugin-auto-import 和 unplugin-vue-components
+			{
+				"name": "unplugin-auto-import",
+				"options": {
+					"imports": ["element-plus", "vue", "vue-router", "pinia", "echarts"],
+					"dts": "./src/types/auto-imports.d.ts"
+				}
+			},
+			{
+				"name": "unplugin-vue-components",
+				"options": {
+					"dts": "./src/types/components.d.ts",
+					"include": ["**/*.vue", "**/*.md"],
+					"resolvers": ["element-plus", "pinia", "vue", "vue-router", "echarts"]
+				}
+			}
+		],
+		// 指定要包含的类型声明文件
+		"types": [
+			"element-plus/global",
+			"vite/client",
+			"vue",
+			"vue-router",
+			"@types/node",
+			"pinia",
+			"echarts"
+		]
+	},
+	//  include: 指定要包含在编译中的文件
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.d.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue",
+		"src/**/*.json",
+		"src/**/*.js",
+		"src/**/*.mjs",
+		"global.d.ts"
+	],
+	// exclude: 指定要从编译中排除的文件
+	"exclude": ["node_modules", "dist"],
+	// extends: 指定要继承的配置文件
+	"references": [
+		{
+			"path": "./tsconfig.node.json"
+		}
+	]
 }
