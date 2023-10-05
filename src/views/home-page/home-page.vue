@@ -86,7 +86,7 @@ const handClick = debounceRest((varStr: string) => {
   const decryptedData = encryptionPlugin.decryptData(encryptedData); // 解密
   console.log("加密 🚀 ==>:", encryptedData);
   console.log("解密 🚀 ==>:", decryptedData);
-  console.log("防抖 🚀 ==>:", varStr);
+  console.log("我是防抖payload参数 🚀 ==>:", varStr);
   console.log("判断奇数偶数 🚀 ==>:", isEvenOrOdd(-0.3));
   console.log("判断类型 🚀 ==>:", isType({}));
 }, 250);
