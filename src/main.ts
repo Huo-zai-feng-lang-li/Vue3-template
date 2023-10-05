@@ -11,8 +11,8 @@ import componentRegister from "~/GlobalComponents/componentRegister"; // 引入�
 import Loading from "vue3-loading-plug";
 import EncryptionPlugin from "vue3-encryption-plugin";
 import { directives } from "vue3-directive-tools";
-import MyBackTop from "~/MyBackTop/index";
 import { useScroll } from "vue3-progress-scroll";
+import MyBackTop from "~/MyBackTop/index";
 
 // 引入动态路由配置文件
 import router from "./router/route-guard";
@@ -33,7 +33,6 @@ import piniaPersist from "pinia-plugin-persistedstate";
 const app = createApp(App);
 
 app
-  .use(router)
   .use(componentRegister)
   .use(MyBackTop)
   .use(EncryptionPlugin)
