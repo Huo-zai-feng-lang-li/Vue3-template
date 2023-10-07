@@ -5,7 +5,7 @@ set -e  #有错误抛出错误
 
 # 检查并删除 dist 目录
 if [ -d "dist" ]; then
-  echo "dist目录存在,大哥给你删除了- dist文件"
+  echo "dist目录存在,自动帮您删除了- dist文件"
   rm -rf dist
 fi
 
