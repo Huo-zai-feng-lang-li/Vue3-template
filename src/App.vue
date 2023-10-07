@@ -2,11 +2,11 @@
   <div style="position: relative; z-index: 999; margin-top: 5px">
     <router-link class="link" to="/">首页 </router-link>
     <router-link class="link" to="/login">登录页测试axios </router-link>
-    <router-link class="link" to="/test1">动态路由1 </router-link>
+    <router-link class="link" to="/test1">(动态路由1-🔒) </router-link>
     <router-link class="link" to="/test2">(动态路由2-🔒)</router-link>
     <router-link class="link" to="/test3">(动态路由3-🔒)</router-link>
     <router-link class="link" to="/store">store </router-link>
-    <router-link class="link" to="/menu">(多级联动菜单-🔒)</router-link>
+    <router-link class="link" to="/menu">多级联动菜单</router-link>
     <router-link class="link" to="/scroll">css 滚动进度展示</router-link>
   </div>
 

@@ -46,6 +46,7 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
           meta: {
             loading: true,
             keepAlive: true,
+            isRelease: true,
           },
           component: () => import("@/views/dynamic-routing/index-test1.vue"),
         },
