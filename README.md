@@ -46,6 +46,10 @@ https://huozaifenlangli.github.io/Vue3-template/
 
 [@CSDN-从零搭建 Vue3 + VIte + Ts 项目 —— 并集成 eslint 、prettier、stylelint、husky、lint-staged、pinia、axios、loding、动态路由…](https://blog.csdn.net/m0_57904695/article/details/129950163?spm=1001.2014.3001.5502)
 
+#### 📦 项目 npm 文档
+
+[文档速看-项目中用到 npm 插件说明](https://huozaifenlangli.github.io/vue3-tools-docs/)
+
 #### 💒 代码仓库
 
 ```base
