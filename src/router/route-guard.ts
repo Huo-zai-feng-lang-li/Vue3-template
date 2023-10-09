@@ -3,8 +3,8 @@ import { router, routes } from "./index";
 import { getLocalKey } from "@/utils/storage";
 //引入main.ts中的app
 import app from "../main";
-const hideLoading = () => app.config.globalProperties.$Loading.hideLoading();
-const showLoading = () => app.config.globalProperties.$Loading.showLoading();
+const hideLoading = () => app.config.globalProperties.$Loading?.hideLoading;
+const showLoading = () => app.config.globalProperties.$Loading?.showLoading();
 import { NavigationGuardNext, RouteLocationNormalized } from "vue-router";
 
 let isRoutesGenerated = false; // 添加一个标志位，用来判断是否已经生成了动态路由
@@ -90,7 +90,7 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
         replace: true,
       });
     } catch (error) {
-      hideLoading();
+      hideLoading()();
       new Error(error as string);
     }
   } else {
@@ -132,7 +132,7 @@ function generateRoutes(menu: string | any[]): void {
 }
 
 router.afterEach((to) => {
-  if (to.meta.loading) hideLoading();
+  if (to.meta.loading) hideLoading()(1000); // 第二个参数为关闭loading的时间，无参即是根据上下文环境300ms关闭
 });
 
 export default router;
