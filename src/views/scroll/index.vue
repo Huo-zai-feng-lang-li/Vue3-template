@@ -1,7 +1,9 @@
 <template>
-  <div class="ProgressTopBar">
-    <p v-for="(item, index) in items" :key="index">{{ item }}</p>
-  </div>
+	<div class="ProgressTopBar">
+		<p v-for="(item, index) in items" :key="index">
+			{{ item }}
+		</p>
+	</div>
 </template>
 
 <!--
@@ -14,8 +16,8 @@
 <script setup lang="ts">
 // vue3.2.0+ 之后支持的新特性
 defineOptions({
-  name: "scrollBar", // 组件名
-  inheritAttrs: false, // 是否继承父组件的属性
+	name: "scrollBar", // 组件名
+	inheritAttrs: false, // 是否继承父组件的属性
 });
 import { ref, inject } from "vue";
 const items = ref<string[]>([]);
@@ -26,6 +28,6 @@ inject(scrollKey)?.$openScroll();
 inject(scrollKey)?.$closeScroll();
 
 onMounted(() => {
-  ElMessage.success("请您~尝试滚动页面看看");
+	ElMessage.success("请您~尝试滚动页面看看");
 });
 </script>

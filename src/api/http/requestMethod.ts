@@ -6,10 +6,10 @@ import { serviceAxios } from "./index";
 
 type Method = "GET" | "POST" | "PUT" | "DELETE";
 interface BaseConfig {
-  method: Method;
-  retry?: number;
-  retryDelay?: number;
-  cache?: boolean;
+	method: Method;
+	retry?: number;
+	retryDelay?: number;
+	cache?: boolean;
 }
 type Config = BaseConfig & AxiosRequestConfig;
 /**
@@ -27,27 +27,29 @@ type Config = BaseConfig & AxiosRequestConfig;
  * @lastFixDate 2023/08/09 13:12:08
  */
 function request({
-  method = "GET",
-  headers = { "Content-Type": "application/json;charset=UTF-8" },
-  responseType,
-  url,
-  data = {},
-  params = {},
-  retry,
-  retryDelay,
-  cache,
+	method = "GET",
+	headers = {
+		"Content-Type": "application/json;charset=UTF-8",
+	},
+	responseType,
+	url,
+	data = {},
+	params = {},
+	retry,
+	retryDelay,
+	cache,
 }: Config): Promise<any> {
-  return serviceAxios({
-    method,
-    headers,
-    responseType,
-    url,
-    data,
-    params,
-    retry,
-    retryDelay,
-    cache,
-  });
+	return serviceAxios({
+		method,
+		headers,
+		responseType,
+		url,
+		data,
+		params,
+		retry,
+		retryDelay,
+		cache,
+	});
 }
 
 export default request;

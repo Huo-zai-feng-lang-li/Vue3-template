@@ -44,41 +44,41 @@ import scrollBar from "./modules/css-scroll";
 
 // 默认静态路由，不需要权限的路由
 export const routes: Array<RouteRecordRaw> = [
-  {
-    path: "/",
-    redirect: "/home",
-  },
-  {
-    path: "/home",
-    name: "home",
-    meta: {
-      loading: true,
-      keepAlive: true,
-    },
-    component: () => import("@/views/home-page/home-page.vue"),
-  },
-  {
-    path: "/login",
-    name: "login",
-    meta: {
-      loading: true,
-      keepAlive: true,
-    },
-    component: () => import("@/views/login/login.vue"),
-  },
-  scrollBar,
-  pinia,
-  {
-    // vue-router4动态加载的模式下，当我们在当前页面刷新浏览器时，会出现一个警告
-    // [Vue Router warn]: No match found for location with path
-    // 解决方法： 在路由配置中添加一个通配符的路由，用来匹配所有的路由地址 404
-    // 如果url找不到就会报404,必须放在路由页面最下面
-    path: "/:catchAll(.*)",
-    component: () => import("@/views/errors-view/not-found.vue"),
-  },
+	{
+		path: "/",
+		redirect: "/home",
+	},
+	{
+		path: "/home",
+		name: "home",
+		meta: {
+			loading: true,
+			keepAlive: true,
+		},
+		component: () => import("@/views/home-page/home-page.vue"),
+	},
+	{
+		path: "/login",
+		name: "login",
+		meta: {
+			loading: true,
+			keepAlive: true,
+		},
+		component: () => import("@/views/login/login.vue"),
+	},
+	scrollBar,
+	pinia,
+	{
+		// vue-router4动态加载的模式下，当我们在当前页面刷新浏览器时，会出现一个警告
+		// [Vue Router warn]: No match found for location with path
+		// 解决方法： 在路由配置中添加一个通配符的路由，用来匹配所有的路由地址 404
+		// 如果url找不到就会报404,必须放在路由页面最下面
+		path: "/:catchAll(.*)",
+		component: () => import("@/views/errors-view/not-found.vue"),
+	},
 ];
 
 export const router = createRouter({
-  history: createWebHashHistory(),
-  routes,
+	history: createWebHashHistory(),
+	routes,
 });

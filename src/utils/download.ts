@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { ElMessage } from "element-plus";
 interface Navigator {
-  msSaveBlob: (blob: Blob, defaultName?: string) => boolean;
+	msSaveBlob: (blob: Blob, defaultName?: string) => boolean;
 }
 declare const navigator: Navigator;
 /**
@@ -30,30 +30,32 @@ declare const navigator: Navigator;
  * @lastFixDate 2023/08/23 11:29:40
  */
 export function downloadFile(
-  res: AxiosResponse<any>,
-  fileName = "download",
-  fileType = "application/msword"
+	res: AxiosResponse<any>,
+	fileName = "download",
+	fileType = "application/msword"
 ): void {
-  try {
-    const blob = new Blob([res.data], { type: fileType });
+	try {
+		const blob = new Blob([res.data], {
+			type: fileType,
+		});
 
-    if ("download" in document.createElement("a")) {
-      const elink = document.createElement("a");
-      elink.download = fileName;
-      elink.style.display = "none";
-      elink.href = URL.createObjectURL(blob);
-      document.body.appendChild(elink);
-      elink.click();
-      URL.revokeObjectURL(elink.href);
-      document.body.removeChild(elink);
-      setTimeout(() => {
-        ElMessage.success("下载成功");
-      }, 800);
-    } else {
-      // Internet Explorer浏览器（版本10及以上）的情况下使用
-      navigator.msSaveBlob(blob, fileName);
-    }
-  } catch (error) {
-    throw new Error(error as string);
-  }
+		if ("download" in document.createElement("a")) {
+			const elink = document.createElement("a");
+			elink.download = fileName;
+			elink.style.display = "none";
+			elink.href = URL.createObjectURL(blob);
+			document.body.appendChild(elink);
+			elink.click();
+			URL.revokeObjectURL(elink.href);
+			document.body.removeChild(elink);
+			setTimeout(() => {
+				ElMessage.success("下载成功");
+			}, 800);
+		} else {
+			// Internet Explorer浏览器（版本10及以上）的情况下使用
+			navigator.msSaveBlob(blob, fileName);
+		}
+	} catch (error) {
+		throw new Error(error as string);
+	}
 }

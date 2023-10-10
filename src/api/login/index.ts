@@ -19,17 +19,17 @@ import request from "-/http/requestMethod";
 
 // 获取位置
 export const getLocation = (): Promise<AxiosResponse<any, any>> =>
-  request({
-    method: "GET",
-    url: "/ip?key=33f7405fa0049ff120947b37a12567b2",
-    cache: true,
-    retry: 1,
-    // headers: {
-    // 	"Content-Type":
-    // 		"application/vnd.openxmlformats-officedocument.wordprocessingml.document ",
-    // },
-    // responseType: 'blob',
-  });
+	request({
+		method: "GET",
+		url: "/ip?key=33f7405fa0049ff120947b37a12567b2",
+		cache: true,
+		retry: 1,
+		// headers: {
+		// 	"Content-Type":
+		// 		"application/vnd.openxmlformats-officedocument.wordprocessingml.document ",
+		// },
+		// responseType: 'blob',
+	});
 
 /**
  * @name  获取天气
@@ -40,9 +40,9 @@ export const getLocation = (): Promise<AxiosResponse<any, any>> =>
  * @lastFixDate 2023/08/14 14:57:20
  */
 export const getWeather = (params: object): Promise<AxiosResponse<any, any>> =>
-  request({
-    method: "GET",
-    url: "/weather/weatherInfo",
-    retry: 1,
-    params,
-  });
+	request({
+		method: "GET",
+		url: "/weather/weatherInfo",
+		retry: 1,
+		params,
+	});

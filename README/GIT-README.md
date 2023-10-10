@@ -21,18 +21,18 @@
 
 类型代表了本次提交的类型。我们定义了以下 标准类型：
 
-- **feat**: 新功能
-- **fix**: 修复问题
-- **docs**: 文档修改
-- **style**: 代码风格调整（比如修改空格、换行符等等，不影响代码含义的修改）
-- **refactor**: 代码重构（既不是新增功能也不是修复问题的代码修改）
-- **test**: 测试用例新增、修改、删除等
-- **chore**: 对构建、打包工具、文档生成等辅助工具的修改
-- **revert**：表示此次提交是撤销之前的某次提交
-- **perf**：表示此次提交是对代码进行了优化，如改进了算法或数据结构等
-- **build**：表示此次提交是对构建系统或外部依赖的修改，如升级了某个依赖库或修改了 CI/CD 配置等
-- **ci**：表示此次提交是对 CI/CD 配置进行了修改，如增加了工作流或修改了触发条件等
-- **merge** 合并他人代码
+-  **feat**: 新功能
+-  **fix**: 修复问题
+-  **docs**: 文档修改
+-  **style**: 代码风格调整（比如修改空格、换行符等等，不影响代码含义的修改）
+-  **refactor**: 代码重构（既不是新增功能也不是修复问题的代码修改）
+-  **test**: 测试用例新增、修改、删除等
+-  **chore**: 对构建、打包工具、文档生成等辅助工具的修改
+-  **revert**：表示此次提交是撤销之前的某次提交
+-  **perf**：表示此次提交是对代码进行了优化，如改进了算法或数据结构等
+-  **build**：表示此次提交是对构建系统或外部依赖的修改，如升级了某个依赖库或修改了 CI/CD 配置等
+-  **ci**：表示此次提交是对 CI/CD 配置进行了修改，如增加了工作流或修改了触发条件等
+-  **merge** 合并他人代码
 
 ### 范围（scope）
 
@@ -50,8 +50,8 @@
 
 页脚也是可选的，主要包含一些技术相关信息（例如 issue、break change 等），并允许跨项目追踪对应事项的信息。此外，还可以使用一些特殊的关键词，比如：
 
-- `BREAKING CHANGE`: 改变代码库之前的 API，包括非向后兼容性修改之类的事项。
-- `Closes`: 关闭一个 Issue。
+-  `BREAKING CHANGE`: 改变代码库之前的 API，包括非向后兼容性修改之类的事项。
+-  `Closes`: 关闭一个 Issue。
 
 ## 示例
 
@@ -77,4 +77,4 @@ docs(readme): 修复错别字
 
 ## 参考资料
 
-- [AngularJS Git Commit Message Conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines)
+-  [AngularJS Git Commit Message Conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines)

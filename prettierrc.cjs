@@ -1,8 +1,8 @@
 module.exports = {
   // 一行最多多少个字符，最好不要改动这个值
-  printWidth: 100,
+  printWidth: 30,
   // 指定每个缩进级别的空格数
-  // tabWidth: 4,
+  tabWidth: 3,
   // 使用制表符而不是空格缩进行
   useTabs: true,
   // 在语句末尾打印分号
@@ -35,5 +35,5 @@ module.exports = {
   // Vue文件脚本和样式标签缩进
   vueIndentScriptAndStyle: false,
   // 换行符使用 lf 结尾是 可选值"<auto|lf|crlf|cr>"
-  endOfLine: "auto",
+  endOfLine: "lf",
 };

@@ -20,8 +20,8 @@ import { createPinia } from "pinia"; // 引入 pinia
 import SecureLS from "secure-ls"; // 加密 pinia
 // 创建 SecureLS 实例
 export const ls = new SecureLS({
-  encodingType: "aes",
-  isCompression: false,
+	encodingType: "aes",
+	isCompression: false,
 });
 
 const pinia = createPinia(); // 创建 pinia 实例
@@ -32,25 +32,24 @@ import piniaPersist from "pinia-plugin-persistedstate";
 // console.log("😂👨🏾‍❤️‍👨🏼==>： ", import.meta.env);
 const app = createApp(App);
 
-app
-  .use(componentRegister)
-  .use(MyBackTop)
-  .use(EncryptionPlugin)
-  .use(Loading)
-  .use(directives)
-  .use(router)
-  .use(pinia)
-  .use(useScroll)
-  .mount("#app");
+app.use(componentRegister)
+	.use(MyBackTop)
+	.use(EncryptionPlugin)
+	.use(Loading)
+	.use(directives)
+	.use(router)
+	.use(pinia)
+	.use(useScroll)
+	.mount("#app");
 pinia.use(piniaPersist);
 // 在 Pinia 中注册插件
 pinia.use(({ store }) => {
-  // 加密状态并存储到 SecureLS 中
-  const encryptAndStoreState = () => {
-    ls.set(store.$id, store.$state);
-  };
+	// 加密状态并存储到 SecureLS 中
+	const encryptAndStoreState = () => {
+		ls.set(store.$id, store.$state);
+	};
 
-  store.$subscribe(encryptAndStoreState); // 在每次状态变更时调用加密函数
+	store.$subscribe(encryptAndStoreState); // 在每次状态变更时调用加密函数
 });
 
 export default app; // 这里导出app的目的，是为了在后面 ts文件中使用插件

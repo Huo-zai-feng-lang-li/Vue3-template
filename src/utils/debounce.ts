@@ -13,19 +13,19 @@
  * @returns {(...args: A) => void} 返回一个新的函数，该函数具有防抖效果 !!!
  */
 export function debounce<A extends any[], R>(
-  fn: (...args: A) => R,
-  delay = 250
+	fn: (...args: A) => R,
+	delay = 250
 ) {
-  let timer: NodeJS.Timeout | null = null;
+	let timer: NodeJS.Timeout | null = null;
 
-  /**
-   * 新的函数，具有防抖效果
-   * @param args 函数的参数
-   * Q: 为什么要使用箭头函数？
-   * A: 箭头函数没有自己的this，所以箭头函数中的this就是外层代码块的this
-   */
-  return function (...args: A) {
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(() => fn.apply(fn, args), delay);
-  };
+	/**
+	 * 新的函数，具有防抖效果
+	 * @param args 函数的参数
+	 * Q: 为什么要使用箭头函数？
+	 * A: 箭头函数没有自己的this，所以箭头函数中的this就是外层代码块的this
+	 */
+	return function (...args: A) {
+		if (timer) clearTimeout(timer);
+		timer = setTimeout(() => fn.apply(fn, args), delay);
+	};
 }

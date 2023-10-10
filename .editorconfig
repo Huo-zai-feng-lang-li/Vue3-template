@@ -1,0 +1,15 @@
+# 这里配置的代码规范规则优先级高于编辑器默认的代码格式化规则
+# 当多个人参与一个项目，每个人使用的编辑器不一样, 为了保证代码格式化的一致性，可以使用这个配置文件
+
+# 使用制表符进行缩进
+[*.{js,jsx,ts,vue,tsx,html,css,md}]
+indent_style = tab
+tab_width = 3
+
+# 使用 LF 作为换行符
+[*.{js,jsx,ts,tsx,html,css,md}]
+end_of_line = lf
+
+# 使用 UTF-8 编码
+[*.{js,jsx,ts,tsx,html,css,md}]
+charset = utf-8

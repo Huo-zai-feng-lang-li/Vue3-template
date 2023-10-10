@@ -9,17 +9,20 @@ import { Session, getLocalKey } from "./storage";
  * @lastFixDate 2023/08/19 16:02:02
  */
 export default () => {
-  const arrKeys = getLocalKey(undefined, sessionStorage) as string[];
-  if (!arrKeys.length) return; // 本地没有缓存终止执行
-  const localKey = arrKeys.filter(
-    (item) => item.includes("post-/") || item.includes("get-/")
-  );
-  if (!localKey.length) return; // 本地缓存中未找到接口缓存终止执行 !0 == true
-  localKey.forEach((key) => {
-    const item = Session.get(key);
-    if (item && Date.now() - JSON.parse(item).cacheTimestamp > 1000 * 60 * 5) {
-      // 5分钟未调用接口，清除缓存,因为缓存时间最多是5分钟
-      Session.remove(key);
-    }
-  });
+	const arrKeys = getLocalKey(undefined, sessionStorage) as string[];
+	if (!arrKeys.length) return; // 本地没有缓存终止执行
+	const localKey = arrKeys.filter(
+		(item) => item.includes("post-/") || item.includes("get-/")
+	);
+	if (!localKey.length) return; // 本地缓存中未找到接口缓存终止执行 !0 == true
+	localKey.forEach((key) => {
+		const item = Session.get(key);
+		if (
+			item &&
+			Date.now() - JSON.parse(item).cacheTimestamp > 1000 * 60 * 5
+		) {
+			// 5分钟未调用接口，清除缓存,因为缓存时间最多是5分钟
+			Session.remove(key);
+		}
+	});
 };
