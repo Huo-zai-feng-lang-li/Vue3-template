@@ -79,6 +79,6 @@ export const routes: Array<RouteRecordRaw> = [
 ];
 
 export const router = createRouter({
-	history: createWebHashHistory(),
+	history: createWebHashHistory("/Vue3-template/"), // 设置根路径
 	routes,
 });
