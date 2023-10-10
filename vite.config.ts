@@ -11,7 +11,7 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import viteCompression from "vite-plugin-compression";
 // 导入path 用于设置别名
 import * as path from "path";
-import { randomLetterPlugin } from "./plugins/random-letter-plugin";
+import { randomLetterPlugin } from "./vite-plugins/random-letter-plugin";
 
 export default defineConfig((mode: ConfigEnv) => {
 	// 导入 .env 环境变量

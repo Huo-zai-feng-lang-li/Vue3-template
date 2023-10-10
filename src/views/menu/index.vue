@@ -161,6 +161,8 @@ let menuObj = ref<RouteItem[]>([
 									{
 										path: "/scroll",
 										name: "scroll",
+										component: () =>
+											import("@/views/home-page/home-page.vue"),
 										meta: {
 											title: "滚动进度条",
 											icon: "iconfont icon-24gl-fileEmpty",
