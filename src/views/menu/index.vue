@@ -1,12 +1,16 @@
 <template>
 	<div>
-		<!-- 需求： 顶部展示一级二级菜单，点击顶部二级菜单，如果有三级就在左侧展示二级剩余菜单，使用element-plus -->
+		<!-- 
+			需求： 顶部展示一级二级菜单，点击顶部二级菜单，
+			如果有三级就在左侧展示二级剩余菜单，使用element-plus 
+		-->
 		<!-- 顶部菜单 -->
 		<el-menu
 			default-active="1"
 			class="el-menu-vertical-demo"
 			mode="horizontal"
 			background-color="#eee"
+			router
 		>
 			<template v-for="item in menuObj">
 				<!-- 如果有二级菜单使用 el-sub-menu，如果没有使用  el-menu-item-->
@@ -34,7 +38,7 @@
 								{{ item2.meta.title }}
 							</span>
 							<el-icon v-if="item2.children" :size="15" class="icon">
-								🐔
+								V
 							</el-icon>
 						</div>
 					</el-menu-item>
@@ -113,7 +117,7 @@ let menuObj = ref<RouteItem[]>([
 		},
 		children: [
 			{
-				path: "/user1",
+				path: "",
 				name: "User1",
 				meta: {
 					title: "用户1",
@@ -131,15 +135,45 @@ let menuObj = ref<RouteItem[]>([
 				],
 			},
 			{
-				path: "/user2",
+				path: "",
 				name: "User2",
 				meta: {
 					title: "用户2",
 					icon: "iconfont icon-24gl-fileEmpty",
 				},
+				children: [
+					{
+						path: "/user21",
+						name: "User21",
+						meta: {
+							title: "用户2-1",
+							icon: "iconfont icon-24gl-fileEmpty",
+						},
+						children: [
+							{
+								path: "/user22",
+								name: "User22",
+								meta: {
+									title: "用户2-2",
+									icon: "iconfont icon-24gl-fileEmpty",
+								},
+								children: [
+									{
+										path: "/scroll",
+										name: "scroll",
+										meta: {
+											title: "滚动进度条",
+											icon: "iconfont icon-24gl-fileEmpty",
+										},
+									},
+								],
+							},
+						],
+					},
+				],
 			},
 			{
-				path: "/user3",
+				path: "",
 				name: "User3",
 				meta: {
 					title: "用户3",
@@ -153,6 +187,16 @@ let menuObj = ref<RouteItem[]>([
 							title: "用户3-1",
 							icon: "iconfont icon-24gl-fileEmpty",
 						},
+						children: [
+							{
+								path: "/user32",
+								name: "User31",
+								meta: {
+									title: "用户3-2",
+									icon: "iconfont icon-24gl-fileEmpty",
+								},
+							},
+						],
 					},
 				],
 			},
@@ -161,7 +205,7 @@ let menuObj = ref<RouteItem[]>([
 ]);
 
 // 三级菜单数据
-let leftMenu = ref([]);
+let leftMenu = ref<RouteItem[]>();
 // 是否显示三级菜单（左侧的显示时机）
 let flag = ref(false);
 // 点击二级菜单展示左侧菜单
@@ -173,7 +217,7 @@ const handleClick2 = (item: any) => {
 		leftMenu.value = [];
 		flag.value = false;
 	}
-	console.log("😂👨🏾‍❤️‍👨🏼==>：", item);
+	// console.log("点击的二级菜单当前项", item);
 };
 </script>
 

@@ -5,6 +5,7 @@ declare module "vue3-encryption-plugin";
 declare module "pinia-plugin-persistedstate";
 declare module "vue3-loading-plug";
 declare module "vue3-directive-tools";
+declare module "vue3-progress-scroll";
 
 // 声明一个模块，防止引入文件时报错
 declare module "*.json";
@@ -34,16 +35,19 @@ declare interface Window {
 
 // 申明路由
 declare interface RouteItem<T = any> {
+	[x: string]: T;
+	k?: T;
 	path: string;
 	name: string;
+	component?: () => Promise<typeof import("*.vue")>;
+	redirect?: string;
 	disabled?: boolean;
 	meta: {
 		loading?: boolean;
 		keepAlive?: boolean;
 		isRelease?: boolean;
-		[key?: string]: T;
+		[key: string]: T;
 	};
-	component?: () => Promise<typeof import("*.vue")>;
 	children?: ChilType[void];
 }
 
