@@ -38,7 +38,7 @@ defineOptions({
 });
 const props = defineProps({
 	menuList: {
-		type: Array<RouteItem>,
+		type: Array<any>,
 		default: () => [],
 	},
 });

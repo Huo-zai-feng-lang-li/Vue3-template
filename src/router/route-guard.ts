@@ -5,7 +5,11 @@ import { getLocalKey } from "@/utils/storage";
 import app from "../main";
 const hideLoading = () => app.config.globalProperties.$Loading?.hideLoading;
 const showLoading = () => app.config.globalProperties.$Loading?.showLoading();
-import { NavigationGuardNext, RouteLocationNormalized } from "vue-router";
+import {
+	NavigationGuardNext,
+	RouteLocationNormalized,
+	RouteRecordRaw,
+} from "vue-router";
 
 let isRoutesGenerated = false; // 添加一个标志位，用来判断是否已经生成了动态路由
 
@@ -21,7 +25,7 @@ router.beforeEach((to, from, next) => {
 		addRouters(next, to);
 	} else {
 		// 没token不是权限页面
-		if (!to.meta.isRelease) {
+		if (!to.meta.requiresAuth) {
 			addRouters(next, to);
 		} else {
 			next({
@@ -39,49 +43,57 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
 		// 判断是否已经生成了动态路由
 		try {
 			// 从后台获取菜单 axios.get('/api/menu')
-			const menu: RouteItem[] = [
+			const menu: RouteRecordRaw[] = [
 				{
 					path: "/test1",
 					name: "test1",
-					meta: {
-						loading: true,
-						keepAlive: true,
-						isRelease: true,
-					},
 					component: () =>
 						import("@/views/dynamic-routing/index-test1.vue"),
+					meta: {
+						title: "",
+						icon: "",
+						loading: true,
+						keepAlive: true,
+						requiresAuth: true,
+					},
 				},
 				{
 					path: "/test2",
 					name: "test2",
-					meta: {
-						loading: true,
-						keepAlive: true,
-						isRelease: true,
-					},
 					component: () =>
 						import("@/views/dynamic-routing/index-test2.vue"),
+					meta: {
+						title: "",
+						icon: "",
+						loading: true,
+						keepAlive: true,
+						requiresAuth: true,
+					},
 				},
 				{
 					path: "/test3",
 					name: "test3",
-					meta: {
-						loading: true,
-						keepAlive: true,
-						isRelease: true,
-					},
 					component: () =>
 						import("@/views/dynamic-routing/index-test3.vue"),
+					meta: {
+						title: "",
+						icon: "",
+						loading: true,
+						keepAlive: true,
+						requiresAuth: true,
+					},
 				},
 				{
 					path: "/menu",
 					name: "menu",
+					component: () => import("@/views/menu/index.vue"),
 					meta: {
+						title: "",
+						icon: "",
 						loading: true,
 						keepAlive: true,
-						// isRelease: true,
+						// requiresAuth: true,
 					},
-					component: () => import("@/views/menu/index.vue"),
 				},
 			];
 			//  生成动态路由
@@ -105,32 +117,15 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
 function generateRoutes(menu: string | any[]): void {
 	for (let i = 0; i < menu.length; i++) {
 		const item = menu[i];
-		const {
-			path,
-			name,
-			meta: { loading, keepAlive, isRelease },
-			component,
-		} = item;
-		const route: RouteItem = {
-			path: path,
-			name: name,
-			meta: {
-				loading: loading,
-				keepAlive: keepAlive,
-				isRelease: isRelease,
-			},
-			component: component,
-		};
-
 		// 递归生成子路由
 		if (item.children && item.children.length > 0) {
-			route.children = generateRoutes(item.children);
+			item.children = generateRoutes(item.children);
 		}
-
 		// 追加在404页面前面
-		routes.splice(routes.length - 1, 0, route);
+		routes.splice(routes.length - 1, 0, item);
 		// 在路由中添加新路由
-		router.addRoute(route);
+		router.addRoute(item);
+		console.log("路由实例==>:", router.options.routes);
 	}
 }
 

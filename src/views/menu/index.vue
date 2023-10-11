@@ -64,7 +64,7 @@
 import MenuTree from "./MenuTree.vue";
 
 //所有菜单数据
-let menuObj = ref<RouteItem[]>([
+let menuObj = ref<any>([
 	{
 		path: "/home",
 		name: "Home",
@@ -159,7 +159,7 @@ let menuObj = ref<RouteItem[]>([
 								},
 								children: [
 									{
-										path: "/scroll",
+										path: "Vue3-template/#/scroll",
 										name: "scroll",
 										component: () =>
 											import("@/views/scroll/index.vue"),

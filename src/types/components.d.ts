@@ -5,31 +5,31 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 import '@vue/runtime-core'
 
-export {};
+export {}
 
-declare module "@vue/runtime-core" {
-	export interface GlobalComponents {
-		Backtop: typeof import("./../components/MyBackTop/backtop.vue")["default"];
-		ElBacktop: typeof import("element-plus/es")["ElBacktop"];
-		ElButton: typeof import("element-plus/es")["ElButton"];
-		ElConfigProvider: typeof import("element-plus/es")["ElConfigProvider"];
-		ElDialog: typeof import("element-plus/es")["ElDialog"];
-		ElIcon: typeof import("element-plus/es")["ElIcon"];
-		ElMenu: typeof import("element-plus/es")["ElMenu"];
-		ElMenuItem: typeof import("element-plus/es")["ElMenuItem"];
-		ElSkeleton: typeof import("element-plus/es")["ElSkeleton"];
-		ElSubMenu: typeof import("element-plus/es")["ElSubMenu"];
-		ElTooltip: typeof import("element-plus/es")["ElTooltip"];
-		ElTree: typeof import("element-plus/es")["ElTree"];
-		RouterLink: typeof import("vue-router")["RouterLink"];
-		RouterView: typeof import("vue-router")["RouterView"];
-		ZkChart: typeof import("./../components/GlobalComponents/zkChart.vue")["default"];
-		ZkConfettiCanvas: typeof import("./../components/GlobalComponents/zkConfettiCanvas.vue")["default"];
-		ZkDialog: typeof import("./../components/GlobalComponents/zkDialog.vue")["default"];
-		ZkTooltip: typeof import("./../components/GlobalComponents/zkTooltip.vue")["default"];
-		ZkTree: typeof import("./../components/GlobalComponents/zkTree.vue")["default"];
-	}
-	export interface ComponentCustomProperties {
-		vLoading: typeof import("element-plus/es")["ElLoadingDirective"];
-	}
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    Backtop: typeof import('./../components/MyBackTop/backtop.vue')['default']
+    ElBacktop: typeof import('element-plus/es')['ElBacktop']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+    ElDialog: typeof import("element-plus/es")["ElDialog"]
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElSkeleton: typeof import('element-plus/es')['ElSkeleton']
+    ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ElTooltip: typeof import("element-plus/es")["ElTooltip"]
+    ElTree: typeof import("element-plus/es")["ElTree"]
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
+    ZkChart: typeof import('./../components/GlobalComponents/zkChart.vue')['default']
+    ZkConfettiCanvas: typeof import('./../components/GlobalComponents/zkConfettiCanvas.vue')['default']
+    ZkDialog: typeof import('./../components/GlobalComponents/zkDialog.vue')['default']
+    ZkTooltip: typeof import('./../components/GlobalComponents/zkTooltip.vue')['default']
+    ZkTree: typeof import('./../components/GlobalComponents/zkTree.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import("element-plus/es")["ElLoadingDirective"]
+  }
 }

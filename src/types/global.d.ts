@@ -34,19 +34,26 @@ declare interface Window {
 }
 
 // 申明路由
-declare interface RouteItem<T = any> {
-	[x: string]: T;
-	k?: T;
+/* 
+  RouteRecordRaw是Vue Router的一个类型定义，它用于描述路由配置的对象。它包含以下属性：
+  path：字符串，表示路由的路径。
+  name：字符串，表示路由的名称。
+  component：组件类型，表示路由所匹配的组件。
+  children：子路由配置数组，用于描述嵌套路由。
+  meta：对象，用于存储额外的路由元数据，例如需要验证用户权限的信息。
+*/
+declare interface RouteItem extends RouteRecordRaw {
 	path: string;
-	name: string;
-	component?: () => Promise<typeof import("*.vue")>;
 	redirect?: string;
-	disabled?: boolean;
+	name: string;
+	component: () => Promise<typeof import("*.vue")>;
 	meta: {
+		title: string;
+		icon: string;
 		loading?: boolean;
 		keepAlive?: boolean;
-		isRelease?: boolean;
-		[key: string]: T;
+		requiresAuth?: boolean;
+		disabled?: boolean;
 	};
 	children?: ChilType[void];
 }
