@@ -89,12 +89,12 @@
 ------------------------------- */
 .dialog-fade-enter-active {
   display: inline-block;
-  animation: zoomIn;
+  animation: zoom-in;
   animation-duration: 0.5s;
   background-color: rgb(0 0 0 / 0%);
 }
 
-@keyframes zoomIn {
+@keyframes zoom-in {
   0% {
     opacity: 0;
     transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -12.5rem, 0);
@@ -112,12 +112,12 @@
 ------------------------------- */
 .dialog-fade-leave-active {
   display: inline-block;
-  animation: zoomOut;
+  animation: zoom-out;
   animation-duration: 0.5s;
   background-color: rgb(0 0 0 / 0%);
 }
 
-@keyframes zoomOut {
+@keyframes zoom-out {
   0% {
     opacity: 1;
   }

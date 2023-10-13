@@ -1,8 +1,8 @@
 module.exports = {
-  // 一行最多多少个字符，最好不要改动这个值
-  printWidth: 30,
+  // 一行最多多少个字符
+  printWidth: 100,
   // 指定每个缩进级别的空格数
-  tabWidth: 3,
+  tabWidth: 4,
   // 使用制表符而不是空格缩进行
   useTabs: true,
   // 在语句末尾打印分号

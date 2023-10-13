@@ -104,7 +104,10 @@ onMounted(() => getCurveData());
 </script>
 
 <style scoped lang="scss">
+// @import "./index.scss";
+
 .container {
+	position: relative;
 	padding: 10px;
 	box-sizing: border-box;
 }
