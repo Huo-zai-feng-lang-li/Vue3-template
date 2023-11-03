@@ -164,6 +164,19 @@ import {
 	jsplumbMakeTarget,
 	jsplumbConnect,
 } from "./js/config";
+import { customScroll } from "vue3-directive-tools";
+// 动态导入传参
+// import("./js/dragView").then((module) => {
+// 	module.handleDiagramInteraction(".workflow-right");
+// });
+
+window.addEventListener(
+	"wheel",
+	function (event) {
+		customScroll(event, ".workflow-right");
+	},
+	{ passive: false }
+);
 
 // 引入组件
 const Tool = defineAsyncComponent(() => import("./component/tool/index.vue"));
@@ -423,7 +436,7 @@ const initJsPlumb = () => {
 				dashstyle: "0",
 			});
 		});
-		// import('./js/dragView');
+
 		// 删除连线时回调函数
 		state.jsPlumb.bind("connectionDetached", (conn: any) => {
 			const { sourceId, targetId } = conn;
@@ -667,16 +680,7 @@ function readyAreaHeight() {
 	});
 	window.addEventListener("resize", readyAreaHeight);
 }
-window.addEventListener(
-	"wheel",
-	function (e) {
-		if (document.body.scrollHeight === document.body.clientHeight) {
-			e.preventDefault();
-			window.scroll(window.scrollX + e.deltaY * 10, window.scrollY);
-		}
-	},
-	{ passive: false }
-);
+
 // 页面加载时
 onMounted(async () => {
 	await initLeftNavList();
@@ -687,6 +691,8 @@ onMounted(async () => {
 	}, 300);
 	setClientWidth();
 	window.addEventListener("resize", setClientWidth);
+	// 在dom加载完后执行，不使用动态导入方式
+	// handleDiagramInteraction(".workflow-right");
 });
 // 页面卸载时
 onUnmounted(() => {
