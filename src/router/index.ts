@@ -32,6 +32,8 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import pinia from "./modules/pinia-store";
 // css 滚动进度条
 import scrollBar from "./modules/css-scroll";
+// 分类监控视图
+import monitoringView from "./modules/monitoring-view";
 
 // 默认静态路由，不需要权限的路由
 export const routes: Array<RouteItem> = [
@@ -71,6 +73,7 @@ export const routes: Array<RouteItem> = [
 	},
 	scrollBar,
 	pinia,
+	monitoringView,
 	{
 		// vue-router4动态加载的模式下，当我们在当前页面刷新浏览器时，会出现一个警告
 		// [Vue Router warn]: No match found for location with path

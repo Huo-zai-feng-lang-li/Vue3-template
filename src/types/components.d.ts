@@ -12,13 +12,25 @@ declare module "@vue/runtime-core" {
 		Backtop: typeof import("./../components/MyBackTop/backtop.vue")["default"];
 		ElBacktop: typeof import("element-plus/es")["ElBacktop"];
 		ElButton: typeof import("element-plus/es")["ElButton"];
+		ElCard: typeof import("element-plus/es")["ElCard"];
+		ElCheckbox: typeof import("element-plus/es")["ElCheckbox"];
+		ElCheckboxGroup: typeof import("element-plus/es")["ElCheckboxGroup"];
 		ElConfigProvider: typeof import("element-plus/es")["ElConfigProvider"];
 		ElDialog: typeof import("element-plus/es")["ElDialog"];
+		ElDrawer: typeof import("element-plus/es")["ElDrawer"];
+		ElForm: typeof import("element-plus/es")["ElForm"];
+		ElFormItem: typeof import("element-plus/es")["ElFormItem"];
 		ElIcon: typeof import("element-plus/es")["ElIcon"];
+		ElInput: typeof import("element-plus/es")["ElInput"];
 		ElMenu: typeof import("element-plus/es")["ElMenu"];
 		ElMenuItem: typeof import("element-plus/es")["ElMenuItem"];
+		ElOption: typeof import("element-plus/es")["ElOption"];
+		ElScrollbar: typeof import("element-plus/es")["ElScrollbar"];
+		ElSelect: typeof import("element-plus/es")["ElSelect"];
 		ElSkeleton: typeof import("element-plus/es")["ElSkeleton"];
 		ElSubMenu: typeof import("element-plus/es")["ElSubMenu"];
+		ElTabPane: typeof import("element-plus/es")["ElTabPane"];
+		ElTabs: typeof import("element-plus/es")["ElTabs"];
 		ElTooltip: typeof import("element-plus/es")["ElTooltip"];
 		ElTree: typeof import("element-plus/es")["ElTree"];
 		RouterLink: typeof import("vue-router")["RouterLink"];
@@ -26,6 +38,7 @@ declare module "@vue/runtime-core" {
 		ZkChart: typeof import("./../components/GlobalComponents/zkChart.vue")["default"];
 		ZkConfettiCanvas: typeof import("./../components/GlobalComponents/zkConfettiCanvas.vue")["default"];
 		ZkDialog: typeof import("./../components/GlobalComponents/zkDialog.vue")["default"];
+		ZkIcon: typeof import("./../components/GlobalComponents/zkIcon.vue")["default"];
 		ZkTooltip: typeof import("./../components/GlobalComponents/zkTooltip.vue")["default"];
 		ZkTree: typeof import("./../components/GlobalComponents/zkTree.vue")["default"];
 	}

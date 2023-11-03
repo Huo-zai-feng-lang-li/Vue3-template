@@ -8,7 +8,7 @@
   "scripts": {
     "pnpm:": "pnpm install && npm run dev",
     "dev": "concurrently \"vite --open\" \"npx husky install\"",
-    "CheckAll": "concurrently \"npm run ESlint:check\" \"npm run Prettier:check\" \"npm run StyleLint:check\"",
+    "CheckAll": "concurrently \"npm run ESlint:check\" \"npm run Prettier:check\"",
     "commit": "git pull && git add -A && git-cz && git push && pnpm run deploy:test",
     "test": "vite --mode test",
     "prod": "vite --mode production",
@@ -18,7 +18,6 @@
     "build:jg": "vite build --mode jg",
     "ESlint:check": "eslint . --ext .vue,.js,cjs,mjs,.ts,.cts,.mts,.jsx,.tsx --fix",
     "Prettier:check": "prettier --write \"./**/*.{html,vue,ts,cts,mts,js,mjs,cjs,json,md,scss}\"",
-    "StyleLint:check": "stylelint \"./**/*.{css,scss,less,vue}\" --fix",
     "deploy": "bash deploy.sh",
     "deploy:test": "pnpm run build:test && cd dist && git init && git add -A && git commit -m 'deploy' && git branch -M main-pages && git push -f https://github.com/huozaifenlangli/Vue3-template.git main-pages && cd ../ && rmdir /s /q dist"
   },
@@ -31,11 +30,11 @@
     "src/**/*.{vue,cjs,jsx,ts,tsx,json,css,scss,md}": [
       "eslint --fix",
       "prettier --write",
-      "stylelint --fix",
       "git add -A"
     ]
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "axios": "^1.4.0",
     "canvas-confetti": "^1.6.0",
     "echarts": "^5.4.2",
@@ -63,6 +62,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.10.0",
     "husky": "^8.0.3",
+    "sortablejs": "^1.15.0",
+    "jsplumb": "^2.15.6",
     "lint-staged": "^13.2.3",
     "postcss": "^8.4.21",
     "postcss-html": "^1.5.0",
@@ -70,13 +71,6 @@
     "prettier": "^2.8.7",
     "sass": "^1.60.0",
     "sass-loader": "^13.2.2",
-    "stylelint": "^15.5.0",
-    "stylelint-config-prettier": "^9.0.5",
-    "stylelint-config-recommended-scss": "^10.0.0",
-    "stylelint-config-standard": "^33.0.0",
-    "stylelint-config-standard-vue": "^1.0.0",
-    "stylelint-order": "^6.0.3",
-    "stylelint-scss": "^4.6.0",
     "typescript": "^4.9.3",
     "unplugin-auto-import": "^0.15.2",
     "unplugin-vue-components": "^0.24.1",

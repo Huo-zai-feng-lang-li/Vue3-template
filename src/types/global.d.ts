@@ -6,6 +6,8 @@ declare module "pinia-plugin-persistedstate";
 declare module "vue3-loading-plug";
 declare module "vue3-directive-tools";
 declare module "vue3-progress-scroll";
+declare module "sortablejs";
+declare module "jsplumb";
 
 // 声明一个模块，防止引入文件时报错
 declare module "*.json";

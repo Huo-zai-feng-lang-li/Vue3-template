@@ -7,6 +7,8 @@
 // document.documentElement.style.setProperty('--color-primary', '#ff0000');
 :root {
   --color-primary: #409eff;
+  --el-bg-primary: #6a9df7;
+  --el-color-white: #fff;
   --color-success: #67c23a;
   --color-warning: #e6a23c;
   --color-danger: #f56c6c;
@@ -18,4 +20,5 @@
   --color-border-base: #dcdfe6;
   --color-border-light: #e4e7ed;
   --color-border-lighter: #ebeef5;
+  // #f2f5fe
 }

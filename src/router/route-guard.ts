@@ -95,6 +95,17 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
 						// requiresAuth: true,
 					},
 				},
+				{
+					path: "/categoriseWorkflow",
+					name: "Workflow",
+					component: () => import("@/views/monitoringView/index.vue"),
+					meta: {
+						title: "",
+						icon: "",
+						loading: true,
+						keepAlive: true,
+					},
+				},
 			];
 			//  生成动态路由
 			generateRoutes(menu);

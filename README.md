@@ -1,4 +1,6 @@
-## 🌈 项目说明书
+## 🌈 项目说明书<a href='https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template'><img src='https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template/widgets/widget_6.svg' alt='Fork me on Gitee'></img></a>
+
+[![张坤/Vite + Ts + Vue3 - template --- 模板](https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template/widgets/widget_card.svg?colors=ffffff,1e252b,323d47,455059,d7deea,99a0ae)](https://gitee.com/zhang-kun8888/Vite--Ts--Vue3---template)
 
 > 这是一个使用 Vue3 和 TypeScript 作为主要技术栈的模板**轻**架子，并且详细记录了搭建每一步，详尽的注释加 Api 直达链接。
 
