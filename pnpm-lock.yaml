@@ -42,8 +42,8 @@ dependencies:
     specifier: ^1.0.8
     version: 1.0.8
   vue3-loading-plug:
-    specifier: ^1.3.5
-    version: 1.3.5
+    specifier: ^1.3.7
+    version: 1.3.7
   vue3-progress-scroll:
     specifier: ^1.2.5
     version: 1.2.5
@@ -3214,8 +3214,8 @@ packages:
       crypto-js: 4.1.1
     dev: false
 
-  /vue3-loading-plug@1.3.5:
-    resolution: {integrity: sha512-rbZVpgbRhCODZADBvOHFSXaFRCKFHS/TgZ/72bxZfw95rhFMXrCuxSHX9mH/a8B+qK6tLJX0lGQQpYGjeMzzXA==}
+  /vue3-loading-plug@1.3.7:
+    resolution: {integrity: sha512-Z9iDg/vhzjNzNLBoSncik4HbbIsJhRb+tIcG9zqCgBi9dRuRqyyT9YXwpwmtQWD1ldN48WJTkuMbKS99WfP1vw==}
     dev: false
 
   /vue3-progress-scroll@1.2.5:

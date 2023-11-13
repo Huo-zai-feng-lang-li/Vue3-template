@@ -141,7 +141,8 @@ function generateRoutes(menu: string | any[]): void {
 }
 
 router.afterEach((to) => {
-	if (to.meta.loading) hideLoading()(500); // 第二个参数为关闭loading的时间，无参即是根据上下文环境300ms关闭
+	if (to.meta.loading) hideLoading()(); // 第二个括号参数为空时，200ms后隐藏loading,
+	// hideLoading()(true); // 传入true时，直接隐藏loading
 });
 
 export default router;
