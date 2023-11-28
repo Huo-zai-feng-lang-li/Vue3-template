@@ -106,6 +106,17 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
 						keepAlive: true,
 					},
 				},
+				{
+					path: "/form-table",
+					name: "formTable",
+					component: () => import("@/views/formTable/index.vue"),
+					meta: {
+						title: "",
+						icon: "",
+						loading: true,
+						keepAlive: true,
+					},
+				},
 			];
 			//  生成动态路由
 			generateRoutes(menu);

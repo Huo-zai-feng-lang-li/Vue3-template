@@ -1,0 +1,11 @@
+.el-table thead tr,
+.el-table tbody tr > td {
+  padding: 0 !important;
+  height: 75px;
+  line-height: 75px;
+  color: #909399;
+}
+
+.el-table thead tr > th {
+  background-color: var(--el-color-info-light-8) !important;
+}

@@ -9,6 +9,7 @@
 		<router-link to="/menu">多级联动菜单</router-link>
 		<router-link to="/monitoringView">分类监控视图</router-link>
 		<router-link to="/scroll">css 滚动进度展示</router-link>
+		<router-link to="/form-table">表单表格封装</router-link>
 	</div>
 
 	<el-config-provider :locale="locale">

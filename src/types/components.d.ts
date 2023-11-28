@@ -13,10 +13,12 @@ declare module "@vue/runtime-core" {
 		ElBacktop: typeof import("element-plus/es")["ElBacktop"];
 		ElButton: typeof import("element-plus/es")["ElButton"];
 		ElCard: typeof import("element-plus/es")["ElCard"];
+		ElCascader: typeof import("element-plus/es")["ElCascader"];
 		ElCheckbox: typeof import("element-plus/es")["ElCheckbox"];
 		ElCheckboxGroup: typeof import("element-plus/es")["ElCheckboxGroup"];
 		ElCol: typeof import("element-plus/es")["ElCol"];
 		ElConfigProvider: typeof import("element-plus/es")["ElConfigProvider"];
+		ElDatePicker: typeof import("element-plus/es")["ElDatePicker"];
 		ElDialog: typeof import("element-plus/es")["ElDialog"];
 		ElDrawer: typeof import("element-plus/es")["ElDrawer"];
 		ElEmpty: typeof import("element-plus/es")["ElEmpty"];
@@ -29,6 +31,7 @@ declare module "@vue/runtime-core" {
 		ElMenuItem: typeof import("element-plus/es")["ElMenuItem"];
 		ElOption: typeof import("element-plus/es")["ElOption"];
 		ElPagination: typeof import("element-plus/es")["ElPagination"];
+		ElPopconfirm: typeof import("element-plus/es")["ElPopconfirm"];
 		ElRow: typeof import("element-plus/es")["ElRow"];
 		ElScrollbar: typeof import("element-plus/es")["ElScrollbar"];
 		ElSelect: typeof import("element-plus/es")["ElSelect"];
@@ -41,6 +44,8 @@ declare module "@vue/runtime-core" {
 		ElTabs: typeof import("element-plus/es")["ElTabs"];
 		ElTooltip: typeof import("element-plus/es")["ElTooltip"];
 		ElTree: typeof import("element-plus/es")["ElTree"];
+		NewForm: typeof import("./../components/GlobalComponents/newForm.vue")["default"];
+		NewTable: typeof import("./../components/GlobalComponents/newTable.vue")["default"];
 		RouterLink: typeof import("vue-router")["RouterLink"];
 		RouterView: typeof import("vue-router")["RouterView"];
 		ZkChart: typeof import("./../components/GlobalComponents/zkChart.vue")["default"];

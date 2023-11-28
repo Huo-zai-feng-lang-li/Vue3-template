@@ -2,11 +2,11 @@
 
 # 🌈 Awesome README [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome#readme)
 
-> 这是一个使用 Vue3 和 TypeScript 作为主要技术栈的模板 **轻** 架子，您可以拿来直接作为项目模板，也可作为学习参考。
+> This is a template lightweight framework that uses Vue3 and TypeScript as the main technology stack. You can use it directly as a project template or as a learning reference
 
-> 该项目主要是为了方便快速搭建一个基于 Vue3 的项目，并且详细记录了搭建每一步，详尽的注释加 Api 直达链接。
+> The main purpose of this project is to facilitate the rapid construction of a Vue3 based project, and to document each step of the construction in detail, with detailed annotations and Api direct links.
 
-> 该项目集成了 eslint、prettier、stylelint、husky、router、pinia 和 高级封装的 axios、动态路由、组件、及一系列常用工具函数。使用 Vite 作为构建工具，使用 pnpm 作为包管理工具的项目。
+> This project integrates eslint, prettier, stylelint, husky, router, pinia, and advanced encapsulated axios, dynamic routing, components, and a series of commonly used tool functions. A project that uses Vite as the build tool and pnpm as the package management tool.
 
 <div style=color:#0b0909;>
 
@@ -15,20 +15,20 @@
 
 </div>
 
-#### 🏭 技术栈说明
+#### 🏭 Technical Stack Description
 
-- Vue3：一款流行的前端框架，使用 Composition API 和 Tree-Shaking 技术提高开发效率和性能。
-- TypeScript：一种 JavaScript 的超集，增加了静态类型检查和面向对象编程等特性，提高代码的可读性和可维护性。
-- Vite：一个快速的 Web 开发构建工具，利用 ES Modules 和浏览器原生的 import 机制实现了快速的开发和构建速度。
-- pnpm：一个快速、可靠的包管理工具，支持多种包管理方式，如局部安装、全局安装、本地缓存等。
-- eslint：JavaScript 代码检查工具，用于检查代码风格和语法错误。
-- prettier：一款代码格式化工具，用于统一代码风格，提高代码的可读性。
-- stylelint：CSS 代码检查工具，用于检查 CSS 代码风格和语法错误。
-- husky：一个 Git 钩子管理工具，用于在 Git 操作前或后执行一些自定义的任务。
-- router：Vue3 官方提供的路由管理工具，用于实现页面之间的跳转和参数传递。
-- pinia：Vue3 官方提供的状态管理工具，用于管理全局状态和数据流。
-- axios：一款基于 Promise 的 HTTP 库，用于发送 AJAX 请求和处理响应数据。
-- vue-router：Vue3 官方提供的路由管理工具，用于实现页面之间的跳转 和 参数传递。
+- Vue3: A popular front-end framework that uses Composition API and Tree Shaking technology to improve development efficiency and performance.
+- TypeScript: A superset of JavaScript that adds features such as static type checking and object-oriented programming to improve code readability and maintainability.
+- Vite: A fast web development and construction tool that utilizes ES Modules and browser native import mechanisms to achieve fast development and construction speed.
+- PNPM: A fast and reliable package management tool that supports multiple package management methods, such as local installation, global installation, local caching, etc.
+- Eslint: JavaScript code checking tool used to check for code style and syntax errors.
+- Prettier: A code formatting tool used to unify code styles and improve code readability.
+  - Stylint: CSS code checking tool, used to check CSS code style and syntax errors.
+  - Husky: A Git hook management tool used to perform custom tasks before or after Git operations.
+  - Router: The official route management tool provided by Vue3, used for page redirection and parameter transfer.
+  - Pinia: The state management tool provided by Vue3 is used to manage global states and data flow.
+  - Axios: An HTTP library based on Promise, used to send AJAX requests and process response data.
+  - Vue router: A routing management tool provided by Vue3, used for page redirection and parameter transfer.
 
 </div>
 
@@ -46,7 +46,7 @@
 
 # VueHooks Plus
 
-简体中文 | [灵活英文](./README.en-CN.md)
+English | [简体中文](./README.md)
 
 High performance & Simplicity Vue3 Hooks library
 
@@ -54,48 +54,48 @@ High performance & Simplicity Vue3 Hooks library
 
 ## ✨ Features
 
-- [x] **axios 包含以下功能**：
-- [x] 🏄🏼‍♂️ 1.取消重复请求：完全相同的接口在上一个 pending 状态时，自动取消下一个请求
-- [x] 🔋 2.请求失败自动重试: 接口请求后台异常时候,自动重新发起多次请求,直到达到所设次数
-- [x] 🛸 3.请求接口数据缓存: 接口在设定时间内不会向后台获取数据,而是直接拿会话存储本地缓存,（关闭当前进程也就是页签就会自动清除）
-- [x] 🏟️ 4.父页面单独取消当前请求
-- [x] 🦾 5.父页面取消所有请求
-- [x] 🎪 6.请求进度条
-      <br />
-- [x] **功能函数指令 包含以下功能**：
-- [x] 🎯 01.防篡改水印
-- [x] 🪄 02.防抖
-- [x] 🤺 03.节流
-- [x] 🔐 04.深拷贝
-- [x] 🔑 05.复制
-- [x] 🎉 06.拖拽
-- [x] 🚩 07.时间格式化
-- [x] 🛠️ 08.长按
-- [x] ⛑️ 09.判断奇偶
-- [x] 🔖 10.判断是否是空对象
-- [x] 🔍 11.判断是否是空数组
-      <br />
-- [x] **脚手架 包含以下功能**：
-- [x] ✂️ 01.自动导入 Api
-- [x] 🧩 02.自动注册组件
-- [x] 💊 03.自动注册指令
-- [x] 🏔 04.返回顶部
-- [x] 🌐 05.loading 加载进度条 （路由跳转及发起请求是不同定制的 loading）
+- [x] - - Axios includes the following features:
+- [x] 🏄🏼‍♂️ 1. Cancel duplicate requests: When identical interfaces are in the previous pending state, the next request is automatically canceled
+- [x] 🔋 2. Automatic retry upon request failure: When the interface requests an exception in the background, it will automatically reissue multiple requests until the set number of times is reached
+- [x] 🛸 3. Request interface data caching: The interface will not retrieve data from the background within the set time, but will directly store the local cache in the session (closing the current process, which is the tab, will automatically clear it)
+- [x] 🏟️ 4. The parent page cancels the current request separately
+- [x] 🦾 5. Cancel all requests on the parent page
+- [x] 🎪 6. Request progress bar
+      <br/>
+- [x] - - Function instructions include the following functions:
+- [x] 🎯 01. Anti tampering watermark
+- [x] 🪄 02. Anti shake
+- [x] 🤺 03. Throttling
+- [x] 🔐 04. Deep copy
+- [x] 🔑 05. Copy
+- [x] 🎉 06. Dragging
+- [x] 🚩 07. Time formatting
+- [x] 🛠️ 08. Long press
+- [x] ⛑️ 09. Judging Parity
+- [x] 🔖 10. Determine if it is an empty object
+- [x] 🔍 11. Determine if it is an empty array
+      <br/>
+- [x] 🎲 Scaffolding includes the following functions:
+- [x] ✂️ 01. Automatically import Api
+- [x] 🧩 02. Automatic registration component
+- [x] 💊 03. Automatic registration instruction
+- [x] 🏔 04. Return to top
+- [x] 🌐 05. loading progress bar (routing jumps and initiating requests are different customized loading)
 - [ ] 等等...
 
-### 📦 项目预览
+### 📦 Project Preview
 
 [Click Preview](https://zhang-kun8888.gitee.io/vite--ts--vue3---template/#/home)
 
-#### 🤩 对应博客（0-1 所有搭建步骤）
+#### 🤩 Corresponding blog (all building steps from 0 to 1)
 
 [@CSDN-从零搭建 Vue3 + VIte + Ts 项目 —— 并集成 eslint 、prettier、stylelint、husky、lint-staged、pinia、axios、loding、动态路由…](https://blog.csdn.net/m0_57904695/article/details/129950163?spm=1001.2014.3001.5502)
 
-#### 🤹‍♀️ 项目 npm 文档
+#### 🤹‍♀️ Project NPM document
 
 [Click Docs & NPM](https://zhang-kun8888.gitee.io/vue3-tools-docs/)
 
-#### 💒 代码仓库
+#### 💒 Repositories
 
 ```base
 # 国内
@@ -111,7 +111,7 @@ https://github.com/huozaifenlangli/Vue3-template.git
 
 ![Alt](https://repobeats.axiom.co/api/embed/35dbca2274542c0144993be92cc51762227543d9.svg "Repobeats analytics image")
 
-#### ⚡ 使用说明
+#### ⚡ Instructions for use
 
 ```base
 # 克隆项目
@@ -131,7 +131,7 @@ pnpm run dev
 pnpm run build
 ```
 
-#### 🏭 环境支持
+#### 🏭 environment support
 
 | Edge                                                                     | last 2 versions                                                                   | last 2 versions                                                                | last 2 versions                                                                |
 | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |

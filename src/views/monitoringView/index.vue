@@ -53,6 +53,7 @@
 				</div>
 
 				<!-- 右侧绘画区 -->
+
 				<div
 					id="workflow-right"
 					class="workflow-right"
@@ -164,19 +165,10 @@ import {
 	jsplumbMakeTarget,
 	jsplumbConnect,
 } from "./js/config";
-import { customScroll } from "vue3-directive-tools";
 // 动态导入传参
 // import("./js/dragView").then((module) => {
 // 	module.handleDiagramInteraction(".workflow-right");
 // });
-
-window.addEventListener(
-	"wheel",
-	function (event) {
-		customScroll(event, ".workflow-right");
-	},
-	{ passive: false }
-);
 
 // 引入组件
 const Tool = defineAsyncComponent(() => import("./component/tool/index.vue"));

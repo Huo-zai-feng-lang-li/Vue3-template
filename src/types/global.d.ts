@@ -95,3 +95,62 @@ declare type SelectOptionType = {
 declare interface WheelEventType extends WheelEvent {
 	wheelDelta: number;
 }
+
+// new-table
+//表头数据类型定义
+declare interface TableHeader {
+	label: string;
+	prop: string;
+	align?: string;
+	overHidden?: boolean;
+	minWidth?: string;
+	sortable?: boolean;
+	type?: string;
+	fixed?: string;
+	width?: string;
+	isActionColumn?: boolean;
+	isCustomizeColumn?: boolean;
+	slotKey?: string;
+}
+
+/*
+ 允许任何字符串作为索引
+ 不然会报错, 使用动态属性名,需要使用索引签名
+*/
+declare type SearchFormType = {
+	[key: string]: string;
+};
+
+declare type FormOptions = {
+	type: string;
+	props: {
+		label: string;
+		placeholder: string;
+		type: string;
+		clearable: boolean;
+	};
+	vm: string;
+	selectOptions?: [
+		{
+			value: string | number;
+			label: string;
+		}
+	];
+	cascaderOptions?: any;
+};
+
+export {
+	TableHeader,
+	SearchFormType,
+	FormOptions,
+	RefType,
+	SelectOptionType,
+	EmptyObjectType,
+	EmptyArrayType,
+	RouteItem,
+	RouteToFrom,
+	ChilType,
+	HtmlType,
+	WheelEventType,
+	EncryptionPlugin,
+};
