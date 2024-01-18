@@ -65,7 +65,7 @@ export default defineConfig((mode: ConfigEnv) => {
 			terserOptions: {
 				compress: {
 					//生产环境时移除console
-					drop_console: true,
+					// drop_console: true,
 					drop_debugger: true,
 				},
 			},
