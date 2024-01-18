@@ -28,6 +28,7 @@ export default defineConfig((mode: ConfigEnv) => {
 				"~": path.resolve("./src/components"), // @代替src/components
 				"-": path.resolve("./src/api"), // @代替src/api
 			},
+			extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"],
 		},
 
 		//  plugins插件
@@ -51,7 +52,7 @@ export default defineConfig((mode: ConfigEnv) => {
 				//plus 组件 自动引入
 				resolvers: [ElementPlusResolver()],
 				// 配置需要将哪些后缀类型的文件进行自动按需引入
-				extensions: ["vue", "md"],
+				extensions: [".js", ".ts", ".tsx", ".jsx"],
 				dts: "./src/types/components.d.ts", //自动引入生成的组件的地址
 			}),
 		],

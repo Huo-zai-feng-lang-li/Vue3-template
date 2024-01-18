@@ -7,15 +7,21 @@
 ├── private：设置为私有项目，不会被发布到公共的包管理器中
 ├── version：项目版本号为 "0.0.0"
 ├── type：指定模块类型为 ES 模块
-├── scripts：定义了一些可执行的脚本命令
-│ ├── pnpm：安装依赖使用的命令，使用 pnpm 包管理器
-│ ├── dev：启动开发环境，使用 concurrently 同时启动 vite 和 husky（为了非 git cz 命令时启动 commit-msg 校验规则）
-│ ├── build：打包生产环境代码，先执行 CheckAll 命令，再执行 vite build 命令
-│ ├── CheckAll：并行执行 ESlint:check、Prettier:check 和 StyleLint:check 命令
-│ ├── ESlint:check：使用 eslint 对项目进行静态代码检查，并修复一些常见的问题
-│ ├── Prettier:check：使用 prettier 格式化代码，并且只检查指定的文件类型
-│ ├── StyleLint:check：使用 stylelint 对项目中的 CSS 样式进行检查，并修复一些常见的问题
-│ └── commit：使用 git 进行代码提交，并且使用 commitizen 规范化提交信息
+├── **scripts**：定义了一些可执行的脚本命令
+│ ├── **pnpm**：安装依赖使用的命令，使用 pnpm 包管理器
+│ ├── **dev**：启动开发环境，使用 concurrently 同时启动 vite 和 husky（为了非 git cz 命令时启动 commit-msg 校验规则）
+│ ├── **CheckAll**：并行执行 ESlint:check、Prettier:check 和 StyleLint:check 命令
+│ └── **commit**：使用 git 进行代码提交，并且使用 commitizen 规范化提交信息
+│ ├── **test**：本地运行测试环境（对应.env.test）
+│ ├── **prod**：本地运行线上环境（对应.env.production）
+│ ├── **build**：打包生产环境代码
+│ ├── **build:dev**：打包开发环境代码
+│ ├── **build:test**：打包测试环境代码
+│ ├── **build:jg**：打包自定义 jg 环境代码（需要在根目录建立对应的.env.jg）
+│ ├── **ESlint:check**：使用 eslint 对项目进行静态代码检查，并修复一些常见的问题
+│ ├── **Prettier:check**：使用 prettier 格式化代码，并且只检查指定的文件类型
+│ ├── **deploy:gitBase**：调用根目录下的 gitBase.sh 脚本 deploy.sh
+│ ├── **deploy:cmdDev**：打包本地代码，并一键发到 GitHub 的 pages
 ├── config：配置 commitizen 的相关信息
 │ └── commitizen：指定使用的 commitizen adapter 为 cz-conventional-changelog
 ├── lint-staged：定义了在执行 git commit 时，需要执行的命令

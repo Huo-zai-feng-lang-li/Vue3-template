@@ -1,28 +1,28 @@
 {
-	// 开启自动修复
-	"editor.codeActionsOnSave": {
-		"source.fixAll": false,
-		"source.fixAll.eslint": true,
-		"source.fixAll.stylelint": true
-	},
-	// 保存的时候自动格式化
-	"editor.formatOnSave": true,
-	// 默认格式化工具选择prettier
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	// 配置该项，新建文件时默认就是space：2
-	"editor.tabSize": 4,
-	// stylelint校验的文件格式
-	"stylelint.validate": ["css", "less", "scss"],
-	"cSpell.words": ["axiosrequestconfig", "pinia"],
-	"[vue]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	// 启用 ESLint 插件。这意味着在 VSCode 中将会对代码进行 ESLint 检查。
-	"eslint.enable": true,
-	// 表示在保存文件时运行 ESLint 检查。每当您保存文件时，VSCode 将会自动运行 ESLint 并检查代码中的错误和警告。
-	"eslint.run": "onSave",
-	"editor.inlineSuggest.showToolbar": "onHover"
+  // 开启自动修复
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "never",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  // 保存的时候自动格式化
+  "editor.formatOnSave": true,
+  // 默认格式化工具选择prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 配置该项，新建文件时默认就是space：2
+  "editor.tabSize": 4,
+  // stylelint校验的文件格式
+  "stylelint.validate": ["css", "less", "scss"],
+  "cSpell.words": ["axiosrequestconfig", "pinia"],
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // 启用 ESLint 插件。这意味着在 VSCode 中将会对代码进行 ESLint 检查。
+  "eslint.enable": true,
+  // 表示在保存文件时运行 ESLint 检查。每当您保存文件时，VSCode 将会自动运行 ESLint 并检查代码中的错误和警告。
+  "eslint.run": "onSave",
+  "editor.inlineSuggest.showToolbar": "onHover"
 }

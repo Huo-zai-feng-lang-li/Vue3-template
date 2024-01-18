@@ -9,7 +9,6 @@ export {};
 
 declare module "@vue/runtime-core" {
 	export interface GlobalComponents {
-		Backtop: typeof import("./../components/MyBackTop/backtop.vue")["default"];
 		ElBacktop: typeof import("element-plus/es")["ElBacktop"];
 		ElButton: typeof import("element-plus/es")["ElButton"];
 		ElCard: typeof import("element-plus/es")["ElCard"];
@@ -38,22 +37,13 @@ declare module "@vue/runtime-core" {
 		ElSkeleton: typeof import("element-plus/es")["ElSkeleton"];
 		ElSubMenu: typeof import("element-plus/es")["ElSubMenu"];
 		ElSwitch: typeof import("element-plus/es")["ElSwitch"];
-		ElTable: typeof import("element-plus/es")["ElTable"];
 		ElTableColumn: typeof import("element-plus/es")["ElTableColumn"];
 		ElTabPane: typeof import("element-plus/es")["ElTabPane"];
 		ElTabs: typeof import("element-plus/es")["ElTabs"];
 		ElTooltip: typeof import("element-plus/es")["ElTooltip"];
 		ElTree: typeof import("element-plus/es")["ElTree"];
-		NewForm: typeof import("./../components/GlobalComponents/newForm.vue")["default"];
-		NewTable: typeof import("./../components/GlobalComponents/newTable.vue")["default"];
 		RouterLink: typeof import("vue-router")["RouterLink"];
 		RouterView: typeof import("vue-router")["RouterView"];
-		ZkChart: typeof import("./../components/GlobalComponents/zkChart.vue")["default"];
-		ZkConfettiCanvas: typeof import("./../components/GlobalComponents/zkConfettiCanvas.vue")["default"];
-		ZkDialog: typeof import("./../components/GlobalComponents/zkDialog.vue")["default"];
-		ZkIcon: typeof import("./../components/GlobalComponents/zkIcon.vue")["default"];
-		ZkTooltip: typeof import("./../components/GlobalComponents/zkTooltip.vue")["default"];
-		ZkTree: typeof import("./../components/GlobalComponents/zkTree.vue")["default"];
 	}
 	export interface ComponentCustomProperties {
 		vLoading: typeof import("element-plus/es")["ElLoadingDirective"];

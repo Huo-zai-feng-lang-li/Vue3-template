@@ -14,7 +14,7 @@
 				<el-form-item :label="item.props.label" :prop="item.vm">
 					<el-input
 						v-if="item.type === FormOptionsType.INPUT"
-						v-model.lazy="searchForm[item.vm]"
+						v-model.lazy.trim="searchForm[item.vm]"
 						v-bind="item.props"
 						class="ml10 w100"
 					></el-input>
@@ -24,13 +24,18 @@
 						v-model.lazy="searchForm[item.vm]"
 						v-bind="item.props"
 						class="ml10 w100"
+						fit-input-width
 					>
+						<el-option label="全部" value=""></el-option>
+
 						<el-option
 							v-for="option in item.selectOptions"
 							:key="option.value"
 							:label="option.label"
 							:value="option.value"
-						/>
+						>
+							<zw-tooltip-omit :content="option.label"></zw-tooltip-omit>
+						</el-option>
 					</el-select>
 
 					<el-cascader
@@ -46,16 +51,16 @@
 						v-model.lazy="searchForm[item.vm]"
 						v-bind="item.props"
 						class="ml10 w100"
-					/>
+					></el-date-picker>
 				</el-form-item>
 			</el-col>
 			<el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="6" class="xs-mt">
 				<el-form-item style="margin-left: 10px">
-					<el-button @click="onReset">
+					<el-button @click="onSearch('reset')">
 						<SvgIcon name="ant-ReloadOutlined"></SvgIcon>
 						重置
 					</el-button>
-					<el-button type="primary" @click="onSearch">
+					<el-button type="primary" @click="onSearch()">
 						<SvgIcon name="ant-SearchOutlined"></SvgIcon>
 						查询
 					</el-button>
@@ -69,7 +74,7 @@
 import { toRefs, onBeforeUnmount, ref } from "vue";
 import type { PropType } from "vue";
 import { type FormInstance } from "element-plus";
-import type { FormOptions, SearchFormType } from "@/types/global";
+import { debounce } from "@/utils/debounce";
 const searchFormRef = ref<FormInstance>();
 
 enum FormOptionsType {
@@ -91,13 +96,22 @@ const props = defineProps({
 });
 const { formOptions, searchForm } = toRefs(props);
 
-const emit = defineEmits(["reset", "search"]);
+const emit = defineEmits(["search"]);
+const debouncedEmitSearch = debounce((type) => emit("search", type));
+const onSearch = (type?: string) => {
+	if (type) searchFormRef.value?.resetFields();
+	debouncedEmitSearch(type);
+};
 
-const onReset = () => emit("reset");
-const onSearch = () => emit("search");
 onBeforeUnmount(() => searchFormRef.value?.resetFields());
 defineExpose({ searchFormRef });
 </script>
+
+<style scoped lang="scss">
+:deep(.el-form-item__label) {
+	margin-left: 10px;
+}
+</style>
 
 <style scoped lang="scss">
 :deep(.el-form-item__label) {

@@ -54,8 +54,9 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .menu {
+	overflow: hidden;
 	position: relative;
 	z-index: 999;
 	margin-top: 5px;
@@ -65,10 +66,14 @@ export default defineComponent({
 	color: var(--el-color-white);
 	background-color: var(--el-bg-primary);
 	line-height: 35px;
-
 	a {
 		margin: 0 10px;
 		color: var(--el-color-white);
+	}
+}
+@media screen and (max-width: 1396px) {
+	html {
+		font-size: 58px !important;
 	}
 }
 </style>

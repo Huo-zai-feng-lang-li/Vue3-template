@@ -1,6 +1,6 @@
 // 路由守卫 用来动态生成路由
 import { router, routes } from "./index";
-import { getLocalKey } from "@/utils/storage";
+import { Local } from "@/utils/storage";
 //引入main.ts中的app
 import app from "../main";
 const hideLoading = () => app.config.globalProperties.$Loading?.hideLoading;
@@ -17,11 +17,12 @@ let isRoutesGenerated = false; // 添加一个标志位，用来判断是否已�
 router.beforeEach((to, from, next) => {
 	if (to.meta.loading) showLoading();
 	/**
-	 *  token 是登录成功得到的。如果用户本地模拟token，也会调用接口，如果token过期或者被非法篡改，会在axios的拦截器中进行处理。
+	 *  token 是登录成功得到的。如果用户本地模拟token，也会调用接口。
+	 *  如果token过期或者被非法篡改，会在axios的拦截器中进行处理。
 	 */
 	if (to.path === "/login") return next();
-
-	if (getLocalKey("token")) {
+	const TOKEN = Local.get("token");
+	if (TOKEN) {
 		addRouters(next, to);
 	} else {
 		// 没token不是权限页面

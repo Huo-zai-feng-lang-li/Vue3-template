@@ -2,16 +2,16 @@ export default {
 	// 表头数据
 	tableHeader: {
 		type: Array as () => TableHeader[],
-		default: function () {
-			return [];
-		},
 	},
 
 	// 表格显示的数据
 	tableData: {
-		default: function () {
-			return [];
-		},
+		type: Array as () => any[],
+	},
+
+	//表格高度
+	tableHeight: {
+		type: String,
 	},
 
 	// 边框
@@ -70,5 +70,23 @@ export default {
 	isSerialNo: {
 		type: Boolean,
 		default: true,
+	},
+
+	// 是否显示复选框
+	isSelection: {
+		type: Boolean,
+		default: false,
+	},
+
+	// 复选框勾选 ids字符串
+	selectionIds: {
+		type: String,
+		default: "",
+	},
+
+	// 是否开启复选框禁用
+	isDisableSelection: {
+		type: Boolean,
+		default: false,
 	},
 };

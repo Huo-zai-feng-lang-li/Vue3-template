@@ -59,7 +59,6 @@ declare interface RouteItem extends RouteRecordRaw {
 	};
 	children?: ChilType[void];
 }
-
 // 声明路由 to from
 declare interface RouteToFrom<T = any> extends RouteItem {
 	path?: string;
@@ -96,6 +95,14 @@ declare interface WheelEventType extends WheelEvent {
 	wheelDelta: number;
 }
 
+// tree
+declare interface Tree {
+	id: number;
+	label: string;
+	children?: Tree[];
+	[key: string]: any;
+}
+
 // new-table
 //表头数据类型定义
 declare interface TableHeader {
@@ -107,13 +114,15 @@ declare interface TableHeader {
 	sortable?: boolean;
 	type?: string;
 	fixed?: string;
-	width?: string;
-	isActionColumn?: boolean;
-	isCustomizeColumn?: boolean;
-	slotKey?: string;
+	width?: string | number;
+	// isActionColumn?: boolean; // 是否是操作列
+	// isCustomizeColumn?: boolean; // 是否是自定义列
+	slotKey?: string; // 自定义列的插槽名称
+	searchFields?: boolean; // 是否是搜索字段
 }
 
 /*
+  newForm
  允许任何字符串作为索引
  不然会报错, 使用动态属性名,需要使用索引签名
 */
@@ -130,27 +139,10 @@ declare type FormOptions = {
 		clearable: boolean;
 	};
 	vm: string;
-	selectOptions?: [
-		{
-			value: string | number;
-			label: string;
-		}
-	];
+	selectOptions?: {
+		value: string | number;
+		label: string;
+		disabled?: boolean;
+	}[];
 	cascaderOptions?: any;
-};
-
-export {
-	TableHeader,
-	SearchFormType,
-	FormOptions,
-	RefType,
-	SelectOptionType,
-	EmptyObjectType,
-	EmptyArrayType,
-	RouteItem,
-	RouteToFrom,
-	ChilType,
-	HtmlType,
-	WheelEventType,
-	EncryptionPlugin,
 };

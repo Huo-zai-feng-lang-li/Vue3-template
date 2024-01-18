@@ -86,5 +86,5 @@ export const getLocalKey = (
 			}
 		}
 	}
-	return undefined;
+	return void 0;
 };

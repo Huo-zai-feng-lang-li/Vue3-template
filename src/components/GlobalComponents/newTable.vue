@@ -1,24 +1,42 @@
 <template>
 	<div class="container">
-		<el-card shadow="hover">
+		<div class="container-main">
+			<!-- 表单搜索区域 -->
 			<el-scrollbar
-				max-height="300px"
 				v-if="isShowSearchRegion"
-				class="wrap"
+				max-height="300px"
+				class="scrollbar-height"
 			>
 				<slot name="search"></slot>
 			</el-scrollbar>
+
+			<!-- 表格上方搜索向下方按钮区域 -->
+			<slot name="btn"></slot>
+
+			<!-- 列表区域 v-bind="xx"放在最下方，如果父组件传值可以覆盖上面定义的默认值-->
+			<!-- 父组件传递的属性（通过 $attrs 或显式传递的 prop）能够覆盖子组件内部的默认设置，你应该确保 v-bind 放在最后 -->
 			<el-table
-				v-bind="$attrs"
+				ref="multipleTableRef"
 				stripe
 				style="width: 100%"
-				:data="tableData"
+				:data="filterTableData"
 				:border="tableBorder"
-				:height="excludeSearchAreaAfterTableHeight"
+				:height="tableHeight || excludeSearchAreaAfterTableHeight"
+				:row-key="(row) => row.id"
+				@selection-change="onSelectionChange"
+				v-bind="$attrs"
 			>
 				<template #empty>
 					<el-empty :image-size="emptyImgSize" description="暂无数据" />
 				</template>
+
+				<el-table-column
+					type="selection"
+					width="30"
+					v-if="isSelection"
+					:reserve-selection="true"
+					:selectable="selectableCallback"
+				/>
 
 				<el-table-column
 					type="index"
@@ -27,44 +45,55 @@
 					:index="orderHandler"
 					align="center"
 				/>
-
 				<el-table-column
 					v-for="item in tableHeader"
-					v-bind="item"
 					:key="item.prop"
+					header-align="center"
+					align="center"
+					:fixed="item.label === '操作' ? 'right' : void 0"
+					:min-width="item.label === '操作' ? '80' : void 0"
+					v-bind="item"
 				>
+					<template
+						#header
+						v-if="item.slotKey?.includes('tableHeaderSearch')"
+					>
+						<el-input
+							v-model.trim="search"
+							size="small"
+							:placeholder="getSearchInfo.label"
+						/>
+					</template>
+
 					<template #default="{ row }" v-if="item.slotKey">
-						<template v-if="item.slotKey.includes('default')">
-							<el-link
-								type="primary"
-								:underline="false"
-								@click="handleEdit(row)"
-								>编辑</el-link
-							>
-							<el-popconfirm
-								title="确定删除吗？"
-								@confirm="handleDelete(row.id)"
-							>
-								<template #reference>
-									<el-link
-										class="ml15"
-										type="danger"
-										:underline="false"
-										>删除</el-link
-									>
-								</template>
-							</el-popconfirm>
-						</template>
 						<slot
 							v-for="slot in item.slotKey.split(',')"
 							:name="slot"
 							:row="row"
 						></slot>
+						<template v-if="item.slotKey.includes('default')">
+							<el-link
+								type="primary"
+								:underline="false"
+								@click="handleEdit(row)"
+								>编辑
+							</el-link>
+							<el-popconfirm
+								title="确定删除吗？"
+								@confirm="handleDelete(row.id)"
+							>
+								<template #reference>
+									<el-link type="danger" :underline="false"
+										>删除</el-link
+									>
+								</template>
+							</el-popconfirm>
+						</template>
 					</template>
 				</el-table-column>
 			</el-table>
 
-			<!-- 分页 -->
+			<!-- 分页区域-->
 			<el-pagination
 				v-if="paginationFlag"
 				background
@@ -73,20 +102,46 @@
 				:page-size="pageSize"
 				:layout="layout"
 				:total="total"
+				popper-class="pagination-popper"
 				@size-change="handleSizeChange"
 				@current-change="handleCurrentChange"
 			></el-pagination>
-		</el-card>
+		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch, toRaw, nextTick, computed } from "vue";
+import { ElTable } from "element-plus";
+const multipleTableRef = ref<InstanceType<typeof ElTable>>();
+
 import myEmits from "./newTableConfig/emits";
 import myProps from "./newTableConfig/props";
-
 const emits = defineEmits(myEmits);
 const props = defineProps(myProps);
+const search = ref("");
+
+// 搜索过滤
+const filterTableData = computed(() =>
+	props.tableData?.filter(
+		(data) =>
+			!search.value ||
+			String(data[getSearchInfo.value.prop])
+				.toLowerCase()
+				.includes(search.value.toLowerCase())
+	)
+);
+// 计算那列用于展示搜索
+const getSearchInfo = computed(() => {
+	let searchInfo = { label: "", prop: "" };
+	props.tableHeader?.find((v) => {
+		if (v.searchFields) {
+			searchInfo = { label: v.label, prop: v.prop };
+			return true;
+		}
+	});
+	return searchInfo;
+});
 
 // 序号根据数据长度计算
 const orderHandler = (index: number) => {
@@ -94,10 +149,10 @@ const orderHandler = (index: number) => {
 	// 第0条 * 每页条数 + 当前索引+1
 	return (pageNum - 1) * pageSize + index + 1;
 };
+
 //  页数改变
 const handleSizeChange = (val: number | string) =>
 	emits("handleSizeChange", val);
-
 // 当前页改变
 const handleCurrentChange = (val: number | string) =>
 	emits("handleCurrentChange", val);
@@ -105,60 +160,123 @@ const handleCurrentChange = (val: number | string) =>
 // 编辑、删除
 const handleEdit = (row: object) => emits("handleEdit", row);
 const handleDelete = (id: number) => emits("handleDelete", id);
+// 复选框
+const onSelectionChange = (val: any) => emits("selection-table-change", val);
+
+// 根据父组件传递的id字符串，默认选中对应行
+const toggleSelection = (rows?: any) => {
+	if (props.isSelection) {
+		if (rows) {
+			rows.forEach((row: any) => {
+				const idsArr = props.selectionIds?.split(",");
+				if (idsArr?.includes(row.id.toString())) {
+					//重要
+					nextTick(() =>
+						multipleTableRef.value?.toggleRowSelection(row, true)
+					);
+				}
+			});
+		} else {
+			multipleTableRef.value!.clearSelection();
+		}
+	}
+};
+// 返回值用来决定这一行的 CheckBox 是否可以勾选
+const selectableCallback = (row: any) => {
+	const idsArr = props.selectionIds?.split(",");
+	if (props.isDisableSelection && idsArr?.includes(row.id.toString()))
+		return false;
+	return true;
+};
+watch(
+	() => props.tableData,
+	(newV) => {
+		if (props.selectionIds) {
+			// console.log('🤺🤺  selectionIds🚀 ==>:', props.selectionIds);
+			// console.log('🤺🤺  newV ==>:', newV);
+			toggleSelection(toRaw(newV));
+		}
+	}
+);
 
 // 搜索区域高度及默认值
 const Height = ref();
-// 减去搜索区域高度后的table
-const excludeSearchAreaAfterTableHeight = ref("calc(100vh - 165px)");
+// 减去搜索区域高度后的table，不能有默认值不然会出现滚动条
+const excludeSearchAreaAfterTableHeight = ref();
 
 // 获取表格高度-动态计算搜索框高度（onMounted、resize，208是已知的面包屑tebView高度）
 const updateHeight = () => {
-	let wrapEl = document.querySelector(".wrap") as HTMLDivElement | null;
+	let wrapEl = document.querySelector(
+		".scrollbar-height"
+	) as HTMLElement | null;
 	if (!wrapEl) return;
 	Height.value = wrapEl.getBoundingClientRect().height;
+	// console.log('🤺🤺  🚀 ==>:', wrapEl.getBoundingClientRect());
 	if (props.isShowSearchRegion) {
 		excludeSearchAreaAfterTableHeight.value = `calc(100vh - ${
-			165 + Height.value
+			200 + Height.value
 		}px)`;
 	}
 };
+
 onMounted(() => {
 	// 表格下拉动画
 	const tableContainer = <HTMLElement>document.querySelector(".container");
 	setTimeout(() => {
 		if (tableContainer) tableContainer.style.transform = "translateY(0)";
 		updateHeight();
-	}, 300);
+	}, 800);
 });
+
 window.addEventListener("resize", updateHeight);
+defineExpose({
+	toggleSelection,
+});
 </script>
 
 <style scoped lang="scss">
 .container {
+	// width: 100%;
+	// height: 100%;
 	padding: 15px;
 	transform: translateY(-100%);
-	transition: transform 0.5s;
-	// background-color: #870404;
+	transition: transform 0.4s ease-in-out;
 	background-color: #f8f8f8;
-	.el-scrollbar {
-		// border: 1px solid pink;
-		min-height: 100px;
-		width: 100%;
-		height: fit-content;
-	}
-	.el-card {
-		width: 100%;
-		height: 100%;
-	}
+	// background-color: #870404;
 
-	.el-pagination {
-		margin-left: 15%;
-		height: 35px;
-		margin-top: 16px;
+	&-main {
+		position: relative;
+		padding: 15px;
+		// width: 100%;
+		// height: 100%; //el-scrollbar有默认高度100%，当页面列表渲前会继承这里高度，导致搜索区域铺满全屏
+		background-color: #fff;
+		border: 1px solid #e6e6e6;
+		border-radius: 5px;
+		&:hover {
+			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+		}
+		transition: box-shadow 0.3s ease-in-out;
+		.scrollbar-height {
+			min-height: 100px;
+		}
+
+		.el-pagination {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 20px;
+		}
 	}
 }
 // 穿透父组件
 :deep(.el-link) {
 	padding-left: 10px;
+}
+:deep(.el-table .cell) {
+	// 用户在表格内填写内容时有换行，在展示表格时将换行体现出来
+	white-space: break-spaces;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	// text-indent: 2em;
 }
 </style>

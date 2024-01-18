@@ -22,6 +22,9 @@ module.exports = {
     $encryptionPlugin: "readonly",
     defineOptions: "readonly",
     ElMessage: "readonly",
+    TableHeader: true,
+    FormOptions: true,
+    SearchFormType: true,
   },
   extends: [
     "eslint:recommended",
@@ -40,6 +43,7 @@ module.exports = {
   },
   plugins: ["vue", "@typescript-eslint"],
   rules: {
+    // "no-undef": process.env.NODE_ENV === "production" ? "warn" : "off",
     // http://eslint.cn/docs/rules/
     // https://eslint.vuejs.org/rules/
     // https://typescript-eslint.io/rules/no-unused-vars/

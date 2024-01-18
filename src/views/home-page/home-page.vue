@@ -91,10 +91,11 @@ const getCurveData = () => {
 };
 
 const handClick = debounceRest((varStr: string) => {
+	ElMessage.success("请打开控制台查看");
 	const encryptedData = encryptionPlugin.encryptData("1334132303@qq.com"); // 加密
 	const decryptedData = encryptionPlugin.decryptData(encryptedData); // 解密
-	console.log("加密 🚀 ==>:", encryptedData);
-	console.log("解密 🚀 ==>:", decryptedData);
+	console.log("加密后 🚀 ==>:", encryptedData);
+	console.log("解密后 🚀 ==>:", decryptedData);
 	console.log("我是防抖payload参数 🚀 ==>:", varStr);
 	console.log("判断奇数偶数 🚀 ==>:", isEvenOrOdd(-0.3));
 	console.log("判断类型 🚀 ==>:", isType({}));

@@ -4,4 +4,5 @@ export default [
 	"handleCurrentChange",
 	"handleEdit",
 	"handleDelete",
+	"selection-table-change",
 ];

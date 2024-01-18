@@ -41,33 +41,10 @@
       }
     ],
     // 指定要包含的类型声明文件
-    "types": [
-      "element-plus/global",
-      "vite/client",
-      "vue",
-      "vue-router",
-      "@types/node",
-      "pinia",
-      "echarts"
-    ]
+    "types": ["element-plus/global", "@types/node"]
   },
   //  include: 指定要包含在编译中的文件
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "src/**/*.json",
-    "src/**/*.js",
-    "src/**/*.mjs",
-    "global.d.ts"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   // exclude: 指定要从编译中排除的文件
-  "exclude": ["node_modules", "dist"],
-  // extends: 指定要继承的配置文件
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+  "exclude": ["node_modules", "dist"]
 }

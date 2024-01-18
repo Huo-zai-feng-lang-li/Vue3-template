@@ -1,55 +1,73 @@
 <template>
-	<div class="container-wrapper">
-		<!-- 动态 page -->
-		<new-table
-			:tableHeader="tableHeader"
-			:tableData="tableData"
-			:pageNum="pageNum"
-			:pageSize="pageSize"
-			:total="pageTotal"
-			@handleSizeChange="onHandleSizeChange"
-			@handleCurrentChange="onHandleCurrentChange"
-			@handleEdit="onHandleEdit"
-			@handleDelete="onHandleDelete"
-		>
-			<template #search>
-				<new-form
-					:formOptions="formOptions"
-					:searchForm="searchForm"
-					@reset="onReset"
-					@search="onSearch"
-				/>
-			</template>
+	<new-table
+		v-bind="state"
+		@handleSizeChange="onHandleSizeChange"
+		@handleCurrentChange="onHandleCurrentChange"
+		@handleEdit="onHandleEdit"
+		@handleDelete="onHandleDelete"
+	>
+		<template #search>
+			<new-form
+				:formOptions="formOptions"
+				:searchForm="searchForm"
+				@search="onSearch"
+			/>
+		</template>
 
-			<template #switch="{ row }">
-				<el-switch
-					v-model="row.fileStatus"
-					active-text="开"
-					inactive-text="关"
-					:active-value="1"
-					:inactive-value="2"
-					active-color="#13ce66"
-					inactive-color="#ff4949"
-					@change="changeSwitchStatus(row.id, row.fileStatus)"
-				/>
-			</template>
-		</new-table>
-	</div>
+		<template #btn>
+			<el-button
+				type="primary"
+				size="default"
+				style="float: right; margin-bottom: 15px"
+			>
+				<SvgIcon name="ant-PlusOutlined"></SvgIcon>
+				新建题目
+			</el-button>
+		</template>
+
+		<template #switch="{ row }">
+			<el-switch
+				v-model="row.fileStatus"
+				active-text="开"
+				inactive-text="关"
+				:active-value="1"
+				:inactive-value="2"
+				active-color="#13ce66"
+				inactive-color="#ff4949"
+				@change="changeSwitchStatus(row.id, row.fileStatus)"
+			/>
+		</template>
+	</new-table>
 </template>
 
-<script setup lang="ts" name="algorithmRegistrationQuery">
+<script setup lang="ts" name="FormTableDemoExample">
 import { onMounted, reactive, toRefs } from "vue";
-// import { getTestList } from "/@/api/encryptionAlgorithm/templateDefinition";
-// import { STATUS_CODE } from "/@/enum/global";
-import type { TableHeader, FormOptions, SearchFormType } from "@/types/global";
+// import { getTestList } from "@/api/encryptionAlgorithm/templateDefinition";
+// import { STATUS_CODE } from "@/enum/global";
 const state = reactive({
 	//表头数据
 	// el-table-column有的属性都可以在这传
+
+	/* 
+	 searchFields:true 搜索字段
+	 slotKey: 'xxx' 自定义插槽 
+	 包含tableHeaderSearch则展示表格搜索框。
+	 包含default则展示 编辑删除
+	 其他值可以在父组件中使用插槽 template自定义内容
+	  #search 表单搜索
+	  #btn 列表上方的按钮
+	*/
+
 	tableHeader: <TableHeader[]>[
-		{ label: "姓名", prop: "uname" },
+		{ label: "姓名", prop: "uname", searchFields: true },
 		{ label: "年龄", prop: "age" },
 		{ label: "性别", prop: "sex", slotKey: "switch" },
-		{ label: "操作", fixed: "right", slotKey: "default" },
+		{
+			label: "操作",
+			fixed: "left",
+			slotKey: "default,tableHeaderSearch",
+			width: 200,
+		},
 	],
 	//表项数据
 	tableData: [
@@ -249,20 +267,15 @@ const state = reactive({
 		},
 	],
 	//这里允许动态属性所以可为空
-	searchForm: <SearchFormType>{},
+	searchForm: <SearchFormType>{
+		department: "", // 匹配下拉的全部，因为全部的value是''
+	},
 	pageNum: 1,
 	pageSize: 10,
-	pageTotal: 0,
+	total: 10000,
+	tableHeight: "calc(100vh - 302px)",
 });
-const {
-	tableHeader,
-	tableData,
-	formOptions,
-	searchForm,
-	pageNum,
-	pageSize,
-	pageTotal,
-} = toRefs(state);
+const { formOptions, searchForm, pageNum, pageSize } = toRefs(state);
 
 // 修改
 const onHandleEdit = (row: object) => {
@@ -295,34 +308,29 @@ const onHandleCurrentChange = (val: number) => {
 // 获取表项数据
 const getTableList = (pageNum: number, pageSize: number) => {
 	// 处理searchForm.value createTime
-	if (searchForm.value.createTime) {
-		searchForm.value.startTime = searchForm.value.createTime[0];
-		searchForm.value.createTimeEnd = searchForm.value.createTime[1];
-		delete searchForm.value.createTime;
+	let params = { ...searchForm.value };
+	if (params.createTime) {
+		params.createTimeBegin = params.createTime[0];
+		params.createTimeEnd = params.createTime[1];
 	}
-	console.log("🤺🤺  🚀 ==>:", pageNum, pageSize);
+	// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+	const { createTime, ...paramsWithoutCreateTime } = params;
+	console.log(pageNum, pageSize);
 	// getTestList({
 	// 	pageNum,
 	// 	pageSize,
-	// 	...searchForm.value,
+	// 	...paramsWithoutCreateTime,
 	// }).then((res) => {
-	// 	// if (res.code !== STATUS_CODE.SUCCESS) return;
+	// 	if (res.code !== STATUS_CODE.SUCCESS) return;
 	// 	const { list, total } = res.data;
 	// 	tableData.value = list;
 	// 	// console.log('🤺🤺 表项 🚀 ==>:', list);
-	// 	pageTotal.value = total;
+	// 	total.value = total;
 	// });
 };
 
-// 重置
-const onReset = () => {
-	searchForm.value = {};
-	getTableList(pageNum.value, pageSize.value);
-};
-// 查询
-const onSearch = () => {
-	console.log("🤺🤺 查询表单数据 ==>:", searchForm.value);
-	// 获取表项数据
+const onSearch = (isReset?: string) => {
+	pageNum.value = isReset ? 1 : pageNum.value;
 	getTableList(pageNum.value, pageSize.value);
 };
 
