@@ -69,7 +69,7 @@ const getCurveData = () => {
 
 	// 模拟接口 一秒钟后直接赋值给ECharts
 	setTimeout(() => {
-		chartLineData.xAxis.data = [
+		chartLineData.value.xAxis.data = [
 			"Mon",
 			"Tue",
 			"Wed",
@@ -77,9 +77,11 @@ const getCurveData = () => {
 			"Fri",
 			"Sat",
 			"Sun",
-		];
-		chartLineData.series[0].data = [820, 932, 901, 934, 1290, 1330, 1320];
-		chartLineData.title.text = "折线图模拟接口数据";
+		] as never;
+		chartLineData.value.series[0].data = [
+			820, 932, 901, 934, 1290, 1330, 1320,
+		] as never;
+		chartLineData.value.title.text = "折线图模拟接口数据";
 		Flag.value = true;
 		setTimeout(() => {
 			showConfetti(4, {

@@ -1,8 +1,6 @@
-// 引入interface
-import { ChartLineData, ChartLineData2 } from "./interface-chart";
-
-// 模拟接口数据
-export const chartLineData: ChartLineData = {
+import { ref } from "vue";
+// 模拟接口数据,必须是响应式数据
+export const chartLineData = ref({
 	tooltip: {
 		trigger: "axis",
 	},
@@ -38,10 +36,10 @@ export const chartLineData: ChartLineData = {
 			smooth: true,
 		},
 	],
-};
+});
 
 // 静态数据
-export const chartLineData2: ChartLineData2 = {
+export const chartLineData2 = ref({
 	tooltip: {
 		trigger: "axis",
 	},
@@ -62,4 +60,4 @@ export const chartLineData2: ChartLineData2 = {
 			smooth: true,
 		},
 	],
-};
+});
