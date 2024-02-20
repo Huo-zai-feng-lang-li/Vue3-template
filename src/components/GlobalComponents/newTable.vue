@@ -21,7 +21,10 @@
 				style="width: 100%"
 				:data="filterTableData"
 				:border="tableBorder"
-				:height="tableHeight || excludeSearchAreaAfterTableHeight"
+				:style="{
+					height: tableHeight || excludeSearchAreaAfterTableHeight,
+					minHeight: minHeight + 'px',
+				}"
 				:row-key="(row) => row.id"
 				@selection-change="onSelectionChange"
 				v-bind="$attrs"
@@ -32,7 +35,7 @@
 
 				<el-table-column
 					type="selection"
-					width="30"
+					width="60"
 					v-if="isSelection"
 					:reserve-selection="true"
 					:selectable="selectableCallback"
@@ -53,6 +56,7 @@
 					:fixed="item.label === '操作' ? 'right' : void 0"
 					:min-width="item.label === '操作' ? '80' : void 0"
 					v-bind="item"
+					show-overflow-tooltip
 				>
 					<template
 						#header
@@ -203,27 +207,27 @@ watch(
 const Height = ref();
 // 减去搜索区域高度后的table，不能有默认值不然会出现滚动条
 const excludeSearchAreaAfterTableHeight = ref();
+const minHeight = 500; // 最小高度值
 
 // 获取表格高度-动态计算搜索框高度（onMounted、resize，208是已知的面包屑tebView高度）
 const updateHeight = () => {
-	let wrapEl = document.querySelector(
-		".scrollbar-height"
-	) as HTMLElement | null;
+	let wrapEl = document.querySelector(".scrollbar-height");
 	if (!wrapEl) return;
-	Height.value = wrapEl.getBoundingClientRect().height;
-	// console.log('🤺🤺  🚀 ==>:', wrapEl.getBoundingClientRect());
+	Height.value = wrapEl.scrollHeight;
 	if (props.isShowSearchRegion) {
-		excludeSearchAreaAfterTableHeight.value = `calc(100vh - ${
-			200 + Height.value
-		}px)`;
+		const calculatedHeight = `calc(100vh - ${200 + Height.value}px)`;
+		// 确保元素的高度不会小于一个最小值
+		excludeSearchAreaAfterTableHeight.value = `max(${minHeight}px, ${calculatedHeight})`;
 	}
 };
 
 onMounted(() => {
 	// 表格下拉动画
-	const tableContainer = <HTMLElement>document.querySelector(".container");
+	const tableContainer = document.querySelectorAll<HTMLElement>(".container");
 	setTimeout(() => {
-		if (tableContainer) tableContainer.style.transform = "translateY(0)";
+		tableContainer.forEach((item) => {
+			if (item) item.style.transform = "translateY(0)";
+		});
 		updateHeight();
 	}, 800);
 });
@@ -247,7 +251,7 @@ defineExpose({
 	&-main {
 		position: relative;
 		padding: 15px;
-		// width: 100%;
+		//width: 100%;
 		// height: 100%; //el-scrollbar有默认高度100%，当页面列表渲前会继承这里高度，导致搜索区域铺满全屏
 		background-color: #fff;
 		border: 1px solid #e6e6e6;
@@ -272,11 +276,18 @@ defineExpose({
 :deep(.el-link) {
 	padding-left: 10px;
 }
-:deep(.el-table .cell) {
+:deep(.el-table tbody .cell) {
 	// 用户在表格内填写内容时有换行，在展示表格时将换行体现出来
 	white-space: break-spaces;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	// text-indent: 2em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+:deep(.el-popper.is-dark) {
+	max-width: 700px !important;
+	word-break: break-all;
 }
 </style>
