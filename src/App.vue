@@ -71,9 +71,4 @@ export default defineComponent({
 		color: var(--el-color-white);
 	}
 }
-@media screen and (max-width: 1396px) {
-	html {
-		font-size: 58px !important;
-	}
-}
 </style>

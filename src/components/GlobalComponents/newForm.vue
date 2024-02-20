@@ -26,15 +26,13 @@
 						class="ml10 w100"
 						fit-input-width
 					>
-						<el-option label="全部" value=""></el-option>
-
+						<el-option label="全部" value="全部"></el-option>
 						<el-option
 							v-for="option in item.selectOptions"
 							:key="option.value"
 							:label="option.label"
 							:value="option.value"
 						>
-							<zw-tooltip-omit :content="option.label"></zw-tooltip-omit>
 						</el-option>
 					</el-select>
 
@@ -56,14 +54,8 @@
 			</el-col>
 			<el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="6" class="xs-mt">
 				<el-form-item style="margin-left: 10px">
-					<el-button @click="onSearch('reset')">
-						<SvgIcon name="ant-ReloadOutlined"></SvgIcon>
-						重置
-					</el-button>
-					<el-button type="primary" @click="onSearch()">
-						<SvgIcon name="ant-SearchOutlined"></SvgIcon>
-						查询
-					</el-button>
+					<el-button @click="onSearch('reset')"> 重置 </el-button>
+					<el-button type="primary" @click="onSearch()"> 查询 </el-button>
 				</el-form-item>
 			</el-col>
 		</el-row>

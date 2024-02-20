@@ -134,9 +134,6 @@ declare type FormOptions = {
 	type: string;
 	props: {
 		label: string;
-		placeholder: string;
-		type: string;
-		clearable: boolean;
 	};
 	vm: string;
 	selectOptions?: {

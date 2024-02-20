@@ -20,7 +20,6 @@
 				size="default"
 				style="float: right; margin-bottom: 15px"
 			>
-				<SvgIcon name="ant-PlusOutlined"></SvgIcon>
 				新建题目
 			</el-button>
 		</template>
@@ -138,7 +137,8 @@ const state = reactive({
 				"range-separator": "-",
 				"start-placeholder": "开始日期",
 				"end-placeholder": "结束日期",
-				"value-format": "YYYY-MM-DD HH:mm:ss",
+				"value-format": "YYYY-MM-DD",
+				format: "YYYY-MM-DD",
 			},
 			vm: "createTime",
 		},
@@ -267,12 +267,10 @@ const state = reactive({
 		},
 	],
 	//这里允许动态属性所以可为空
-	searchForm: <SearchFormType>{
-		department: "", // 匹配下拉的全部，因为全部的value是''
-	},
+	searchForm: <SearchFormType>{ department: "全部" },
 	pageNum: 1,
 	pageSize: 10,
-	total: 10000,
+	total: 100000000000,
 	tableHeight: "calc(100vh - 302px)",
 });
 const { formOptions, searchForm, pageNum, pageSize } = toRefs(state);
@@ -313,9 +311,10 @@ const getTableList = (pageNum: number, pageSize: number) => {
 		params.createTimeBegin = params.createTime[0];
 		params.createTimeEnd = params.createTime[1];
 	}
+	delete params.createTime;
 	// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 	const { createTime, ...paramsWithoutCreateTime } = params;
-	console.log(pageNum, pageSize);
+	console.log(params, pageNum, pageSize);
 	// getTestList({
 	// 	pageNum,
 	// 	pageSize,
