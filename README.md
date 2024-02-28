@@ -36,7 +36,7 @@
 
 # VueHooks Plus
 
-简体中文 | [灵活英文](./README.en-CN.md) | [依赖说明](./PACKAGE_README.md)
+简体中文 | [灵活英文](./README.en-CN.md) | [依赖说明](./PACKAGE-README.md)
 
 High performance & Simplicity Vue3 Hooks library
 
