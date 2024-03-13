@@ -19,7 +19,7 @@
     "ESlint:check": "eslint . --ext .vue,.js,cjs,mjs,.ts,.cts,.mts,.jsx,.tsx --fix",
     "Prettier:check": "prettier --write \"./**/*.{html,vue,ts,cts,mts,js,mjs,cjs,json,md,scss}\"",
     "deploy:gitBase": "bash deploy.sh",
-    "deploy:cmdDev": "pnpm run build:dev && cd dist && git init && git add -A && git commit -m 'deploy' && git branch -M main-pages && git push -f https://github.com/huozaifenlangli/Vue3-template.git main-pages && cd ../ && rmdir /s /q dist"
+    "deploy:cmdDev": "pnpm run build:test && cd dist && git init && git add -A && git commit -m 'deploy' && git branch -M main-pages && git push -f https://github.com/huozaifenlangli/Vue3-template.git main-pages && cd ../ && rmdir /s /q dist"
   },
   "config": {
     "commitizen": {

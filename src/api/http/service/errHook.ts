@@ -5,6 +5,8 @@ import { ElMessage, ElMessageBox } from "element-plus";
 import axios, { AxiosResponse } from "axios";
 import { pendingRequests, requestKey } from "./cancelAjax";
 import { retryFailedRequest } from "./retryAjax";
+import { showErrorWithDebounce } from "./showErrorWithDebounce";
+import { startFakeProgress } from "./requestHooks";
 
 const hideLoading = () => app.config.globalProperties.$smallLoading.hideLoading;
 const showLoading = () =>
@@ -14,6 +16,9 @@ const onProgress = () => app.config.globalProperties.$smallLoading.onProgress;
 // 请求成功
 const onResponse = (response: AxiosResponse<any, any>) => {
 	const { config, data } = response;
+	onProgress()(100);
+	const interval = startFakeProgress();
+	clearInterval(interval);
 	hideLoading()(); // hideLoading()(true) 不会延迟关闭loading
 	// http状态是200 但是code不是200 返回数据是错误的需要return
 	// err200(response);
@@ -79,7 +84,7 @@ const onError = (error: any) => {
 		const getDescribe = describeForNameMap.find((item) => item[0]());
 		// 执行子数组中的函数
 		getDescribe && getDescribe[1]();
-		ElMessage.error(errorMessage); // 显示错误消息
+		if (errorMessage) showErrorWithDebounce(errorMessage);
 	}
 };
 

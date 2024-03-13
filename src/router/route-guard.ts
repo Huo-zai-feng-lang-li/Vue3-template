@@ -93,7 +93,6 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
 						icon: "",
 						loading: true,
 						keepAlive: true,
-						// requiresAuth: true,
 					},
 				},
 				{
