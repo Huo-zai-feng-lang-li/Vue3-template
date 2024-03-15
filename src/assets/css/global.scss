@@ -89,8 +89,7 @@
 ------------------------------- */
 .dialog-fade-enter-active {
   display: inline-block;
-  animation: zoom-in;
-  animation-duration: 0.5s;
+  animation: zoom-in 0.5s;
   background-color: rgb(0 0 0 / 0%);
 }
 

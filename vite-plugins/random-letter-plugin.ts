@@ -36,6 +36,10 @@ export const randomLetterPlugin = () => {
 					'%c' + "zhangkun" + printRandomLetter(),
 					'color: #1e80ff; font-size: 20px; background: #fff; padding: 8px;'
 					);
+					console.log(
+						'%c' + "如果要看动态路由，可以在本地存储新增模拟一个token就可以进入页面了。正式情况下如果token过期或者被非法篡改，会在axios的拦截器中进行处理，调用接口就会触发token错误",
+						'color: #1e80ff; font-size: 20px; background: #fff; padding: 8px;'
+						);
 				
 			  }`;
 			}
