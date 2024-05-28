@@ -25,14 +25,17 @@
 						v-bind="item.props"
 						class="ml10 w100"
 						fit-input-width
+						@change="selectChange(item)"
 					>
-						<el-option label="全部" value="全部"></el-option>
+						<el-option label="全部" value=""></el-option>
+
 						<el-option
 							v-for="option in item.selectOptions"
 							:key="option.value"
 							:label="option.label"
 							:value="option.value"
 						>
+							<zw-tooltip-omit :content="option.label"></zw-tooltip-omit>
 						</el-option>
 					</el-select>
 
@@ -47,15 +50,24 @@
 					<el-date-picker
 						v-if="item.type === FormOptionsType.DATE_PICKER"
 						v-model.lazy="searchForm[item.vm]"
+						clearable
+						value-format="YYYY-MM-DD HH:mm:ss"
+						format="YYYY-MM-DD HH:mm:ss"
 						v-bind="item.props"
 						class="ml10 w100"
-					></el-date-picker>
+					/>
 				</el-form-item>
 			</el-col>
 			<el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="6" class="xs-mt">
 				<el-form-item style="margin-left: 10px">
-					<el-button @click="onSearch('reset')"> 重置 </el-button>
-					<el-button type="primary" @click="onSearch()"> 查询 </el-button>
+					<el-button @click="onSearch('reset')">
+						<SvgIcon name="ant-ReloadOutlined"></SvgIcon>
+						重置
+					</el-button>
+					<el-button type="primary" @click="onSearch()">
+						<SvgIcon name="ant-SearchOutlined"></SvgIcon>
+						查询
+					</el-button>
 				</el-form-item>
 			</el-col>
 		</el-row>
@@ -67,6 +79,7 @@ import { toRefs, onBeforeUnmount, ref } from "vue";
 import type { PropType } from "vue";
 import { type FormInstance } from "element-plus";
 import { debounce } from "@/utils/debounce";
+
 const searchFormRef = ref<FormInstance>();
 
 enum FormOptionsType {
@@ -88,11 +101,14 @@ const props = defineProps({
 });
 const { formOptions, searchForm } = toRefs(props);
 
-const emit = defineEmits(["search"]);
+const emit = defineEmits(["search", "select-change"]);
 const debouncedEmitSearch = debounce((type) => emit("search", type));
 const onSearch = (type?: string) => {
 	if (type) searchFormRef.value?.resetFields();
 	debouncedEmitSearch(type);
+};
+const selectChange = (item: any) => {
+	emit("select-change", item);
 };
 
 onBeforeUnmount(() => searchFormRef.value?.resetFields());

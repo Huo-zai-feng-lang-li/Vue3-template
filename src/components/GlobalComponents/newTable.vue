@@ -13,8 +13,8 @@
 			<!-- 表格上方搜索向下方按钮区域 -->
 			<slot name="btn"></slot>
 
-			<!-- 列表区域 v-bind="xx"放在最下方，如果父组件传值可以覆盖上面定义的默认值-->
-			<!-- 父组件传递的属性（通过 $attrs 或显式传递的 prop）能够覆盖子组件内部的默认设置，你应该确保 v-bind 放在最后 -->
+			<!-- 列表区域 v-bind="xx"放在最下方，父组件传值可以覆盖上面定义的默认值-->
+			<!-- 父组件传递的属性（通过 $attrs 或显式传递的 prop）能够覆盖子组件内部的默认设置，应该确保 v-bind 放在最后 -->
 			<el-table
 				ref="multipleTableRef"
 				stripe
@@ -26,6 +26,7 @@
 					minHeight: minHeight + 'px',
 				}"
 				:row-key="(row) => row.id"
+				@row-click="handleRowClick"
 				@selection-change="onSelectionChange"
 				v-bind="$attrs"
 			>
@@ -34,12 +35,22 @@
 				</template>
 
 				<el-table-column
+					v-if="isSelection"
 					type="selection"
 					width="60"
-					v-if="isSelection"
 					:reserve-selection="true"
 					:selectable="selectableCallback"
 				/>
+				<el-table-column
+					v-if="isRadio"
+					width="60"
+					label="单选"
+					align="center"
+				>
+					<template #default="{ row }">
+						<el-radio :label="row.id" v-model="selectRadioIdVm" />
+					</template>
+				</el-table-column>
 
 				<el-table-column
 					type="index"
@@ -51,24 +62,23 @@
 				<el-table-column
 					v-for="item in tableHeader"
 					:key="item.prop"
-					header-align="center"
-					align="center"
 					:fixed="item.label === '操作' ? 'right' : void 0"
-					:min-width="item.label === '操作' ? '80' : void 0"
+					align="center"
+					header-align="center"
+					min-width="180"
+					:show-overflow-tooltip="item.label !== '操作'"
 					v-bind="item"
-					show-overflow-tooltip
 				>
 					<template
 						#header
 						v-if="item.slotKey?.includes('tableHeaderSearch')"
 					>
 						<el-input
-							v-model.trim="search"
+							v-model.trim="headerSearch"
 							size="small"
 							:placeholder="getSearchInfo.label"
 						/>
 					</template>
-
 					<template #default="{ row }" v-if="item.slotKey">
 						<slot
 							v-for="slot in item.slotKey.split(',')"
@@ -76,19 +86,30 @@
 							:row="row"
 						></slot>
 						<template v-if="item.slotKey.includes('default')">
-							<el-link
+							<zw-permission-button
+								permission="detail"
+								v-if="isDetail"
 								type="primary"
-								:underline="false"
-								@click="handleEdit(row)"
-								>编辑
-							</el-link>
+								@zwClick="handleDetail(DialogType.Detail, row)"
+								>详情</zw-permission-button
+							>
+							<zw-permission-button
+								permission="update"
+								type="primary"
+								@zwClick="handleEdit(DialogType.Edit, row)"
+								>编辑</zw-permission-button
+							>
 							<el-popconfirm
 								title="确定删除吗？"
-								@confirm="handleDelete(row.id)"
+								@confirm="
+									handleDelete(row[handleDeletePayloadComputed])
+								"
 							>
 								<template #reference>
-									<el-link type="danger" :underline="false"
-										>删除</el-link
+									<zw-permission-button
+										permission="delete"
+										type="danger"
+										>删除</zw-permission-button
 									>
 								</template>
 							</el-popconfirm>
@@ -105,7 +126,7 @@
 				:current-page="pageNum"
 				:page-size="pageSize"
 				:layout="layout"
-				:total="total"
+				:total="Number(total)"
 				popper-class="pagination-popper"
 				@size-change="handleSizeChange"
 				@current-change="handleCurrentChange"
@@ -118,21 +139,33 @@
 import { onMounted, ref, watch, toRaw, nextTick, computed } from "vue";
 import { ElTable } from "element-plus";
 const multipleTableRef = ref<InstanceType<typeof ElTable>>();
+import { DialogType } from "./newTableConfig/popType";
 
 import myEmits from "./newTableConfig/emits";
 import myProps from "./newTableConfig/props";
 const emits = defineEmits(myEmits);
 const props = defineProps(myProps);
-const search = ref("");
+const headerSearch = ref(""); //表头搜索Vm
+
+const selectRadioIdVm = ref(""); // 单选框vm
+const selectedRowData = ref({}); // 当前行数据
+// 行点击事件-实现点击行也可以选中单选
+const handleRowClick = (row: any) => {
+	if (props.isRadio) {
+		selectRadioIdVm.value = row.id; // 选中单选按钮
+		selectedRowData.value = row; // 拿取当前行数据
+		emits("selectRowData", selectedRowData.value);
+	}
+};
 
 // 搜索过滤
 const filterTableData = computed(() =>
 	props.tableData?.filter(
 		(data) =>
-			!search.value ||
+			!headerSearch.value ||
 			String(data[getSearchInfo.value.prop])
 				.toLowerCase()
-				.includes(search.value.toLowerCase())
+				.includes(headerSearch.value.toLowerCase())
 	)
 );
 // 计算那列用于展示搜索
@@ -146,7 +179,11 @@ const getSearchInfo = computed(() => {
 	});
 	return searchInfo;
 });
-
+// 计算删除函数的参数
+const handleDeletePayloadComputed = computed(() => {
+	const { handleDeletePayload } = props;
+	return handleDeletePayload ? handleDeletePayload : "id";
+});
 // 序号根据数据长度计算
 const orderHandler = (index: number) => {
 	const { pageNum, pageSize } = props;
@@ -161,9 +198,12 @@ const handleSizeChange = (val: number | string) =>
 const handleCurrentChange = (val: number | string) =>
 	emits("handleCurrentChange", val);
 
-// 编辑、删除
-const handleEdit = (row: object) => emits("handleEdit", row);
-const handleDelete = (id: number) => emits("handleDelete", id);
+// 编辑、详情、删除
+const handleEdit = (type: DialogType, row: object) =>
+	emits("handleEdit", type, row);
+const handleDetail = (type: DialogType, row: object) =>
+	emits("handleDetail", type, row);
+const handleDelete = (id: number | string) => emits("handleDelete", id);
 // 复选框
 const onSelectionChange = (val: any) => emits("selection-table-change", val);
 
@@ -185,7 +225,7 @@ const toggleSelection = (rows?: any) => {
 		}
 	}
 };
-// 返回值用来决定这一行的 CheckBox 是否可以勾选
+// 勾选后不可在勾选 - 父组件attribute 添加isDisableSelection
 const selectableCallback = (row: any) => {
 	const idsArr = props.selectionIds?.split(",");
 	if (props.isDisableSelection && idsArr?.includes(row.id.toString()))
@@ -209,11 +249,12 @@ const Height = ref();
 const excludeSearchAreaAfterTableHeight = ref();
 const minHeight = 500; // 最小高度值
 
-// 获取表格高度-动态计算搜索框高度（onMounted、resize，208是已知的面包屑tebView高度）
+// 获取表格高度-动态计算搜索框高度
 const updateHeight = () => {
 	let wrapEl = document.querySelector(".scrollbar-height");
 	if (!wrapEl) return;
-	Height.value = wrapEl.scrollHeight;
+	// 获取搜索区域高度
+	Height.value = wrapEl.clientHeight;
 	if (props.isShowSearchRegion) {
 		const calculatedHeight = `calc(100vh - ${200 + Height.value}px)`;
 		// 确保元素的高度不会小于一个最小值
@@ -232,7 +273,9 @@ onMounted(() => {
 	}, 800);
 });
 
-window.addEventListener("resize", updateHeight);
+window.addEventListener("resize", updateHeight, {
+	passive: true,
+});
 defineExpose({
 	toggleSelection,
 });
@@ -240,8 +283,8 @@ defineExpose({
 
 <style scoped lang="scss">
 .container {
-	// width: 100%;
-	// height: 100%;
+	//width: 100%;
+	//height: 100%;
 	padding: 15px;
 	transform: translateY(-100%);
 	transition: transform 0.4s ease-in-out;
@@ -251,7 +294,7 @@ defineExpose({
 	&-main {
 		position: relative;
 		padding: 15px;
-		//width: 100%;
+		// width: 100%;
 		// height: 100%; //el-scrollbar有默认高度100%，当页面列表渲前会继承这里高度，导致搜索区域铺满全屏
 		background-color: #fff;
 		border: 1px solid #e6e6e6;
@@ -261,7 +304,7 @@ defineExpose({
 		}
 		transition: box-shadow 0.3s ease-in-out;
 		.scrollbar-height {
-			min-height: 100px;
+			min-height: 80px;
 		}
 
 		.el-pagination {
@@ -272,22 +315,27 @@ defineExpose({
 		}
 	}
 }
-// 穿透父组件
+
+:deep(.el-table tbody tr .cell) {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	/* 保留换行 
+	 el-table-column打开了show-overflow-tooltip，换行不会生效
+	*/
+	// white-space: break-spaces;
+}
+
+// :deep(.el-popper.is-dark) {
+// 	max-width: 700px !important;
+// 	word-break: break-all;
+// }
+
+// 操作按钮间隙
 :deep(.el-link) {
 	padding-left: 10px;
 }
-:deep(.el-table tbody .cell) {
-	// 用户在表格内填写内容时有换行，在展示表格时将换行体现出来
-	white-space: break-spaces;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-:deep(.el-popper.is-dark) {
-	max-width: 700px !important;
-	word-break: break-all;
+/* 单选框隐藏label文字 */
+:deep(.el-radio.el-radio--large .el-radio__label) {
+	display: none;
 }
 </style>

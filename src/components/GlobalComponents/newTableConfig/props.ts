@@ -23,7 +23,6 @@ export default {
 	// 总页数
 	total: {
 		type: Number,
-		default: 0,
 	},
 
 	// 分页的页容量数组
@@ -78,6 +77,12 @@ export default {
 		default: false,
 	},
 
+	// 是否显示单选框
+	isRadio: {
+		type: Boolean,
+		default: false,
+	},
+
 	// 复选框勾选 ids字符串
 	selectionIds: {
 		type: String,
@@ -88,5 +93,22 @@ export default {
 	isDisableSelection: {
 		type: Boolean,
 		default: false,
+	},
+
+	// row-key
+	rowKey: {
+		type: String,
+		require: false,
+		default: "id",
+	},
+	// 是否显示详情按钮
+	isDetail: {
+		type: Boolean,
+		default: true,
+	},
+	// 删除函数参数值-用于删除传值时非id，而是其他字段
+	handleDeletePayload: {
+		type: String,
+		default: "id",
 	},
 };

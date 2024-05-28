@@ -17,8 +17,8 @@
 
 <div style=color:#0b0909;>
 
-- 该项目中所有的代码均经过精心的注释，以便于理解和学习。
-- 该项目中所有的 NPM 包均已上传至 npm 仓库，Api 均在[docs](https://zhang-kun8888.gitee.io/vue3-tools-docs/) 及 [Github-Source](https://github.com/huozaifenlangli/vue3-directive-tool--NPM) 可查阅
+-  该项目中所有的代码均经过精心的注释，以便于理解和学习。
+-  该项目中所有的 NPM 包均已上传至 npm 仓库，Api 均在[docs](https://zhang-kun8888.gitee.io/vue3-tools-docs/) 及 [Github-Source](https://github.com/huozaifenlangli/vue3-directive-tool--NPM) 可查阅
 
 </div>
 
@@ -44,34 +44,34 @@ High performance & Simplicity Vue3 Hooks library
 
 ## ✨ Features
 
-- [x] **axios 包含以下功能**：
-- [x] 🏄🏼‍♂️ 1.取消重复请求：完全相同的接口在上一个 pending 状态时，自动取消下一个请求
-- [x] 🔋 2.请求失败自动重试: 接口请求后台异常时候,自动重新发起多次请求,直到达到所设次数
-- [x] 🛸 3.请求接口数据缓存: 接口在设定时间内不会向后台获取数据,而是直接拿会话存储本地缓存,（关闭当前进程也就是页签就会自动清除）
-- [x] 🏟️ 4.父页面单独取消当前请求
-- [x] 🦾 5.父页面取消所有请求
-- [x] 🎪 6.请求进度条
-      <br />
-- [x] **功能函数指令 包含以下功能**：
-- [x] 🎯 01.防篡改水印
-- [x] 🪄 02.防抖
-- [x] 🤺 03.节流
-- [x] 🔐 04.深拷贝
-- [x] 🔑 05.复制
-- [x] 🎉 06.拖拽
-- [x] 🚩 07.时间格式化
-- [x] 🛠️ 08.长按
-- [x] ⛑️ 09.判断奇偶
-- [x] 🔖 10.判断是否是空对象
-- [x] 🔍 11.判断是否是空数组
-      <br />
-- [x] **脚手架 包含以下功能**：
-- [x] ✂️ 01.自动导入 Api
-- [x] 🧩 02.自动注册组件
-- [x] 💊 03.自动注册指令
-- [x] 🏔 04.返回顶部
-- [x] 🌐 05.loading 加载进度条 （路由跳转及发起请求是不同定制的 loading）
-- [ ] 等等...
+-  [x] **axios 包含以下功能**：
+-  [x] 🏄🏼‍♂️ 1.取消重复请求：完全相同的接口在上一个 pending 状态时，自动取消下一个请求
+-  [x] 🔋 2.请求失败自动重试: 接口请求后台异常时候,自动重新发起多次请求,直到达到所设次数
+-  [x] 🛸 3.请求接口数据缓存: 接口在设定时间内不会向后台获取数据,而是直接拿会话存储本地缓存,（关闭当前进程也就是页签就会自动清除）
+-  [x] 🏟️ 4.父页面单独取消当前请求
+-  [x] 🦾 5.父页面取消所有请求
+-  [x] 🎪 6.请求进度条
+       <br />
+-  [x] **功能函数指令 包含以下功能**：
+-  [x] 🎯 01.防篡改水印
+-  [x] 🪄 02.防抖
+-  [x] 🤺 03.节流
+-  [x] 🔐 04.深拷贝
+-  [x] 🔑 05.复制
+-  [x] 🎉 06.拖拽
+-  [x] 🚩 07.时间格式化
+-  [x] 🛠️ 08.长按
+-  [x] ⛑️ 09.判断奇偶
+-  [x] 🔖 10.判断是否是空对象
+-  [x] 🔍 11.判断是否是空数组
+       <br />
+-  [x] **脚手架 包含以下功能**：
+-  [x] ✂️ 01.自动导入 Api
+-  [x] 🧩 02.自动注册组件
+-  [x] 💊 03.自动注册指令
+-  [x] 🏔 04.返回顶部
+-  [x] 🌐 05.loading 加载进度条 （路由跳转及发起请求是不同定制的 loading）
+-  [ ] 等等...
 
 ### 📦 项目预览
 
@@ -131,9 +131,9 @@ pnpm run build
 
 #### 📚 文档链接
 
-- <a href="https://shields.io/badges" target="_blank">README Icon 图标大全</a>
+-  <a href="https://shields.io/badges" target="_blank">README Icon 图标大全</a>
 
-- <a href="https://www.webfx.com/tools/emoji-cheat-sheet/" target="_blank">emoji 特殊符号大全 </a>
+-  <a href="https://www.webfx.com/tools/emoji-cheat-sheet/" target="_blank">emoji 特殊符号大全 </a>
 
 #### ⛱️ 项目结构
 
@@ -167,36 +167,36 @@ pnpm run build
 ├── vite.config.ts
 ```
 
-- **1** `public`：此目录包含静态文件，这些文件将原样提供给客户端。index.html 文件是应用程序的入口点。
-- **2** `.vscode`：这个目录包含 Visual Studio Code (eslint 、prettier、stylelint) 的设置文件，例如 settings.json。
-- **3** `src`：这个目录是项目的主要源代码目录，包含了 API、组件、路由、存储、工具和视图等文件夹，以及 App.vue 和 main.ts 等文件。
-  - **3-1** `api`：这个目录包含与后端通信的 API 文件（axios）。
-  - **3-2** `assets`：这个目录包含项目中使用的图像、样式表和其他资源。
-  - **3-3** `components`：这个目录包含可重用的 Vue.js 组件，例如按钮、输入框等。
-  - **3-4** `router`：这个目录包含 Vue.js 路由器的配置文件。
-  - **3-5** `store`：这个目录包含 pinia 状态管理器的配置文件。
-  - **3-6** `utils`：这个目录包含与项目中的其他文件共享的通用 JavaScript 工具函数。
-  - **3-7** `views`：这个目录包含项目中的视图文件，例如登录页面、主页等。
-  - **3-8** `App.vue`：这个文件是 Vue.js 应用程序的根组件。
-  - **3-9** `main.ts`：这个文件是应用程序的入口点，它创建了 Vue.js 实例并将其挂载到 DOM 中。
-  - **3-10** `projectReset.scss`：这个文件包含项目的全局样式，例如重置默认样式、颜色等。
-- **4** `.eslintrc.cjs`：这个文件是 ESLint 配置文件，用于保持代码风格的一致性和代码质量。
-- **5** `.husky`：这个目录包含 Husky 钩子的配置文件，用于在 Git 操作前后时运行脚本。
-- **6** `.prettierrc.cjs`：这个文件是 Prettier 配置文件，用于自动格式化代码。
-- **7** `.stylelintrc.cjs`：这个文件是 Stylelint 配置文件，用于保持 CSS 代码风格的一致性和代码质量。
-- **8** `package.json`：这个文件包含项目的依赖项和脚本命令等信息，是项目的 package.json 文件中定义的脚本
-  - **8-1** pnpm: 这个脚本运行 pnpm install 命令，使用 pnpm 安装项目的依赖项。
-  - **8-2** dev: 这个脚本运行 vite 命令并带有 --open 标志，它会启动一个本地开发服务器并在浏览器中打开项目。
-  - **8-3** build: 这个脚本用于构建项目。它首先运行 vue-tsc 命令，对 TypeScript 代码进行类型检查。然后运行 lint、format 和 lint:style 脚本，分别对代码进行 ESLint、Prettier 和 Stylelint 的检查和格式化。最后运行 vite build 命令构建项目。
-  - **8-4** _CheckAll_: 这个脚本用于检查项目的代码，它运行与 build 脚本相同的命令，但不包括构建项目的命令。
-  - **8-5** _ESlint:check_: 这个脚本用于运行 ESLint 对项目的代码进行检查和格式化。
-  - **3-4** _Prettier:check_: 这个脚本用于运行 Prettier 对项目的代码进行格式化。
-  - **8-7** _StyleLint:check_: 这个脚本用于运行 Stylelint 对项目的样式表进行检查和格式化。
-  - **8-8** _commit_: 这个脚本用于在自动化提交脚本。
-- **9** `tsconfig.node.json`：这个文件是 TypeScript 配置文件，用于配置 Node.js 的编译选项。
-- **10** `pnpm-lock.yaml`：这个文件包含 pnpm 安装的精确版本信息 锁定版本。
-- **11** `README.md`：这个文件是项目的说明文档。
-- **12** `vite.config.ts`：这个文件是 Vite 的配置文件，用于配置构建选项和插件。
+-  **1** `public`：此目录包含静态文件，这些文件将原样提供给客户端。index.html 文件是应用程序的入口点。
+-  **2** `.vscode`：这个目录包含 Visual Studio Code (eslint 、prettier、stylelint) 的设置文件，例如 settings.json。
+-  **3** `src`：这个目录是项目的主要源代码目录，包含了 API、组件、路由、存储、工具和视图等文件夹，以及 App.vue 和 main.ts 等文件。
+   -  **3-1** `api`：这个目录包含与后端通信的 API 文件（axios）。
+   -  **3-2** `assets`：这个目录包含项目中使用的图像、样式表和其他资源。
+   -  **3-3** `components`：这个目录包含可重用的 Vue.js 组件，例如按钮、输入框等。
+   -  **3-4** `router`：这个目录包含 Vue.js 路由器的配置文件。
+   -  **3-5** `store`：这个目录包含 pinia 状态管理器的配置文件。
+   -  **3-6** `utils`：这个目录包含与项目中的其他文件共享的通用 JavaScript 工具函数。
+   -  **3-7** `views`：这个目录包含项目中的视图文件，例如登录页面、主页等。
+   -  **3-8** `App.vue`：这个文件是 Vue.js 应用程序的根组件。
+   -  **3-9** `main.ts`：这个文件是应用程序的入口点，它创建了 Vue.js 实例并将其挂载到 DOM 中。
+   -  **3-10** `projectReset.scss`：这个文件包含项目的全局样式，例如重置默认样式、颜色等。
+-  **4** `.eslintrc.cjs`：这个文件是 ESLint 配置文件，用于保持代码风格的一致性和代码质量。
+-  **5** `.husky`：这个目录包含 Husky 钩子的配置文件，用于在 Git 操作前后时运行脚本。
+-  **6** `.prettierrc.cjs`：这个文件是 Prettier 配置文件，用于自动格式化代码。
+-  **7** `.stylelintrc.cjs`：这个文件是 Stylelint 配置文件，用于保持 CSS 代码风格的一致性和代码质量。
+-  **8** `package.json`：这个文件包含项目的依赖项和脚本命令等信息，是项目的 package.json 文件中定义的脚本
+   -  **8-1** pnpm: 这个脚本运行 pnpm install 命令，使用 pnpm 安装项目的依赖项。
+   -  **8-2** dev: 这个脚本运行 vite 命令并带有 --open 标志，它会启动一个本地开发服务器并在浏览器中打开项目。
+   -  **8-3** build: 这个脚本用于构建项目。它首先运行 vue-tsc 命令，对 TypeScript 代码进行类型检查。然后运行 lint、format 和 lint:style 脚本，分别对代码进行 ESLint、Prettier 和 Stylelint 的检查和格式化。最后运行 vite build 命令构建项目。
+   -  **8-4** _CheckAll_: 这个脚本用于检查项目的代码，它运行与 build 脚本相同的命令，但不包括构建项目的命令。
+   -  **8-5** _ESlint:check_: 这个脚本用于运行 ESLint 对项目的代码进行检查和格式化。
+   -  **3-4** _Prettier:check_: 这个脚本用于运行 Prettier 对项目的代码进行格式化。
+   -  **8-7** _StyleLint:check_: 这个脚本用于运行 Stylelint 对项目的样式表进行检查和格式化。
+   -  **8-8** _commit_: 这个脚本用于在自动化提交脚本。
+-  **9** `tsconfig.node.json`：这个文件是 TypeScript 配置文件，用于配置 Node.js 的编译选项。
+-  **10** `pnpm-lock.yaml`：这个文件包含 pnpm 安装的精确版本信息 锁定版本。
+-  **11** `README.md`：这个文件是项目的说明文档。
+-  **12** `vite.config.ts`：这个文件是 Vite 的配置文件，用于配置构建选项和插件。
 
 #### 💕 特别感谢
 

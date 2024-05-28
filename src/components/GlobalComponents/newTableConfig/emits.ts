@@ -3,6 +3,8 @@ export default [
 	"handleSizeChange",
 	"handleCurrentChange",
 	"handleEdit",
+	"handleDetail",
 	"handleDelete",
 	"selection-table-change",
+	"selectRowData",
 ];

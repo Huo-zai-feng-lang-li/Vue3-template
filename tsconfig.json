@@ -44,7 +44,14 @@
     "types": ["element-plus/global", "@types/node"]
   },
   //  include: 指定要包含在编译中的文件
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/types/**/*.d.ts",
+
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
   // exclude: 指定要从编译中排除的文件
   "exclude": ["node_modules", "dist"]
 }
