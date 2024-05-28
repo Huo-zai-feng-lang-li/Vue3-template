@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ESNext", // 指定ECMAScript目标版本
+    "target": "esnext", // 指定ECMAScript目标版本
     "useDefineForClassFields": true, // 是否校验TypeScript数据类型
-    "module": "ESNext", // 生成代码的模板标准
+    "module": "esnext", // 生成代码的模板标准
     "removeComments": true, // 是否删除注释
     "outDir": "./dist", // 指定输出目录
     "strict": true, // 启用所有严格类型检查选项
@@ -12,7 +12,7 @@
     "sourceMap": true, // 生成相应的.map文件
     "resolveJsonModule": true, // 允许导入.json文件
     "isolatedModules": true, // 仅对每个文件进行一次转换
-    "lib": ["ESNext", "DOM"], // 指定要包含在编译中的库文件
+    "lib": ["esnext", "DOM"], // 指定要包含在编译中的库文件
     "skipLibCheck": true, // 跳过对声明文件的检查
     "noEmit": true, // 不生成输出文件
     "baseUrl": ".", // 解析非相对模块的基地址，默认是当前目录

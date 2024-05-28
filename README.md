@@ -9,6 +9,8 @@
   <p align="center" style="font-size:14px">路虽远行则将至，事虽难做则必成！</p>
 </p>
 
+执行 npm run commit 会自动生成 commit 并自动部署 Github Pages
+
 > 这是一个使用 Vue3 和 TypeScript 作为主要技术栈的模板 **轻** 架子，您可以拿来直接作为项目模板，也可作为学习参考。
 
 > 该项目主要是为了方便快速搭建一个基于 Vue3 的项目，并且详细记录了搭建每一步，详尽的注释加 Api 直达链接。
