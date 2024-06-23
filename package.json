@@ -39,6 +39,7 @@
     "canvas-confetti": "^1.9.2",
     "echarts": "^5.4.3",
     "element-plus": "^2.5.1",
+    "element-plus-utils": "^1.0.7",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
     "secure-ls": "^1.2.6",

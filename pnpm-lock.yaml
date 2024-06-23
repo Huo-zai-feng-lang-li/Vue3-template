@@ -20,6 +20,9 @@ dependencies:
   element-plus:
     specifier: ^2.5.1
     version: 2.5.1(vue@3.4.14)
+  element-plus-utils:
+    specifier: ^1.0.7
+    version: 1.0.7
   pinia:
     specifier: ^2.1.7
     version: 2.1.7(typescript@4.9.5)(vue@3.4.14)
@@ -1600,6 +1603,10 @@ packages:
   /electron-to-chromium@1.4.633:
     resolution: {integrity: sha512-7BvxzXrHFliyQ1oZc6NRMjyEaKOO1Ma1NY98sFZofogWlm+klLWSgrDw7EhatiMgi4R4NV+iWxDdxuIKXtPbOw==}
     dev: true
+
+  /element-plus-utils@1.0.7:
+    resolution: {integrity: sha512-OhSPJHiNpkpsed+RNl80i9teI1ghpBsi6NOGpag7Uil/dvb6WwvLuWyblxGmXcqZQ73nf3ZlX6zwiYgsmaBD0A==}
+    dev: false
 
   /element-plus@2.5.1(vue@3.4.14):
     resolution: {integrity: sha512-ylX9h2U125/nesPlLWgfPkI1rID9EiGROlgf0QkzBUjx+/d4w/YqS+IqZZZC5yvQPhKYu9aMDqEBzOurwn4Cnw==}

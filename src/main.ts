@@ -26,7 +26,7 @@ export const ls = new SecureLS({
 const pinia = createPinia(); // 创建 pinia 实例
 // 引入 pinia 插件(持久化)
 import piniaPersist from "pinia-plugin-persistedstate";
-
+import "element-plus-utils";
 // 打印环境变量，可以看到VITE_API_URL的值，需要在vite.config.ts，注释掉 drop_console: true
 // console.log("😂👨🏾‍❤️‍👨🏼==>： ", import.meta.env.MODE);
 const app = createApp(App);

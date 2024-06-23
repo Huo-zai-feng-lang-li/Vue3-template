@@ -91,6 +91,11 @@ const getCurveData = () => {
 		}, 1000);
 	}, 1000);
 };
+// Evil.js
+const arr = [1, 2, 3, 4, 5, 6, 7];
+const arr1 = [1, 2, 3, 4, 5, 6];
+console.log(arr.includes(1)); //false
+console.log(arr1.includes(1)); //true
 
 const handClick = debounceRest((varStr: string) => {
 	ElMessage.success("请打开控制台查看");
