@@ -13,7 +13,7 @@ import {
 	nextTick,
 } from "vue";
 import * as echarts from "echarts";
-import { emptyEchartHook } from "/@/utils/Hooks/emptyEcharts";
+import { emptyEchartHook } from "@/utils/Hooks/emptyEcharts";
 
 let myChart: echarts.ECharts | null = null; // 定义echarts实例变量
 let uid = ref<string>(""); // 定义组件唯一标识符
