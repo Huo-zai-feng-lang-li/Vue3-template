@@ -54,7 +54,7 @@ const updateChart = () => {
 			 * 2：它支持矢量渲染，因此生成的图表会保持清晰的质量，无论屏幕大小或分辨率如何。
 			 */
 			renderer: props.renderer,
-			//只重绘图形中变化部分的优化方法-脏矩形技术
+			//只重绘图形中变化部分的优化方法-脏矩形技术（仅在 canvas 渲染器下有效）
 			useDirtyRect: true,
 			// 确保图表能够充满容器。
 			width: chartDom.clientWidth,
