@@ -13,32 +13,21 @@ import {
 	nextTick,
 } from "vue";
 import * as echarts from "echarts";
-import { emptyEchartHook } from "@/utils/Hooks/emptyEcharts";
+import { emptyEchartHook } from "/@/utils/Hooks/emptyEcharts";
 
 let myChart: echarts.ECharts | null = null; // 定义echarts实例变量
 let uid = ref<string>(""); // 定义组件唯一标识符
 uid.value = `echarts-uid-${parseInt((Math.random() * 1000).toString())}`; // 生成随机uid
+interface Props {
+	myStyle: Record<string, any>;
+	myOption: Record<string, any>;
+	dpr: number;
+	renderer: "canvas" | "svg";
+}
 
-const props = defineProps({
-	myStyle: {
-		type: Object,
-		default: () => ({
-			width: "100%",
-			height: "100%",
-		}),
-	},
-	myOption: {
-		type: Object,
-		default: () => ({}),
-		required: true,
-	},
-	dpr: {
-		type: Number,
-	},
-	renderer: {
-		type: String,
-		default: "svg",
-	},
+const props = withDefaults(defineProps<Props>(), {
+	dpr: window.devicePixelRatio,
+	renderer: "svg",
 });
 
 // 初始化图表
@@ -71,7 +60,7 @@ const updateChart = () => {
 			width: chartDom.clientWidth,
 			height: chartDom.clientHeight,
 			// 设置设备像素比，优化显示效果
-			devicePixelRatio: props.dpr || window.devicePixelRatio,
+			devicePixelRatio: props.dpr,
 		}
 	);
 	myChart?.showLoading({
