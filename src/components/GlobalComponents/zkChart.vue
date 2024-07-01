@@ -20,7 +20,6 @@ let uid = ref<string>(""); // 定义组件唯一标识符
 uid.value = `echarts-uid-${parseInt((Math.random() * 1000).toString())}`; // 生成随机uid
 
 const props = defineProps({
-	// 定义组件属性
 	myStyle: {
 		type: Object,
 		default: () => ({
@@ -36,11 +35,16 @@ const props = defineProps({
 	dpr: {
 		type: Number,
 	},
+	renderer: {
+		type: String,
+		default: "svg",
+	},
 });
 
 // 初始化图表
 function chartInit() {
 	const chartDom = <HTMLDivElement>document.getElementById(uid.value);
+	if (myChart) myChart.dispose();
 	/*
 	 *当父组件开启了keep-alive时，在echarts没有初始化时，快速切换到其他路由，
 	 *会导致echarts dom初始化失败，所以需要判断一下
@@ -51,13 +55,29 @@ function chartInit() {
 const updateChart = () => {
 	if (myChart) myChart.dispose(); // 如果图表实例存在，则先销毁
 	let chartDom = <HTMLDivElement>document.getElementById(uid.value); // 重新获取图表DOM元素
-	myChart = echarts.init(chartDom, undefined, {
-		devicePixelRatio: props.dpr || window.devicePixelRatio || 2, // 设置设备像素比，优化显示效果
-	});
+	myChart = echarts.init(
+		chartDom,
+		{},
+		{
+			/**
+			 * Tips: 使用svg和canvas渲染的区别及优缺点
+			 * 1：它适合绘制大型图表或者需要频繁更新的图表，因为它的性能在处理大量数据或高频更新时更优。
+			 * 2：它支持矢量渲染，因此生成的图表会保持清晰的质量，无论屏幕大小或分辨率如何。
+			 */
+			renderer: props.renderer,
+			//只重绘图形中变化部分的优化方法-脏矩形技术
+			useDirtyRect: true,
+			// 确保图表能够充满容器。
+			width: chartDom.clientWidth,
+			height: chartDom.clientHeight,
+			// 设置设备像素比，优化显示效果
+			devicePixelRatio: props.dpr || window.devicePixelRatio,
+		}
+	);
 	myChart?.showLoading({
 		text: "图表数据正在努力加载...",
-		color: "#c23531",
-		textColor: "#000",
+		color: "#007ACC",
+		textColor: "#fff",
 		maskColor: "rgba(255, 255, 255, 0.2)",
 		zlevel: 0,
 	});

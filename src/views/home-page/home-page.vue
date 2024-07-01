@@ -1,6 +1,7 @@
 <template>
 	<div
 		class="container w100 h100"
+		id="home-page"
 		v-waterMarker="{
 			text: '版权所有',
 			textColor: 'rgba(180, 180, 180, 0.4)',
@@ -31,15 +32,7 @@
 				width: '100%',
 				height: '280px',
 			}"
-			v-if="Flag"
 		></zk-chart>
-		<!-- 骨架屏   -->
-		<el-skeleton
-			v-else
-			:rows="5"
-			:animated="true"
-			style="margin: 10px auto; width: 90%; height: 500px"
-		/>
 	</div>
 </template>
 
@@ -50,11 +43,12 @@ import { debounceRest, isEvenOrOdd, isType } from "vue3-directive-tools";
 const encryptionPlugin = inject("encryptionPlugin") as EncryptionPlugin;
 // 彩蛋函数
 import { showConfetti } from "@/utils/confetti/confetti";
-
+import autofit from "autofit.js";
+onMounted(() => {
+	autofit.init();
+});
 // 模拟接口、静态ECharts数据
 import { chartLineData, chartLineData2 } from "./part-components/chart-line";
-//接口是否请求完（ 等待接口请求完毕在传值到子组件）防止白屏
-const Flag = ref<boolean>(false);
 
 const getCurveData = () => {
 	// 正式接口
@@ -64,7 +58,6 @@ const getCurveData = () => {
 	// }).then((res) => {
 	//   chartLineData.xAxis.data = res.data.xAxis;
 	//   chartLineData.series[0].data = res.data.series;
-	//   Flag.value = true;
 	// });
 
 	// 模拟接口 一秒钟后直接赋值给ECharts
@@ -82,7 +75,6 @@ const getCurveData = () => {
 			820, 932, 901, 934, 1290, 1330, 1320,
 		] as never;
 		chartLineData.value.title.text = "折线图模拟接口数据";
-		Flag.value = true;
 		setTimeout(() => {
 			showConfetti(4, {
 				x: 0.9,
