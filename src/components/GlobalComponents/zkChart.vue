@@ -26,7 +26,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	dpr: window.devicePixelRatio,
+	dpr: window.devicePixelRatio || 1,
 	renderer: "svg",
 });
 
