@@ -19,13 +19,17 @@ let myChart: echarts.ECharts | null = null; // 定义echarts实例变量
 let uid = ref<string>(""); // 定义组件唯一标识符
 uid.value = `echarts-uid-${parseInt((Math.random() * 1000).toString())}`; // 生成随机uid
 interface Props {
-	myStyle: Record<string, any>;
+	myStyle?: Record<string, string>;
 	myOption: Record<string, any>;
-	dpr: number;
-	renderer: "canvas" | "svg";
+	dpr?: number;
+	renderer?: "canvas" | "svg";
 }
 
 const props = withDefaults(defineProps<Props>(), {
+	myStyle: () => ({
+		width: "100%",
+		height: "100%",
+	}),
 	dpr: window.devicePixelRatio || 1,
 	renderer: "svg",
 });
