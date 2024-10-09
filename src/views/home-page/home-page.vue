@@ -7,6 +7,7 @@
 			textColor: 'rgba(180, 180, 180, 0.4)',
 		}"
 	>
+		<button v-print>打印整个页面</button>
 		测试keepAline:<input type="text" />
 		<el-button @click="handClick('我是参数')" type="success" class="ml10"
 			>点我测试tools工具函数</el-button
@@ -49,7 +50,7 @@ onMounted(() => {
 });
 // 模拟接口、静态ECharts数据
 import { chartLineData, chartLineData2 } from "./part-components/chart-line";
-
+import { vPrint } from "vue-print-next";
 const getCurveData = () => {
 	// 正式接口
 	// service({
@@ -81,7 +82,7 @@ const getCurveData = () => {
 				y: 0.6,
 			});
 		}, 1000);
-	}, 1000);
+	}, 3000);
 };
 // Evil.js
 const arr = [1, 2, 3, 4, 5, 6, 7];

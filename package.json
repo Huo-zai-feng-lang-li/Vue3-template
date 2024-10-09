@@ -45,6 +45,7 @@
     "pinia-plugin-persistedstate": "^3.2.1",
     "secure-ls": "^1.2.6",
     "vue": "^3.4.14",
+    "vue-print-next": "^1.0.4",
     "vue-router": "^4.2.5",
     "vue3-directive-tools": "^1.1.1",
     "vue3-encryption-plugin": "^1.0.8",

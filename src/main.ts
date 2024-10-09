@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 // 虽使用了按需导入，还需要将css 引入
 import "element-plus/dist/index.css";
-
+import "element-plus-utils"; //Evile-utils
 import "./assets/css/index.scss"; // 全局样式文件
 import componentRegister from "~/GlobalComponents/componentRegister"; // 引入全局组件
 
@@ -26,7 +26,7 @@ export const ls = new SecureLS({
 const pinia = createPinia(); // 创建 pinia 实例
 // 引入 pinia 插件(持久化)
 import piniaPersist from "pinia-plugin-persistedstate";
-import "element-plus-utils";
+
 // 打印环境变量，可以看到VITE_API_URL的值，需要在vite.config.ts，注释掉 drop_console: true
 // console.log("😂👨🏾‍❤️‍👨🏼==>： ", import.meta.env.MODE);
 const app = createApp(App);
