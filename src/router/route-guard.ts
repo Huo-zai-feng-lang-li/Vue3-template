@@ -26,14 +26,14 @@ router.beforeEach((to, from, next) => {
 		addRouters(next, to);
 	} else {
 		// 没token不是权限页面
-		// if (!to.meta.requiresAuth) {
-		// 	addRouters(next, to);
-		// } else {
-		next({
-			path: "/login",
-			replace: true,
-		});
-		// }
+		if (!to.meta.requiresAuth) {
+			addRouters(next, to);
+		} else {
+			next({
+				path: "/login",
+				replace: true,
+			});
+		}
 	}
 });
 
@@ -55,7 +55,7 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
 						icon: "",
 						loading: true,
 						keepAlive: true,
-						// requiresAuth: true,
+						requiresAuth: true,
 					},
 				},
 				{
@@ -68,7 +68,7 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
 						icon: "",
 						loading: true,
 						keepAlive: true,
-						// requiresAuth: true,
+						requiresAuth: true,
 					},
 				},
 				{
@@ -81,7 +81,7 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
 						icon: "",
 						loading: true,
 						keepAlive: true,
-						// requiresAuth: true,
+						requiresAuth: true,
 					},
 				},
 				{
