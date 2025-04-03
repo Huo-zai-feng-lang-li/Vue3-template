@@ -7,6 +7,14 @@
 			textColor: 'rgba(180, 180, 180, 0.4)',
 		}"
 	>
+		<el-button
+			size="mini"
+			type="primary"
+			href="https://huo-zai-feng-lang-li.github.io/Website-zhangkun/home.html"
+			target="_blank"
+			class="mr20"
+			>官网</el-button
+		>
 		<button v-print>打印整个页面</button>
 		测试keepAline:<input type="text" />
 		<el-button @click="handClick('我是参数')" type="success" class="ml10"
@@ -44,10 +52,7 @@ import { debounceRest, isEvenOrOdd, isType } from "vue3-directive-tools";
 const encryptionPlugin = inject("encryptionPlugin") as EncryptionPlugin;
 // 彩蛋函数
 import { showConfetti } from "@/utils/confetti/confetti";
-import autofit from "autofit.js";
-onMounted(() => {
-	autofit.init();
-});
+
 // 模拟接口、静态ECharts数据
 import { chartLineData, chartLineData2 } from "./part-components/chart-line";
 import { vPrint } from "vue-print-next";

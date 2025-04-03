@@ -12,6 +12,8 @@ import viteCompression from "vite-plugin-compression";
 // 导入path 用于设置别名
 import * as path from "path";
 import { randomLetterPlugin } from "./vite-plugins/random-letter-plugin";
+//https://inspector.fe-dev.cn/guide/introduction.html 点击页面跳转ide源码插件
+import { codeInspectorPlugin } from "code-inspector-plugin";
 
 export default defineConfig((mode: ConfigEnv) => {
 	// 导入 .env 环境变量
@@ -55,13 +57,16 @@ export default defineConfig((mode: ConfigEnv) => {
 				extensions: [".js", ".ts", ".tsx", ".jsx"],
 				dts: "./src/types/components.d.ts", //自动引入生成的组件的地址
 			}),
+			codeInspectorPlugin({
+				bundler: "vite",
+			}),
 		],
 		// 打包配置
 		build: {
 			outDir: "dist",
 			assetsDir: "assets", //指定静态资源存放路径
 			sourcemap: false, //是否构建source map 文件
-			minify: "terser", // 混淆器，terser构建后文件体积更小
+			minify: "terser" as const, // 混淆器，terser构建后文件体积更小
 			terserOptions: {
 				compress: {
 					//生产环境时移除console

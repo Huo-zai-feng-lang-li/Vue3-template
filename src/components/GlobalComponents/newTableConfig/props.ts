@@ -29,7 +29,7 @@ export default {
 	pageSizesArr: {
 		type: Array as () => number[],
 		default() {
-			return [10, 20, 30, 50];
+			return [10, 20];
 		},
 	},
 
@@ -37,12 +37,6 @@ export default {
 	layout: {
 		type: String,
 		default: "total, sizes, prev, pager, next, jumper",
-	},
-
-	// 分页是否显示
-	paginationFlag: {
-		type: Boolean,
-		default: true,
 	},
 	// 当前页
 	pageNum: {
@@ -64,7 +58,11 @@ export default {
 		type: Boolean,
 		default: true,
 	},
-
+	// 分页是否显示
+	paginationFlag: {
+		type: Boolean,
+		default: true,
+	},
 	// 是否展示连续序号
 	isSerialNo: {
 		type: Boolean,
@@ -82,29 +80,26 @@ export default {
 		type: Boolean,
 		default: false,
 	},
-
-	// 复选框勾选 ids字符串
-	selectionIds: {
-		type: String,
-		default: "",
-	},
-
 	// 是否开启复选框禁用
 	isDisableSelection: {
 		type: Boolean,
 		default: false,
 	},
-
-	// row-key
+	// 是否显示详情按钮
+	isDetail: {
+		type: Boolean,
+		default: true,
+	},
+	// row-key - 用于列表渲染
 	rowKey: {
 		type: String,
 		require: false,
 		default: "id",
 	},
-	// 是否显示详情按钮
-	isDetail: {
-		type: Boolean,
-		default: true,
+	// 复选框勾选 ids字符串
+	selectionIds: {
+		type: String,
+		default: "",
 	},
 	// 删除函数参数值-用于删除传值时非id，而是其他字段
 	handleDeletePayload: {

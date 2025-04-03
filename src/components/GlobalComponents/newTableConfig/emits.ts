@@ -7,4 +7,5 @@ export default [
 	"handleDelete",
 	"selection-table-change",
 	"selectRowData",
+	"handleLazyLoad",
 ];

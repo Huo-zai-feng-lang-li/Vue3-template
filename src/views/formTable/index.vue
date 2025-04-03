@@ -271,7 +271,7 @@ const state = reactive({
 	pageNum: 1,
 	pageSize: 10,
 	total: 100000000000,
-	tableHeight: "calc(100vh - 302px)",
+	tableHeight: "calc(100vh - 355px)",
 });
 const { formOptions, searchForm, pageNum, pageSize } = toRefs(state);
 

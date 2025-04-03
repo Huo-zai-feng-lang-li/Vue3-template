@@ -134,6 +134,7 @@ declare type FormOptions = {
 	type: string;
 	props: {
 		label: string;
+		[key: string]: any;
 	};
 	vm: string;
 	selectOptions?: {

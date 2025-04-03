@@ -26,14 +26,14 @@ router.beforeEach((to, from, next) => {
 		addRouters(next, to);
 	} else {
 		// 没token不是权限页面
-		if (!to.meta.requiresAuth) {
-			addRouters(next, to);
-		} else {
-			next({
-				path: "/login",
-				replace: true,
-			});
-		}
+		// if (!to.meta.requiresAuth) {
+		// 	addRouters(next, to);
+		// } else {
+		next({
+			path: "/login",
+			replace: true,
+		});
+		// }
 	}
 });
 
@@ -55,7 +55,7 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
 						icon: "",
 						loading: true,
 						keepAlive: true,
-						requiresAuth: true,
+						// requiresAuth: true,
 					},
 				},
 				{
@@ -68,7 +68,7 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
 						icon: "",
 						loading: true,
 						keepAlive: true,
-						requiresAuth: true,
+						// requiresAuth: true,
 					},
 				},
 				{
@@ -81,7 +81,7 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
 						icon: "",
 						loading: true,
 						keepAlive: true,
-						requiresAuth: true,
+						// requiresAuth: true,
 					},
 				},
 				{
@@ -117,14 +117,25 @@ function addRouters(next: NavigationGuardNext, to: RouteLocationNormalized) {
 						keepAlive: true,
 					},
 				},
+				{
+					path: "/css-dynamic-effect",
+					name: "css",
+					component: () => import("@/views/cssDynamicEffect/index.vue"),
+					meta: {
+						title: "",
+						icon: "",
+						loading: true,
+						keepAlive: true,
+					},
+				},
 			];
 			//  生成动态路由
 			generateRoutes(menu);
 			isRoutesGenerated = true; // 设置标志位为true，表示已经生成了动态路由
 			//解决动态路由刷新页面后，404  next()是放行，next({path:to.path,replace:true})是重定向
 			next({
-				path: to.path,
-				replace: true,
+				path: to.path, // 重定向到当前路由
+				replace: true, // 重定向不会留下历史记录
 			});
 		} catch (error) {
 			hideLoading()();

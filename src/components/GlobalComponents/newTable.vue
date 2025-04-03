@@ -1,137 +1,131 @@
 <template>
 	<div class="container">
-		<div class="container-main">
-			<!-- 表单搜索区域 -->
-			<el-scrollbar
-				v-if="isShowSearchRegion"
-				max-height="300px"
-				class="scrollbar-height"
-			>
-				<slot name="search"></slot>
-			</el-scrollbar>
+		<!-- 表单搜索区域 -->
+		<el-scrollbar
+			v-if="isShowSearchRegion"
+			max-height="300px"
+			class="scrollbar-height"
+		>
+			<slot name="search"></slot>
+		</el-scrollbar>
 
-			<!-- 表格上方搜索向下方按钮区域 -->
-			<slot name="btn"></slot>
+		<!-- 表格上方搜索向下方按钮区域 -->
+		<slot name="btn"></slot>
 
-			<!-- 列表区域 v-bind="xx"放在最下方，父组件传值可以覆盖上面定义的默认值-->
-			<!-- 父组件传递的属性（通过 $attrs 或显式传递的 prop）能够覆盖子组件内部的默认设置，应该确保 v-bind 放在最后 -->
-			<el-table
-				ref="multipleTableRef"
-				stripe
-				style="width: 100%"
-				:data="filterTableData"
-				:border="tableBorder"
-				:style="{
-					height: tableHeight || excludeSearchAreaAfterTableHeight,
-					minHeight: minHeight + 'px',
-				}"
-				:row-key="(row) => row.id"
-				@row-click="handleRowClick"
-				@selection-change="onSelectionChange"
-				v-bind="$attrs"
-			>
-				<template #empty>
-					<el-empty :image-size="emptyImgSize" description="暂无数据" />
+		<!-- 列表区域 v-bind="xx"放在最下方，父组件传值可以覆盖上面定义的默认值-->
+		<!-- 父组件传递的属性（通过 $attrs 或显式传递的 prop）能够覆盖子组件内部的默认设置，应该确保 v-bind 放在最后 -->
+		<el-table
+			ref="multipleTableRef"
+			stripe
+			style="width: 100%"
+			:data="filterTableData"
+			:border="tableBorder"
+			:style="{
+				height: tableHeight || excludeSearchAreaAfterTableHeight,
+				minHeight: minHeight + 'px',
+			}"
+			:row-key="(row) => row[rowKey]"
+			@row-click="handleRowClick"
+			@selection-change="onSelectionChange"
+			lazy
+			:load="handleLazyLoad"
+			:tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+			v-bind="$attrs"
+		>
+			<template #empty>
+				<el-empty :image-size="emptyImgSize" description="暂无数据" />
+			</template>
+
+			<el-table-column
+				v-if="isSelection"
+				type="selection"
+				width="60"
+				:reserve-selection="true"
+				:selectable="selectableCallback"
+			/>
+			<el-table-column v-if="isRadio" width="60" label="单选" align="center">
+				<template #default="{ row }">
+					<el-radio :label="row.id" v-model="selectRadioIdVm" />
 				</template>
+			</el-table-column>
 
-				<el-table-column
-					v-if="isSelection"
-					type="selection"
-					width="60"
-					:reserve-selection="true"
-					:selectable="selectableCallback"
-				/>
-				<el-table-column
-					v-if="isRadio"
-					width="60"
-					label="单选"
-					align="center"
+			<el-table-column
+				v-if="isSerialNo"
+				type="index"
+				label="序号"
+				min-width="60"
+				:index="orderHandler"
+				align="center"
+			/>
+			<el-table-column
+				v-for="item in tableHeader"
+				:key="item.prop"
+				:fixed="item.label === '操作' ? 'right' : void 0"
+				align="center"
+				header-align="center"
+				min-width="180"
+				:show-overflow-tooltip="item.label !== '操作'"
+				v-bind="item"
+			>
+				<template
+					#header
+					v-if="item.slotKey?.includes('tableHeaderSearch')"
 				>
-					<template #default="{ row }">
-						<el-radio :label="row.id" v-model="selectRadioIdVm" />
+					<el-input
+						class="search-input"
+						v-model.trim="headerSearch"
+						size="small"
+						:placeholder="'搜索' + getSearchInfo.label"
+					/>
+				</template>
+				<template #default="{ row }" v-if="item.slotKey">
+					<slot
+						v-for="slot in item.slotKey.split(',')"
+						:name="slot"
+						:row="row"
+					></slot>
+					<template v-if="item.slotKey.includes('default')">
+						<zw-permission-button
+							v-if="isDetail"
+							permission="detail"
+							type="primary"
+							@zwClick="handleDetail(DialogType.Detail, row)"
+							>详情</zw-permission-button
+						>
+						<zw-permission-button
+							permission="update"
+							type="primary"
+							@zwClick="handleEdit(DialogType.Edit, row)"
+							>编辑</zw-permission-button
+						>
+						<el-popconfirm
+							title="确定删除吗？"
+							@confirm="handleDelete(row[handleDeletePayloadComputed])"
+						>
+							<template #reference>
+								<zw-permission-button permission="delete" type="danger"
+									>删除</zw-permission-button
+								>
+							</template>
+						</el-popconfirm>
 					</template>
-				</el-table-column>
+				</template>
+			</el-table-column>
+		</el-table>
 
-				<el-table-column
-					type="index"
-					label="序号"
-					min-width="60"
-					:index="orderHandler"
-					align="center"
-				/>
-				<el-table-column
-					v-for="item in tableHeader"
-					:key="item.prop"
-					:fixed="item.label === '操作' ? 'right' : void 0"
-					align="center"
-					header-align="center"
-					min-width="180"
-					:show-overflow-tooltip="item.label !== '操作'"
-					v-bind="item"
-				>
-					<template
-						#header
-						v-if="item.slotKey?.includes('tableHeaderSearch')"
-					>
-						<el-input
-							v-model.trim="headerSearch"
-							size="small"
-							:placeholder="getSearchInfo.label"
-						/>
-					</template>
-					<template #default="{ row }" v-if="item.slotKey">
-						<slot
-							v-for="slot in item.slotKey.split(',')"
-							:name="slot"
-							:row="row"
-						></slot>
-						<template v-if="item.slotKey.includes('default')">
-							<zw-permission-button
-								permission="detail"
-								v-if="isDetail"
-								type="primary"
-								@zwClick="handleDetail(DialogType.Detail, row)"
-								>详情</zw-permission-button
-							>
-							<zw-permission-button
-								permission="update"
-								type="primary"
-								@zwClick="handleEdit(DialogType.Edit, row)"
-								>编辑</zw-permission-button
-							>
-							<el-popconfirm
-								title="确定删除吗？"
-								@confirm="
-									handleDelete(row[handleDeletePayloadComputed])
-								"
-							>
-								<template #reference>
-									<zw-permission-button
-										permission="delete"
-										type="danger"
-										>删除</zw-permission-button
-									>
-								</template>
-							</el-popconfirm>
-						</template>
-					</template>
-				</el-table-column>
-			</el-table>
-
-			<!-- 分页区域-->
-			<el-pagination
-				v-if="paginationFlag"
-				background
-				:page-sizes="pageSizesArr"
-				:current-page="pageNum"
-				:page-size="pageSize"
-				:layout="layout"
-				:total="Number(total)"
-				popper-class="pagination-popper"
-				@size-change="handleSizeChange"
-				@current-change="handleCurrentChange"
-			></el-pagination>
-		</div>
+		<!-- 分页区域-->
+		<el-pagination
+			v-if="paginationFlag"
+			background
+			:page-sizes="pageSizesArr"
+			:current-page="pageNum"
+			:page-size="pageSize"
+			:layout="layout"
+			:total="Number(total || 0)"
+			popper-class="pagination-popper"
+			@size-change="handleSizeChange"
+			@current-change="handleCurrentChange"
+		></el-pagination>
 	</div>
 </template>
 
@@ -139,7 +133,7 @@
 import { onMounted, ref, watch, toRaw, nextTick, computed } from "vue";
 import { ElTable } from "element-plus";
 const multipleTableRef = ref<InstanceType<typeof ElTable>>();
-import { DialogType } from "./newTableConfig/popType";
+import { DialogType } from "./newTableConfig/type";
 
 import myEmits from "./newTableConfig/emits";
 import myProps from "./newTableConfig/props";
@@ -157,7 +151,14 @@ const handleRowClick = (row: any) => {
 		emits("selectRowData", selectedRowData.value);
 	}
 };
-
+//  懒加载事件
+const handleLazyLoad = (
+	row: any,
+	treeNode: unknown,
+	resolve: (data: any[]) => void
+) => {
+	emits("handleLazyLoad", row, treeNode, resolve);
+};
 // 搜索过滤
 const filterTableData = computed(() =>
 	props.tableData?.filter(
@@ -213,7 +214,7 @@ const toggleSelection = (rows?: any) => {
 		if (rows) {
 			rows.forEach((row: any) => {
 				const idsArr = props.selectionIds?.split(",");
-				if (idsArr?.includes(row.id.toString())) {
+				if (idsArr?.includes(row[props.rowKey].toString())) {
 					//重要
 					nextTick(() =>
 						multipleTableRef.value?.toggleRowSelection(row, true)
@@ -228,7 +229,10 @@ const toggleSelection = (rows?: any) => {
 // 勾选后不可在勾选 - 父组件attribute 添加isDisableSelection
 const selectableCallback = (row: any) => {
 	const idsArr = props.selectionIds?.split(",");
-	if (props.isDisableSelection && idsArr?.includes(row.id.toString()))
+	if (
+		props.isDisableSelection &&
+		idsArr?.includes(row[props.rowKey].toString())
+	)
 		return false;
 	return true;
 };
@@ -247,8 +251,7 @@ watch(
 const Height = ref();
 // 减去搜索区域高度后的table，不能有默认值不然会出现滚动条
 const excludeSearchAreaAfterTableHeight = ref();
-const minHeight = 500; // 最小高度值
-
+const minHeight = 300; // 表格最小高度
 // 获取表格高度-动态计算搜索框高度
 const updateHeight = () => {
 	let wrapEl = document.querySelector(".scrollbar-height");
@@ -278,48 +281,75 @@ window.addEventListener("resize", updateHeight, {
 });
 defineExpose({
 	toggleSelection,
+	handleLazyLoad,
 });
 </script>
 
 <style scoped lang="scss">
 .container {
-	//width: 100%;
-	//height: 100%;
-	padding: 15px;
-	transform: translateY(-100%);
-	transition: transform 0.4s ease-in-out;
-	background-color: #f8f8f8;
+	overflow-x: hidden;
+	height: calc(100vh - 75px); // 列表最外层的高度
+	padding: 15px 15px 0 15px;
+	margin: 15px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: 1px solid #e6e6e6;
+	background-color: #fff;
 	// background-color: #870404;
 
-	&-main {
-		position: relative;
-		padding: 15px;
-		// width: 100%;
-		// height: 100%; //el-scrollbar有默认高度100%，当页面列表渲前会继承这里高度，导致搜索区域铺满全屏
-		background-color: #fff;
-		border: 1px solid #e6e6e6;
-		border-radius: 5px;
-		&:hover {
-			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-		}
-		transition: box-shadow 0.3s ease-in-out;
-		.scrollbar-height {
-			min-height: 80px;
-		}
+	transform: translateY(-110%);
+	transition: transform 0.6s ease-in-out, box-shadow 0.3s ease-in-out,
+		background-color 0.3s ease-in-out;
+	// 滚动条Start
+	&::-webkit-scrollbar,
+	&::-webkit-scrollbar-button,
+	&::-webkit-scrollbar-corner {
+		width: 6px;
+		border: none;
+		outline: none;
+	}
+	&::-webkit-scrollbar-thumb,
+	&::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+	// 作用是在容器(.container),:hover写在谁后则作用于此元素
+	&:hover::-webkit-scrollbar-track,
+	&:hover::-webkit-scrollbar-thumb {
+		background-color: #cfd1d4;
+	}
+	&::-webkit-scrollbar-thumb:hover {
+		cursor: pointer;
+		background-color: #c0c1c4;
+	}
+	// 滚动条End
 
-		.el-pagination {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			margin-top: 20px;
-		}
+	&:hover {
+		overflow-y: auto; // 悬停时显示滚动条
+		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+	}
+
+	.scrollbar-height {
+		min-height: 80px;
+		height: initial;
+	}
+
+	.el-pagination {
+		overflow: hidden;
+		display: flex;
+		overflow: auto;
+		align-items: center;
+		justify-content: center;
+		// background-color: rgb(225, 210, 210);
+		padding: 15px 0;
+		// margin-top: 15px;
+		// padding: 15px;
 	}
 }
 
 :deep(.el-table tbody tr .cell) {
 	padding-top: 10px;
 	padding-bottom: 10px;
-	/* 保留换行 
+	/* 保留换行
 	 el-table-column打开了show-overflow-tooltip，换行不会生效
 	*/
 	// white-space: break-spaces;
