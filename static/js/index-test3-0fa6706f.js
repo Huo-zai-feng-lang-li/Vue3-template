@@ -1,0 +1,1 @@
+import{al as n,v as s,F as t,G as a}from"./index-8d65dd15.js";const e={},r=[a("h2",null,"test3",-1)];const l=n(e,[["render",function(n,a){return s(),t("div",null,r)}]]);export{l as default};
