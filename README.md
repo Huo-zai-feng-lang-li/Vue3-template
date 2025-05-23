@@ -57,7 +57,7 @@ High performance & Simplicity Vue3 Hooks library
 -  执行 `pnpm run build:jg` 会以 jg(自定义模式，跟目录下新建.env.jg) 模式构建项目
 -  执行 `pnpm run ESlint:check` 会使用 ESLint 检查并修复.vue、.js 等文件
 -  执行 `pnpm run Prettier:check` 会使用 Prettier 格式化 HTML、Vue 等文件
--  执行 `pnpm run deploy:gitBase` 会运行 deploy.sh 脚本部署项目
+-  执行 `pnpm run deploy:gitBase` 会运行 deploy.sh 脚本部署项目，（在 git bash here 直接输入 deploy.sh 也可以运行此脚本）
 -  执行 `pnpm run deploy:auto-build-pages` 与上面一样功能（一个是脚本，一个是命令）
 
 -  [x] **axios 包含以下功能**：

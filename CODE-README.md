@@ -1,6 +1,6 @@
 # Git 提交规范
 
-为了使代码管理更加规范和清晰，我们需要将 Git 提交信息标准化。本文档将介绍我们的 Git 提交规范，希望能给大家提供参考。
+为了使代码管理更加规范和清晰，我们需要将 Git 提交信息标准化。
 
 ## 提交信息格式
 
@@ -16,24 +16,24 @@
 
 `<type>(< scope >): <subject>`是必需的。
 
-<div style="color:red">注意英文冒号并且加上空格，以及范围前后的空格</div>
+注意英文冒号并且加上空格，以及范围前后的空格
 
 ### 类型（type）
 
 类型代表了本次提交的类型。我们定义了以下 标准类型：
 
--  **feat**: 新功能
--  **fix**: 修复问题
--  **docs**: 文档修改
--  **style**: 代码风格调整（比如修改空格、换行符等等，不影响代码含义的修改）
--  **refactor**: 代码重构（既不是新增功能也不是修复问题的代码修改）
--  **test**: 测试用例新增、修改、删除等
--  **chore**: 对构建、打包工具、文档生成等辅助工具的修改
--  **revert**：表示此次提交是撤销之前的某次提交
--  **perf**：表示此次提交是对代码进行了优化，如改进了算法或数据结构等
--  **build**：表示此次提交是对构建系统或外部依赖的修改，如升级了某个依赖库或修改了 CI/CD 配置等
--  **ci**：表示此次提交是对 CI/CD 配置进行了修改，如增加了工作流或修改了触发条件等
--  **merge** 合并他人代码
+-   **feat**: 新功能
+-   **fix**: 修复问题
+-   **docs**: 文档修改
+-   **style**: 代码风格调整（比如修改空格、换行符等等，不影响代码含义的修改）
+-   **refactor**: 代码重构（既不是新增功能也不是修复问题的代码修改）
+-   **test**: 测试用例新增、修改、删除等
+-   **chore**: 对构建、打包工具、文档生成等辅助工具的修改
+-   **revert**：表示此次提交是撤销之前的某次提交
+-   **perf**：表示此次提交是对代码进行了优化，如改进了算法或数据结构等
+-   **build**：表示此次提交是对构建系统或外部依赖的修改，如升级了某个依赖库或修改了 CI/CD 配置等
+-   **ci**：表示此次提交是对 CI/CD 配置进行了修改，如增加了工作流或修改了触发条件等
+-   **merge** 合并他人代码
 
 ### 范围（scope）
 
@@ -51,8 +51,8 @@
 
 页脚也是可选的，主要包含一些技术相关信息（例如 issue、break change 等），并允许跨项目追踪对应事项的信息。此外，还可以使用一些特殊的关键词，比如：
 
--  `BREAKING CHANGE`: 改变代码库之前的 API，包括非向后兼容性修改之类的事项。
--  `Closes`: 关闭一个 Issue。
+-   `BREAKING CHANGE`: 改变代码库之前的 API，包括非向后兼容性修改之类的事项。
+-   `Closes`: 关闭一个 Issue。
 
 ## 示例
 
@@ -101,4 +101,8 @@ git commit -m "fix(common): 修复模块依赖错误" -m "修复了模块对 `mo
 
 ## 参考资料
 
--  [Conventional Commits 规范](https://www.conventionalcommits.org/en/v1.0.0/)
+-   [Conventional Commits 规范](https://www.conventionalcommits.org/en/v1.0.0/)
+-   [W3C HTML5 规范](https://html.spec.whatwg.org/multipage/introduction.html#abstract)
+-   [W3C CSS 规范](https://www.w3.org/Style/CSS/)
+-   [ECMAScript 规范](https://www.ecma-international.org/publications/standards/Ecma-262.htm)
+-   [Vue 官方文档](https://cn.vuejs.org/v2/guide/)
