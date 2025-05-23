@@ -14,6 +14,7 @@ declare module "@vue/runtime-core" {
 		ElCard: typeof import("element-plus/es")["ElCard"];
 		ElCascader: typeof import("element-plus/es")["ElCascader"];
 		ElCheckbox: typeof import("element-plus/es")["ElCheckbox"];
+		ElCheckboxGroup: typeof import("element-plus/es")["ElCheckboxGroup"];
 		ElCol: typeof import("element-plus/es")["ElCol"];
 		ElConfigProvider: typeof import("element-plus/es")["ElConfigProvider"];
 		ElDatePicker: typeof import("element-plus/es")["ElDatePicker"];
@@ -36,6 +37,8 @@ declare module "@vue/runtime-core" {
 		ElSubMenu: typeof import("element-plus/es")["ElSubMenu"];
 		ElSwitch: typeof import("element-plus/es")["ElSwitch"];
 		ElTableColumn: typeof import("element-plus/es")["ElTableColumn"];
+		ElTabPane: typeof import("element-plus/es")["ElTabPane"];
+		ElTabs: typeof import("element-plus/es")["ElTabs"];
 		ElTooltip: typeof import("element-plus/es")["ElTooltip"];
 		ElTree: typeof import("element-plus/es")["ElTree"];
 		RouterLink: typeof import("vue-router")["RouterLink"];

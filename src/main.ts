@@ -17,6 +17,7 @@ import MyBackTop from "~/MyBackTop/index";
 import router from "./router/route-guard";
 import { createPinia } from "pinia"; // 引入 pinia
 import SecureLS from "secure-ls"; // 加密 pinia
+import watermark from "vue3-blind-watermark";
 // 创建 SecureLS 实例
 export const ls = new SecureLS({
 	encodingType: "aes",
@@ -39,6 +40,9 @@ app.use(componentRegister)
 	.use(router)
 	.use(pinia)
 	.use(useScroll)
+	.use(watermark, {
+		text: "版权归彩色之外所有",
+	})
 	.mount("#app");
 pinia.use(piniaPersist);
 // 在 Pinia 中注册插件

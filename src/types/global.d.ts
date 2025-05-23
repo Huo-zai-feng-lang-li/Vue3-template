@@ -8,6 +8,7 @@ declare module "vue3-directive-tools";
 declare module "vue3-progress-scroll";
 declare module "sortablejs";
 declare module "jsplumb";
+declare module "vue3-blind-watermark";
 
 // 声明一个模块，防止引入文件时报错
 declare module "*.json";

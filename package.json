@@ -46,6 +46,7 @@
     "vue": "^3.4.14",
     "vue-print-next": "^1.0.4",
     "vue-router": "^4.2.5",
+    "vue3-blind-watermark": "^1.1.5",
     "vue3-directive-tools": "^1.1.1",
     "vue3-encryption-plugin": "^1.0.8",
     "vue3-loading-plug": "^1.3.7",

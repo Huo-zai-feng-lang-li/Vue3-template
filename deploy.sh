@@ -10,19 +10,21 @@ if [ -d "dist" ]; then
 fi
 
 # 构建
-pnpm run build:test  #然后执行打包命令
+pnpm run build:test  
 
-# 进入待发布的目录
-cd dist  #进到dist目录
+#进到dist目录
+cd dist  
 
-git init  #执行这些git命令
+git init  
 git add -A
 git commit -m 'deploy'
 # 重命名分支 -M 重命名分支 -u 起一个别名
 git branch -M main-pages
-# 在main分支提交到main-pages分支上
+# 强制推送到main-pages分支
 git push -f https://github.com/huozaifenlangli/Vue3-template.git main-pages
 
-cd - # 退回开始所在目录
+# 退回开始所在目录
+cd - 
 
-rm -rf dist  #删除dist文件夹
+#删除dist文件夹
+rm -rf dist 
