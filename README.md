@@ -18,7 +18,7 @@
 <div style=color:#0b0909;>
 
 -  该项目中所有的代码均经过精心的注释，以便于理解和学习。
--  该项目中所有的 NPM 包均已上传至 npm 仓库，Api 均在[docs](https://zhang-kun8888.gitee.io/vue3-tools-docs/) 及 [Github-Source](https://github.com/huozaifenlangli/vue3-directive-tool--NPM) 可查阅
+-  该项目中所有的 NPM 包均已上传至 npm 仓库，Api 均在[docs](https://huo-zai-feng-lang-li.github.io/vue3-tools-docs/) 及 [Github-Source](https://github.com/huozaifenlangli/vue3-directive-tool--NPM) 可查阅
 
 </div>
 
@@ -91,7 +91,11 @@ High performance & Simplicity Vue3 Hooks library
 
 ### 📦 项目预览
 
-[Click Preview](https://zhang-kun8888.gitee.io/vite--ts--vue3---template/#/home)
+[Click Preview](https://huo-zai-feng-lang-li.github.io/Vue3-template/#/home)
+
+### 📦 个人网站
+
+[Click Preview](https://zk-99999.netlify.app/home-pc.html)
 
 #### 🤩 对应博客（0-1 所有搭建步骤）
 
@@ -99,7 +103,7 @@ High performance & Simplicity Vue3 Hooks library
 
 #### 🤹‍♀️ 项目 npm 文档
 
-[Click Docs & NPM](https://zhang-kun8888.gitee.io/vue3-tools-docs/)
+[Click Docs & NPM](https://huo-zai-feng-lang-li.github.io/vue3-tools-docs/)
 
 #### 💒 代码仓库
 
@@ -222,7 +226,8 @@ pnpm run build
 
 ———— @张坤 CSDN 彩色之外-————
 
-2025、11、28🌸
+2023、11、28🌸
+author 1334132303@qq.com 🌸
 
 ## 📄 License
 

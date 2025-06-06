@@ -44,10 +44,7 @@ import { onMounted, reactive, toRefs } from "vue";
 // import { getTestList } from "@/api/encryptionAlgorithm/templateDefinition";
 // import { STATUS_CODE } from "@/enum/global";
 const state = reactive({
-	//表头数据
-	// el-table-column有的属性都可以在这传
-
-	/* 
+	/* 表头数据 el-table-column有的属性都可以在这传
 	 searchFields:true 搜索字段
 	 slotKey: 'xxx' 自定义插槽 
 	 包含tableHeaderSearch则展示表格搜索框。
@@ -63,7 +60,7 @@ const state = reactive({
 		{ label: "性别", prop: "sex", slotKey: "switch" },
 		{
 			label: "操作",
-			fixed: "left",
+			// fixed: "left",
 			slotKey: "default,tableHeaderSearch",
 			width: 200,
 		},
@@ -270,8 +267,8 @@ const state = reactive({
 	searchForm: <SearchFormType>{ department: "全部" },
 	pageNum: 1,
 	pageSize: 10,
-	total: 100000000000,
-	tableHeight: "calc(100vh - 355px)",
+	total: 10000000,
+	tableHeight: "calc(100vh - 283px)",
 });
 const { formOptions, searchForm, pageNum, pageSize } = toRefs(state);
 

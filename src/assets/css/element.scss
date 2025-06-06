@@ -1,11 +1,100 @@
+/* 表格
+-------------------------------------------------------------- --*/
 .el-table thead tr,
 .el-table tbody tr > td {
   padding: 0 !important;
-  height: 75px;
-  line-height: 75px;
+  height: 35px;
+  line-height: 35px;
   color: #909399;
 }
 
 .el-table thead tr > th {
   background-color: var(--el-color-info-light-8) !important;
+}
+
+/* Tabs切换动画
+-------------------------------------------------------------- --*/
+.fade-enter-active {
+  animation: backInLeft 0.5s linear;
+}
+
+.fade-leave-active {
+  animation: backOutRight 0.5s linear;
+}
+
+@keyframes backInLeft {
+  0% {
+    transform: translateX(-100%) scale(0);
+    opacity: 0;
+  }
+
+  60% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes backOutRight {
+  0% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%) scale(0);
+    opacity: 0;
+  }
+}
+
+/* 全部dialog进入动画
+------------------------------- */
+.dialog-fade-enter-active {
+  display: inline-block;
+  animation: zoom-in 0.5s;
+  background-color: rgb(0 0 0 / 0%);
+}
+
+@keyframes zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -12.5rem, 0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 0.75rem, 0);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+/* 全部dialog离开动画
+------------------------------- */
+.dialog-fade-leave-active {
+  display: inline-block;
+  animation: zoom-out;
+  animation-duration: 0.5s;
+  background-color: rgb(0 0 0 / 0%);
+}
+
+@keyframes zoom-out {
+  0% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* tootip宽度
+-------------------------------------------------------------- --*/
+.el-popper.is-dark {
+  max-width: 700px !important;
+  word-break: break-all;
 }

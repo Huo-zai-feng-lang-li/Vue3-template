@@ -7,15 +7,24 @@
 			textColor: 'rgba(180, 180, 180, 0.4)',
 		}"
 	>
-		<el-button
+		<el-link
 			size="mini"
 			type="primary"
-			href="https://huo-zai-feng-lang-li.github.io/Website-zhangkun/home.html"
+			href="https://huo-zai-feng-lang-li.github.io/Website-zhangkun/"
 			target="_blank"
 			class="mr20"
-			>官网</el-button
+			>官网</el-link
 		>
-		<button v-print>打印整个页面</button>
+		<el-button v-print>打印插件</el-button>
+		<el-link
+			size="mini"
+			type="primary"
+			href="https://huo-zai-feng-lang-li.github.io/vue3-tools-docs/vue-print-last.html"
+			target="_blank"
+			class="mr20"
+			>打印插件地址</el-link
+		>
+
 		测试keepAline:<input type="text" />
 		<el-button @click="handClick('我是参数')" type="success" class="ml10"
 			>点我测试tools工具函数</el-button

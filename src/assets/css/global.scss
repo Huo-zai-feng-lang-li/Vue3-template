@@ -19,7 +19,7 @@
   cursor: move !important;
 }
 
-/* 宽高 100%
+/* 宽高 100% 使用：.w100 .h100 .vh100 .max100vh .min100vh
 ------------------------------- */
 .w100 {
   width: 100% !important;
@@ -41,7 +41,7 @@
   min-height: 100vh !important;
 }
 
-/* 字体大小全局样式
+/* 字体大小全局样式 使用：.font10 .font15 .font20
 ------------------------------- */
 @for $i from 10 through 35 {
   .font#{$i} {
@@ -49,7 +49,7 @@
   }
 }
 
-/* 外边距、内边距全局样式
+/* 外边距、内边距全局样式 使用：.mt10 .mr10 .mb10 .ml10 .pt10 .pr10 .pb10 .pl10
 ------------------------------- */
 @for $i from 1 through 35 {
   .mt#{$i} {
@@ -82,51 +82,5 @@
 
   .pl#{$i} {
     padding-left: #{$i}px !important;
-  }
-}
-
-/* 全部dialog进入动画
-------------------------------- */
-.dialog-fade-enter-active {
-  display: inline-block;
-  animation: zoom-in 0.5s;
-  background-color: rgb(0 0 0 / 0%);
-}
-
-@keyframes zoom-in {
-  0% {
-    opacity: 0;
-    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -12.5rem, 0);
-    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  }
-
-  60% {
-    opacity: 1;
-    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 0.75rem, 0);
-    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
-  }
-}
-
-/* 全部dialog离开动画
-------------------------------- */
-.dialog-fade-leave-active {
-  display: inline-block;
-  animation: zoom-out;
-  animation-duration: 0.5s;
-  background-color: rgb(0 0 0 / 0%);
-}
-
-@keyframes zoom-out {
-  0% {
-    opacity: 1;
-  }
-
-  60% {
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-
-  100% {
-    opacity: 0;
   }
 }

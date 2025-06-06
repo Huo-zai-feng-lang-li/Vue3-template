@@ -41,7 +41,7 @@ app.use(componentRegister)
 	.use(pinia)
 	.use(useScroll)
 	.use(watermark, {
-		text: "版权归彩色之外所有",
+		text: "版权归彩色之外所有", //隐藏级别水印，需特殊打开方式可见 参考：https://huo-zai-feng-lang-li.github.io/vue3-tools-docs/vue3-blind-watermark.html
 	})
 	.mount("#app");
 pinia.use(piniaPersist);

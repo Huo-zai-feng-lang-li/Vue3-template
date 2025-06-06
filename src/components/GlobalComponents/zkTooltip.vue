@@ -1,6 +1,6 @@
 <template>
-	<!--  el-tooltip 全局子组件 page 省略号文字显示不全鼠标放在文字弹框显示所有详情-->
 	<el-tooltip :show-after="200">
+		<!--  el-tooltip 全局子组件 page 省略号文字显示不全鼠标放在文字弹框显示所有详情-->
 		<template #content>
 			<div
 				v-html="content"

@@ -85,26 +85,34 @@
 						:row="row"
 					></slot>
 					<template v-if="item.slotKey.includes('default')">
-						<zw-permission-button
+						<el-link
 							v-if="isDetail"
 							permission="detail"
 							type="primary"
-							@zwClick="handleDetail(DialogType.Detail, row)"
-							>详情</zw-permission-button
+							:underline="false"
+							@click="handleDetail(DialogType.Detail, row)"
+							>详情</el-link
 						>
-						<zw-permission-button
+						<el-link
 							permission="update"
 							type="primary"
-							@zwClick="handleEdit(DialogType.Edit, row)"
-							>编辑</zw-permission-button
+							:underline="false"
+							@click="handleEdit(DialogType.Edit, row)"
+							>编辑</el-link
 						>
 						<el-popconfirm
 							title="确定删除吗？"
 							@confirm="handleDelete(row[handleDeletePayloadComputed])"
 						>
 							<template #reference>
-								<zw-permission-button permission="delete" type="danger"
-									>删除</zw-permission-button
+								<el-link
+									permission="delete"
+									type="danger"
+									:underline="false"
+									@click="
+										handleDelete(row[handleDeletePayloadComputed])
+									"
+									>删除</el-link
 								>
 							</template>
 						</el-popconfirm>
