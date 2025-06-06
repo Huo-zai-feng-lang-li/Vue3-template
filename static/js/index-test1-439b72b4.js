@@ -1,0 +1,1 @@
+import{ar as t,v as e,F as s,G as a}from"./index-f9778aca.js";const r={name:"test1"},n={style:{height:"2000px","background-color":"pink"},class:"w100"},o=[a("h1",{class:"font32 cursor-pointer dialog-fade-enter-active"},"test1",-1)];const c=t(r,[["render",function(t,a,r,c,i,d){return e(),s("div",n,o)}]]);export{c as default};

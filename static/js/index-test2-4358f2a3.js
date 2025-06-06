@@ -1,0 +1,1 @@
+import{ar as n,v as s,F as t,G as r}from"./index-f9778aca.js";const a={},e=[r("h2",null,"test2",-1)];const o=n(a,[["render",function(n,r){return s(),t("div",null,e)}]]);export{o as default};

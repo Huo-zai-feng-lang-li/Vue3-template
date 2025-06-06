@@ -1,0 +1,1 @@
+import{r as e}from"./index-f9778aca.js";function i(){const i=e(!1);return{visible:i,showLoading:()=>{i.value=!0},hideLoading:(e=300)=>{setTimeout((()=>{i.value=!1}),e)}}}export{i as u};
