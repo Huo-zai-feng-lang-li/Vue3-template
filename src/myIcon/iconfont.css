@@ -1,6 +1,6 @@
 @font-face {
-	font-family: iconfont; /* Project id 4140267 */
-	src: url('iconfont.ttf?t=1687846581325') format('truetype');
+	font-family: iconfont;
+	src: url("iconfont.ttf?t=1687846581325") format("truetype");
 }
 
 .iconfont {
@@ -13,13 +13,13 @@
 }
 
 .icon-24gl-fileEmpty::before {
-	content: '\eabf';
+	content: "\eabf";
 }
 
 .icon-wenjianzhankai::before {
-	content: '\e85f';
+	content: "\e85f";
 }
 
 .icon-jian::before {
-	content: '\e66e';
+	content: "\e66e";
 }
